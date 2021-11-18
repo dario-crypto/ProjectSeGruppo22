@@ -17,7 +17,7 @@ public class NewMain {
         // TODO code application logic here
         System.out.println("Hello world");
         System.out.println("Sono Diletta");
-         System.out.println("Sono Asia");
+         System.out.println("Sono Imma");
         
     }
     
