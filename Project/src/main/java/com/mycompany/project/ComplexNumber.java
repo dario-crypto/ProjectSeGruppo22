@@ -106,6 +106,15 @@ public class ComplexNumber
 		this.real = z.real;
 		this.imaginary = z.imaginary;
 	}
+        
+        public void setReal(Double real){
+            this.real = real;
+        }
+        
+        public void setImaginary(Double imaginary){
+            this.imaginary = imaginary;
+        }
+        
 	/**
 	* Adds two <code>ComplexNumber</code>.
 	* @param z1 the first <code>ComplexNumber</code>.

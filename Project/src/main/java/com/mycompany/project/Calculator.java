@@ -94,4 +94,12 @@ public class Calculator {
         }
         return sb.toString();
     }
+    
+    public ComplexNumber topStack(){
+        return stack.top();
+    }
+    
+    public StackLogic<ComplexNumber> getStack(){
+        return stack;
+    }
 }

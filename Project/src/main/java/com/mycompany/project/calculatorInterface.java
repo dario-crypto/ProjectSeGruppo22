@@ -23,6 +23,7 @@ public class calculatorInterface extends javax.swing.JFrame {
         c = new Calculator(new Stack<ComplexNumber>());
         
         
+        
        
     }
 
@@ -80,7 +81,7 @@ public class calculatorInterface extends javax.swing.JFrame {
         jButtonATan = new javax.swing.JButton();
         jButtonClear = new javax.swing.JButton();
         jScrollPaneStack = new javax.swing.JScrollPane();
-        jListStack = new javax.swing.JList<>();
+        jListStack = new javax.swing.JList<>(dlm);
         jPanelStackOperation = new javax.swing.JPanel();
         jButtonSwap = new javax.swing.JButton();
         jButtonDup = new javax.swing.JButton();
@@ -717,6 +718,7 @@ public class calculatorInterface extends javax.swing.JFrame {
         jButtonIns.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInsActionPerformed(evt);
+				
             }
         });
 
@@ -814,7 +816,8 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInvertActionPerformed
 
     private void jButtonComplexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComplexActionPerformed
-        // TODO add your handling code here:
+           jTextArea1.append("i"); 
+           
     }//GEN-LAST:event_jButtonComplexActionPerformed
 
     private void jButtonEqualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEqualActionPerformed
@@ -882,7 +885,7 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAcActionPerformed
 
     private void jButtonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelActionPerformed
-        String s= jTextArea1.getText();
+        String s = jTextArea1.getText();
         if(s.length()>0){
            s = s.substring(0, s.length()-1);
            jTextArea1.setText(s);
@@ -954,7 +957,20 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonOverActionPerformed
 
     private void jButtonInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsActionPerformed
-      
+        String area = jTextArea1.getText();
+        ComplexNumber cn = new ComplexNumber();
+        if(area.trim().contains("i")){
+            Double partIm = Double.parseDouble(area.split("i")[0]);
+            cn.setImaginary(partIm);
+        } else{
+           cn.setReal(Double.parseDouble(area.trim()));
+        }
+        dlm.clear();
+        c.insert(cn);
+        for(ComplexNumber cc: c.getStack()){
+        dlm.addElement(cc);
+        }
+        jTextArea1.setText("");   
     }//GEN-LAST:event_jButtonInsActionPerformed
 
     /**
