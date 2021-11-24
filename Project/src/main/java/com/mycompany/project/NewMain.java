@@ -13,7 +13,7 @@ public class NewMain {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws StackEmptyException {
         // TODO code application logic here
         System.out.println("Hello world");
         System.out.println("Sono Diletta");
