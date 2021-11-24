@@ -156,7 +156,5 @@ public class Calculator {
         return stack.top();
     }
     
-    public StackLogic<ComplexNumber> getStack(){
-        return stack;
-    }
+ 
 }
