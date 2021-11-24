@@ -4,6 +4,8 @@
  */
 package com.mycompany.project;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 
 /**
@@ -11,9 +13,10 @@ import javax.swing.DefaultListModel;
  * @author immacolata
  */
 public class calculatorInterface extends javax.swing.JFrame {
+
     Calculator c;
     DefaultListModel dlm = new DefaultListModel();
-    
+    String op;
 
     /**
      * Creates new form calculatorInterface
@@ -21,10 +24,7 @@ public class calculatorInterface extends javax.swing.JFrame {
     public calculatorInterface() {
         initComponents();
         c = new Calculator(new Stack<ComplexNumber>());
-        
-        
-        
-       
+
     }
 
     /**
@@ -816,12 +816,17 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInvertActionPerformed
 
     private void jButtonComplexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComplexActionPerformed
-           jTextArea1.append("i"); 
-           
+        jTextArea1.append("i");
+
     }//GEN-LAST:event_jButtonComplexActionPerformed
 
     private void jButtonEqualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEqualActionPerformed
-        // TODO add your handling code here:
+        try {
+            c.execOperation(op);
+            viewStack();
+        } catch (StackEmptyException ex) {
+            Logger.getLogger(calculatorInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonEqualActionPerformed
 
     private void jButtonDotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDotActionPerformed
@@ -829,15 +834,15 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDotActionPerformed
 
     private void jButtonCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCPActionPerformed
-         jTextArea1.append(jButtonCP.getText());
+        jTextArea1.append(jButtonCP.getText());
     }//GEN-LAST:event_jButtonCPActionPerformed
 
     private void jButtonOPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOPActionPerformed
-         jTextArea1.append(jButtonOP.getText());
+        jTextArea1.append(jButtonOP.getText());
     }//GEN-LAST:event_jButtonOPActionPerformed
 
     private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton0ActionPerformed
-         jTextArea1.append(jButton0.getText());
+        jTextArea1.append(jButton0.getText());
     }//GEN-LAST:event_jButton0ActionPerformed
 
     private void jButtonSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubActionPerformed
@@ -845,7 +850,9 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSubActionPerformed
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
+        op = "+";
         jTextArea1.append(jButtonAdd.getText());
+        
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -853,23 +860,24 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         jTextArea1.append(jButton2.getText());
+        jTextArea1.append(jButton2.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     jTextArea1.append(jButton1.getText());
+        jTextArea1.append(jButton1.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDivisionActionPerformed
-       jTextArea1.append(jButtonDivision.getText());
+        jTextArea1.append(jButtonDivision.getText());
     }//GEN-LAST:event_jButtonDivisionActionPerformed
 
     private void jButtonMultiplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiplicationActionPerformed
-       jTextArea1.append(jButtonMultiplication.getText());
+        op="x";
+        jTextArea1.append(jButtonMultiplication.getText());
     }//GEN-LAST:event_jButtonMultiplicationActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-         jTextArea1.append(jButton6.getText());
+        jTextArea1.append(jButton6.getText());
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -877,31 +885,31 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         jTextArea1.append(jButton4.getText());
+        jTextArea1.append(jButton4.getText());
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButtonAcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAcActionPerformed
-         jTextArea1.setText("");
+        jTextArea1.setText("");
     }//GEN-LAST:event_jButtonAcActionPerformed
 
     private void jButtonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelActionPerformed
         String s = jTextArea1.getText();
-        if(s.length()>0){
-           s = s.substring(0, s.length()-1);
-           jTextArea1.setText(s);
+        if (s.length() > 0) {
+            s = s.substring(0, s.length() - 1);
+            jTextArea1.setText(s);
         }
     }//GEN-LAST:event_jButtonDelActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-       jTextArea1.append(jButton9.getText());
+        jTextArea1.append(jButton9.getText());
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-       jTextArea1.append(jButton8.getText());
+        jTextArea1.append(jButton8.getText());
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-         jTextArea1.append(jButton7.getText());
+        jTextArea1.append(jButton7.getText());
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButtonArgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArgActionPerformed
@@ -933,7 +941,7 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonASinActionPerformed
 
     private void jButtonACosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonACosActionPerformed
-       
+
     }//GEN-LAST:event_jButtonACosActionPerformed
 
     private void jButtonATanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonATanActionPerformed
@@ -957,22 +965,61 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonOverActionPerformed
 
     private void jButtonInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsActionPerformed
-        String area = jTextArea1.getText();
+        String str = jTextArea1.getText();
+        String[] splitter = str.split(" ");
         ComplexNumber cn = new ComplexNumber();
-        if(area.trim().contains("i")){
-            Double partIm = Double.parseDouble(area.split("i")[0]);
-            cn.setImaginary(partIm);
-        } else{
-           cn.setReal(Double.parseDouble(area.trim()));
-        }
-        dlm.clear();
-        c.insert(cn);
-        for(ComplexNumber cc: c.getStack()){
-        dlm.addElement(cc);
-        }
-        jTextArea1.setText("");   
-    }//GEN-LAST:event_jButtonInsActionPerformed
+        if (str.contains("i")) {
+            long count = str.chars().filter(ch -> ch == 'i').count();
+            if (count == 1) {
+                if (splitter.length == 3) {
+                    if (splitter[0].contains("i")) {
+                        cn.setImaginary(Double.parseDouble(splitter[0].split("")[0]));
+                        cn.setReal(Double.parseDouble(splitter[2]));
+                    } else {
+                        cn.setImaginary(Double.parseDouble(splitter[2].split("")[0]));
+                        cn.setReal(Double.parseDouble(splitter[0]));
+                    }
 
+                } else if (splitter.length == 1) {
+                    String value = splitter[0].split("")[0];
+                    if (value.equals("i")) {
+                        cn.setImaginary(1.0);
+                    } else {
+                        cn.setImaginary(Double.parseDouble(value));
+                    }
+                }
+
+            } else {
+                System.err.println("Not valid operation!");
+                return;
+            }
+
+        } else {
+
+            if (splitter.length == 1) {
+                cn.setReal(Double.parseDouble(splitter[0]));
+            } else {
+                System.err.println("Not valid operation!");
+                return;
+            }
+
+        }
+        
+        c.insert(cn);
+        viewStack();
+        
+        jTextArea1.setText("");
+    }//GEN-LAST:event_jButtonInsActionPerformed
+  
+    private void viewStack(){
+        dlm.clear();
+        
+        for (int i=c.getStack().getSize()-1; i>=0;i--)
+            dlm.addElement(c.getStack().getItem(i));
+        
+        
+        
+    }
     /**
      * @param args the command line arguments
      */

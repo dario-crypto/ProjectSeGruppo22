@@ -41,5 +41,9 @@ public interface StackLogic<E> extends Iterable<E> {
 
     @Override
     String toString();
+    
+    E getItem(int index);
+    
+    int getSize();
 
 }
