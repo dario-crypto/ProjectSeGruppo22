@@ -4,17 +4,27 @@
  */
 package com.mycompany.project;
 
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author immacolata
  */
 public class calculatorInterface extends javax.swing.JFrame {
+    Calculator c;
+    DefaultListModel dlm = new DefaultListModel();
+    
 
     /**
      * Creates new form calculatorInterface
      */
     public calculatorInterface() {
         initComponents();
+        c = new Calculator(new Stack<ComplexNumber>());
+        
+        
+        
+       
     }
 
     /**
@@ -71,7 +81,7 @@ public class calculatorInterface extends javax.swing.JFrame {
         jButtonATan = new javax.swing.JButton();
         jButtonClear = new javax.swing.JButton();
         jScrollPaneStack = new javax.swing.JScrollPane();
-        jListStack = new javax.swing.JList<>();
+        jListStack = new javax.swing.JList<>(dlm);
         jPanelStackOperation = new javax.swing.JPanel();
         jButtonSwap = new javax.swing.JButton();
         jButtonDup = new javax.swing.JButton();
@@ -79,6 +89,7 @@ public class calculatorInterface extends javax.swing.JFrame {
         jButtonOver = new javax.swing.JButton();
         jScrollPaneTextArea = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jButtonIns = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -174,7 +185,7 @@ public class calculatorInterface extends javax.swing.JFrame {
         });
 
         jButtonDivision.setBackground(new java.awt.Color(204, 204, 204));
-        jButtonDivision.setText("÷");
+        jButtonDivision.setText(":");
         jButtonDivision.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonDivision.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,7 +288,7 @@ public class calculatorInterface extends javax.swing.JFrame {
         jPanelNumberLayout.setHorizontalGroup(
             jPanelNumberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelNumberLayout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelNumberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelNumberLayout.createSequentialGroup()
                         .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -396,7 +407,7 @@ public class calculatorInterface extends javax.swing.JFrame {
                     .addComponent(jButtonAddToVariable)
                     .addComponent(jButtonSubToVariable)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanelOperation.setBackground(new java.awt.Color(51, 51, 51));
@@ -566,7 +577,7 @@ public class calculatorInterface extends javax.swing.JFrame {
         jPanelOperationLayout.setHorizontalGroup(
             jPanelOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelOperationLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelOperationLayout.createSequentialGroup()
                         .addComponent(jButtonComplex, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -627,11 +638,6 @@ public class calculatorInterface extends javax.swing.JFrame {
 
         jListStack.setBackground(new java.awt.Color(230, 230, 230));
         jListStack.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        jListStack.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPaneStack.setViewportView(jListStack);
 
         jPanelStackOperation.setBackground(new java.awt.Color(51, 51, 51));
@@ -708,13 +714,21 @@ public class calculatorInterface extends javax.swing.JFrame {
         jTextArea1.setWrapStyleWord(true);
         jScrollPaneTextArea.setViewportView(jTextArea1);
 
+        jButtonIns.setText("INS");
+        jButtonIns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsActionPerformed(evt);
+				
+            }
+        });
+
         javax.swing.GroupLayout jPanelCalculatorLayout = new javax.swing.GroupLayout(jPanelCalculator);
         jPanelCalculator.setLayout(jPanelCalculatorLayout);
         jPanelCalculatorLayout.setHorizontalGroup(
             jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCalculatorLayout.createSequentialGroup()
                 .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanelCalculatorLayout.createSequentialGroup()
                             .addComponent(jPanelNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -724,7 +738,9 @@ public class calculatorInterface extends javax.swing.JFrame {
                             .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jPanelOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCalculatorLayout.createSequentialGroup()
-                                    .addGap(105, 105, 105)
+                                    .addGap(7, 7, 7)
+                                    .addComponent(jButtonIns, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jPanelStackOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(jPanelVariable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 11, Short.MAX_VALUE))
@@ -743,7 +759,8 @@ public class calculatorInterface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPaneStack, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelCalculatorLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addComponent(jButtonIns, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanelOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanelNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -799,7 +816,8 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInvertActionPerformed
 
     private void jButtonComplexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComplexActionPerformed
-        // TODO add your handling code here:
+           jTextArea1.append("i"); 
+           
     }//GEN-LAST:event_jButtonComplexActionPerformed
 
     private void jButtonEqualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEqualActionPerformed
@@ -807,79 +825,83 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEqualActionPerformed
 
     private void jButtonDotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDotActionPerformed
-        // TODO add your handling code here:
+        jTextArea1.append(jButtonDot.getText());
     }//GEN-LAST:event_jButtonDotActionPerformed
 
     private void jButtonCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCPActionPerformed
-        // TODO add your handling code here:
+         jTextArea1.append(jButtonCP.getText());
     }//GEN-LAST:event_jButtonCPActionPerformed
 
     private void jButtonOPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOPActionPerformed
-        // TODO add your handling code here:
+         jTextArea1.append(jButtonOP.getText());
     }//GEN-LAST:event_jButtonOPActionPerformed
 
     private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton0ActionPerformed
-        // TODO add your handling code here:
+         jTextArea1.append(jButton0.getText());
     }//GEN-LAST:event_jButton0ActionPerformed
 
     private void jButtonSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubActionPerformed
-        // TODO add your handling code here:
+        jTextArea1.append(jButtonSub.getText());
     }//GEN-LAST:event_jButtonSubActionPerformed
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        // TODO add your handling code here:
+        jTextArea1.append(jButtonAdd.getText());
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        jTextArea1.append(jButton3.getText());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+         jTextArea1.append(jButton2.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+     jTextArea1.append(jButton1.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDivisionActionPerformed
-        // TODO add your handling code here:
+       jTextArea1.append(jButtonDivision.getText());
     }//GEN-LAST:event_jButtonDivisionActionPerformed
 
     private void jButtonMultiplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiplicationActionPerformed
-        // TODO add your handling code here:
+       jTextArea1.append(jButtonMultiplication.getText());
     }//GEN-LAST:event_jButtonMultiplicationActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+         jTextArea1.append(jButton6.getText());
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        jTextArea1.append(jButton5.getText());
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+         jTextArea1.append(jButton4.getText());
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButtonAcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAcActionPerformed
-        // TODO add your handling code here:
+         jTextArea1.setText("");
     }//GEN-LAST:event_jButtonAcActionPerformed
 
     private void jButtonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelActionPerformed
-        // TODO add your handling code here:
+        String s = jTextArea1.getText();
+        if(s.length()>0){
+           s = s.substring(0, s.length()-1);
+           jTextArea1.setText(s);
+        }
     }//GEN-LAST:event_jButtonDelActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
+       jTextArea1.append(jButton9.getText());
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+       jTextArea1.append(jButton8.getText());
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+         jTextArea1.append(jButton7.getText());
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButtonArgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArgActionPerformed
@@ -911,7 +933,7 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonASinActionPerformed
 
     private void jButtonACosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonACosActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jButtonACosActionPerformed
 
     private void jButtonATanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonATanActionPerformed
@@ -933,6 +955,23 @@ public class calculatorInterface extends javax.swing.JFrame {
     private void jButtonOverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonOverActionPerformed
+
+    private void jButtonInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsActionPerformed
+        String area = jTextArea1.getText();
+        ComplexNumber cn = new ComplexNumber();
+        if(area.trim().contains("i")){
+            Double partIm = Double.parseDouble(area.split("i")[0]);
+            cn.setImaginary(partIm);
+        } else{
+           cn.setReal(Double.parseDouble(area.trim()));
+        }
+        dlm.clear();
+        c.insert(cn);
+        for(ComplexNumber cc: c.getStack()){
+        dlm.addElement(cc);
+        }
+        jTextArea1.setText("");   
+    }//GEN-LAST:event_jButtonInsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -999,6 +1038,7 @@ public class calculatorInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEqual;
     private javax.swing.JButton jButtonExp;
     private javax.swing.JButton jButtonInX;
+    private javax.swing.JButton jButtonIns;
     private javax.swing.JButton jButtonInvert;
     private javax.swing.JButton jButtonLn;
     private javax.swing.JButton jButtonMod;

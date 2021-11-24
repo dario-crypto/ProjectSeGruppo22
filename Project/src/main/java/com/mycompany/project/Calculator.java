@@ -142,4 +142,21 @@ public class Calculator {
     public void subToVariable(String name){
         
     }
+    
+    public String stringStack(){
+        StringBuilder sb = new StringBuilder();
+        for(ComplexNumber c: stack){
+            sb.append(c);
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+    
+    public ComplexNumber topStack(){
+        return stack.top();
+    }
+    
+    public StackLogic<ComplexNumber> getStack(){
+        return stack;
+    }
 }
