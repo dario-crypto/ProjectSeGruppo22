@@ -16,14 +16,35 @@ public class Calculator {
         this.stack=stack;
         //this.variablesSpace=variablesSpace;
     }
+
+    public StackLogic<ComplexNumber> getStack() {
+        return stack;
+    }
     
+    /**
+     * Questo metodo inserisce un numero complesso nello stack della classe Calculator
+     * @param c 
+     */
     public void insert(ComplexNumber c){
         stack.push(c);
         
     }
     
-    public ComplexNumber sum(){
-        return null;
+    
+    
+    /**
+     * Questo metodo calcola la somma di due numeri complessi prelevati da
+     * uno stack.
+     * @return ComplexNumber
+     * @throws StackEmptyException 
+     */
+    
+    public ComplexNumber sum() throws StackEmptyException{
+        ComplexNumber c1=stack.pop();
+        ComplexNumber c2=stack.pop();
+        ComplexNumber result=ComplexNumber.add(c1, c2);
+        insert(result);
+        return result;
     }
     
     public ComplexNumber sub(){
@@ -34,8 +55,20 @@ public class Calculator {
         return null;
     }
     
-    public ComplexNumber prod(){
-        return null;
+    /**
+     * Questo metodo calcola il prodotto di due numeri complessi prelevati
+     * da uno stack
+     * @return ComplexNumber
+     * @throws StackEmptyException 
+     */
+    
+    public ComplexNumber prod() throws StackEmptyException{
+        ComplexNumber c1=stack.pop();
+        ComplexNumber c2=stack.pop();
+        ComplexNumber result=ComplexNumber.multiply(c1, c2);
+        insert(result);
+        return result;
+        
     }
     
     public ComplexNumber square(){
@@ -46,8 +79,32 @@ public class Calculator {
         return null;
     }
     
-    public ComplexNumber execOperation(String op){
-        return null;
+    public ComplexNumber execOperation(String op) throws StackEmptyException{
+        switch(op){
+            case "+":
+                return sum();
+             
+            case "-":
+                return sub();
+            
+            case ":":
+                return divide();
+            
+            case "x":
+                return prod();
+            
+            case "sqrt":
+                return square();
+            
+            case "+-":
+                return invertSign();
+            
+            default: 
+                return null;
+            
+        }
+        
+        
     }
     
     public void clear(){
