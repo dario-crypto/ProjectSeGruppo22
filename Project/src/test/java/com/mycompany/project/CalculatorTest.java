@@ -30,10 +30,10 @@ public class CalculatorTest {
     }
    
     /**
-     * Questo metodo testa il metodo insert della classe Calculator
-     * Il primo test inserisce nello stack un numero reale
-     * Il secondo test inserisce nello stack un numero complesso con parte reale uguale a 0
-     * Il terzo test inserisce nello stack un numero complesso con parte reale e immaginaria diverse da 0
+     * This method tests the method insert of the class Calculator
+     * The first test inserts a real number into the Calculator's stack
+     * The second test inserts a complex number with real part equal to zero into the Calculator's stack
+     * The first test inserts a complex number with both real and imaginary parts different from zero into the Calculator's stack
      */
 
     @Test
@@ -49,14 +49,14 @@ public class CalculatorTest {
     }
     
     /**
-     * Questo metodo testa il metodo sum della classe Calculator.
-     * Il primo test testa la somma di due numeri reali
-     * Il secondo testa la somma di due numeri complessi in cui entrambi hanno parte reale uguale a 0
-     * Il terzo testa la somma di due numeri complessi in cui uno ha sia parte reale che parte immaginaria diverse da 0,l'altro solo
-     * la parte reale diversa da 0
-     * Il quarto testa la somma di due numeri complessi in cui uno ha sia parte reale che parte immaginaria diverse da 0,l'altro solo
-     * la parte immaginaria diversa da 0
-     * Il quinto testa la somma di due numeri complessi in cui entrambi hanno sia parte reale che immaginaria diverse da 0
+     * This method tests the method sum of the class Calculator
+     * The first case tests the sum of two real numbers
+     * The second case tests the sum of two complex numbers, both with real part equal to zero
+     * The third case tests the sum of two complex numbers, one with both real and imaginary part different from zero, 
+     * the other with the imaginary part equal to 0
+     * The fourth case tests the sum of two complex numbers, one with both real and imaginary part different from zero, 
+     * the other with the real part equal to 0
+     * The fifth case tests the sum of two complex numbers, both with real and imaginary part different from zero
      * @throws StackEmptyException 
      */
     
@@ -96,14 +96,14 @@ public class CalculatorTest {
     
     
     /**
-     * Test del metodo sub della classe Calculator.
-     * Il primo test sottrare due numeri reali il cui risultato deve dare 0.
-     * Il secondo test sottrare due numeri reali il cui risultato deve essere un numero positivo.
-     * Il terzo test sottrae due numeri reali il cui risultato deve essere un numero negativo.
-     * Il quarto test sottrare due numeri complessi il cui risultato deve essere un numero complesso con parte 
-     * reale e immaginaria negativa.
-     * Il quinto test sottare due numeri complessi il cui risultato deve essere un numero complesso 
-     * solo con parte immaginaria negativa.
+     * This method tests the method sub of the class Calculator
+     * The first case tests the substraction of two identical real numbers,so the result must be equal to 0
+     * Il second case tests the substraction of two real numbers,the minuend bigger than the subtrahend,so the result must be equal to a real positive number
+     * Il third case tests the substraction of two real numbers,the minuend smaller than the subtrahend,so the result must be equal to a real negative number
+     * The fourth case tests the substraction of two complex numbers,the minuend with both real and imaginary part bigger than the subtrahend parts, so the result must have both real
+     * and imaginary part equal to a negative number
+     * The fifth case tests the substraction of two complex number, the minuend with real part bigger than the subtrahend's real part and the subtrahend with imaginary
+     * part bigger than the minuend's imaginary part, so the result must have both real and imaginary part equal to a negative number
      * @throws StackEmptyException 
      */
     
@@ -150,14 +150,14 @@ public class CalculatorTest {
     }
     
     /**
-     * Questo metodo testa il metodo prodotto di Calculator
-     * Il primo test testa il prodotto di due numeri reali
-     * Il secondo testa il prodotto di due numeri complessi in cui entrambi hanno solo parte immaginaria diversa da 0
-     * Il terzo testa il prodotto di due numeri complessi in cui uno ha sia parte reale che parte complessa diverse da 0,l'altro solo
-     * la parte reale diversa da 0
-     * Il quarto testa il prodotto di due numeri complessi in cui uno ha sia parte reale che parte complessa diverse da 0,l'altro solo
-     * la parte immaginaria diversa da 0
-     * Il quinto testa il prodotto di due numeri complessi in cui entrambi hanno sia parte reale che immaginaria diverse da 0
+     * This method tests the method prod of the class Calculator
+     * The first case tests the product of two real numbers
+     * The second case tests the product of two complex numbers, both with real part equal to zero
+     * The third case tests the product of two complex numbers, one with both real and imaginary part different from zero, 
+     * the other with the imaginary part equal to 0
+     * The fourth case tests the product of two complex numbers, one with both real and imaginary part different from zero, 
+     * the other with the real part equal to 0
+     * The fifth case tests the product of two complex numbers, both with real and imaginary part different from zero
      * @throws StackEmptyException 
      */
     
@@ -193,10 +193,10 @@ public class CalculatorTest {
     }
     
     /**
-     * Test del metodo squareRoot della classe Calculator.
-     * Il primo caso testa la radice di un numero  positivo
-     * Il secondo caso testa la radice di un numero reale negativo
-     * Il terzo caso testa la radice di un numero complesso
+     * This method test the method squareRoot of the class Calculator
+     * The first case tests the square root of a real positive number
+     * The second case tests the square root of a real negative number
+     * The third case tests the square root of a complex number
      * @throws StackEmptyException 
      */
     @Test

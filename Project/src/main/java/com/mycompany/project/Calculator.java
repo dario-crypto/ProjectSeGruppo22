@@ -16,13 +16,18 @@ public class Calculator {
         this.stack=stack;
         //this.variablesSpace=variablesSpace;
     }
+    
+    /**
+     * This method is used to get the Calculator's attribute stack
+     * @return StackLogic<ComplexNumber>
+     */
 
     public StackLogic<ComplexNumber> getStack() {
         return stack;
     }
     
     /**
-     * Questo metodo inserisce un numero complesso nello stack della classe Calculator
+     * This method is used to insert a ComplexNumber in the Calculator's stack
      * @param c 
      */
     public void insert(ComplexNumber c){
@@ -33,8 +38,7 @@ public class Calculator {
     
     
     /**
-     * Questo metodo calcola la somma di due numeri complessi prelevati da
-     * uno stack.
+     * This method calculates the sum of the last two elements of the Calculator's stack
      * @return ComplexNumber
      * @throws StackEmptyException 
      */
@@ -48,7 +52,7 @@ public class Calculator {
     }
     
     /**
-     *Questo metodo calcola la sottrazione fra gli ultimi due numeri complessi presenti nello stack.
+     *This method calculates the substraction of the last two elements of the Calculator's stack
      * @return ComplexNumber
      * @throws StackEmptyException
     */
@@ -66,8 +70,7 @@ public class Calculator {
     }
     
     /**
-     * Questo metodo calcola il prodotto di due numeri complessi prelevati
-     * da uno stack
+     * This method calculates the product of the last two elements of the Calculator's stack
      * @return ComplexNumber
      * @throws StackEmptyException 
      */
@@ -82,7 +85,7 @@ public class Calculator {
     }
     
     /**
-     *Questo metodo calcola la radice quadrata fra gli ultimi due numeri complessi presenti nello stack.
+     * This method calculates the square root of the last element of the Calculator's stack
      * @return ComplexNumber
      * @throws StackEmptyException
     */
@@ -96,6 +99,14 @@ public class Calculator {
     public ComplexNumber invertSign(){
         return null;
     }
+    
+    /**
+     * This method takes as input a string that indicates which operation the calculator needs to compute.
+     * It returns the result of the correct operation.
+     * @param op
+     * @return ComplexNumber
+     * @throws StackEmptyException 
+     */
     
     public ComplexNumber execOperation(String op) throws StackEmptyException{
         switch(op){
@@ -161,6 +172,11 @@ public class Calculator {
         
     }
     
+    /**
+     * This method prints the Calculator's stack
+     * @return 
+     */
+    
     public String stringStack(){
         StringBuilder sb = new StringBuilder();
         for(ComplexNumber c: stack){
@@ -169,6 +185,11 @@ public class Calculator {
         }
         return sb.toString();
     }
+    
+    /**
+     * This method returns the last element of the Calculator's stack
+     * @return 
+     */
     
     public ComplexNumber topStack(){
         return stack.top();

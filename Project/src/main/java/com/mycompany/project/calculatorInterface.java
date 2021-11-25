@@ -4,6 +4,8 @@
  */
 package com.mycompany.project;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -825,6 +827,7 @@ public class calculatorInterface extends javax.swing.JFrame {
         try {
             c.execOperation(op);
             viewStack();
+            jTextArea1.setText("");
         } catch (StackEmptyException ex) {
             Logger.getLogger(calculatorInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -847,14 +850,14 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton0ActionPerformed
 
     private void jButtonSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubActionPerformed
-        op="-";
+        op = "-";
         jTextArea1.append(jButtonSub.getText());
     }//GEN-LAST:event_jButtonSubActionPerformed
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         op = "+";
         jTextArea1.append(jButtonAdd.getText());
-        
+
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -874,7 +877,7 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDivisionActionPerformed
 
     private void jButtonMultiplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiplicationActionPerformed
-        op="x";
+        op = "x";
         jTextArea1.append(jButtonMultiplication.getText());
     }//GEN-LAST:event_jButtonMultiplicationActionPerformed
 
@@ -974,21 +977,53 @@ public class calculatorInterface extends javax.swing.JFrame {
             long count = str.chars().filter(ch -> ch == 'i').count();
             if (count == 1) {
                 if (splitter.length == 3) {
-                    if (splitter[0].contains("i")) {
-                        cn.setImaginary(Double.parseDouble(splitter[0].split("")[0]));
-                        cn.setReal(Double.parseDouble(splitter[2]));
-                    } else {
-                        cn.setImaginary(Double.parseDouble(splitter[2].split("")[0]));
+                    //Caso in cui inserisco numeri del tipo a+ib
+                    if (splitter[2].contains("i")) {
+                        String[] newnumber = splitter[2].split("i");
+                        Double c;
+                        c = Double.parseDouble(newnumber[0]);
+
+                        if (splitter[1].equals("-")) {
+                            cn.setImaginary(-c);
+                        } else {
+                            cn.setImaginary(c);
+                        }
                         cn.setReal(Double.parseDouble(splitter[0]));
+                    } else {
+                        //Caso in cui inserisco numeri del tipo ib+a
+                        System.out.println("Sono qui");
+                        System.out.println(splitter[0]);
+                        String[] newnumber = splitter[0].split("i");
+                        System.out.println("Vado qui");
+                        System.out.println(newnumber);
+                        cn.setImaginary(Double.parseDouble(newnumber[0]));
+                        Double c;
+                        c=Double.parseDouble(splitter[2]);
+                        if (splitter[1].equals("-")) {
+                            cn.setReal(-c);
+                        } else {
+                            cn.setReal(c);
+                        }
+                        
                     }
 
                 } else if (splitter.length == 1) {
-                    String value = splitter[0].split("")[0];
-                    if (value.equals("i")) {
+                    //Caso in cui inserisco numeri ib
+                    System.out.println("Sono quioio");
+                    if (splitter[0].length()==1){
                         cn.setImaginary(1.0);
-                    } else {
-                        cn.setImaginary(Double.parseDouble(value));
                     }
+                    String[] value=splitter[0].split("i");
+                    if(value[0].contains("-")){
+                        String[] newvalue=value[0].split("-");
+                        cn.setImaginary(-Double.parseDouble(newvalue[1]));
+                        
+                    }
+                    else{
+                        cn.setImaginary(Double.parseDouble(value[0]));
+                        
+                    }
+                        
                 }
 
             } else {
@@ -997,6 +1032,7 @@ public class calculatorInterface extends javax.swing.JFrame {
             }
 
         } else {
+            //Caso in cui inserisco numeri del tipo a
 
             if (splitter.length == 1) {
                 cn.setReal(Double.parseDouble(splitter[0]));
@@ -1006,22 +1042,23 @@ public class calculatorInterface extends javax.swing.JFrame {
             }
 
         }
-        
+
         c.insert(cn);
         viewStack();
-        
+
         jTextArea1.setText("");
     }//GEN-LAST:event_jButtonInsActionPerformed
-  
-    private void viewStack(){
+    
+    
+    private void viewStack() {
         dlm.clear();
-        
-        for (int i=c.getStack().getSize()-1; i>=0;i--)
+
+        for (int i = c.getStack().getSize() - 1; i >= 0; i--) {
             dlm.addElement(c.getStack().getItem(i));
-        
-        
-        
+        }
+
     }
+
     /**
      * @param args the command line arguments
      */
