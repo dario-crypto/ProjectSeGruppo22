@@ -47,8 +47,18 @@ public class Calculator {
         return result;
     }
     
-    public ComplexNumber sub(){
-        return null;
+    /**
+     *Questo metodo calcola la sottrazione fra gli ultimi due numeri complessi presenti nello stack.
+     * @return ComplexNumber
+     * @throws StackEmptyException
+    */
+    public ComplexNumber sub() throws StackEmptyException{  
+        ComplexNumber c1=stack.pop();
+        ComplexNumber c2=stack.pop();
+        ComplexNumber subResult=ComplexNumber.subtract(c2, c1);
+        insert(subResult);
+        
+        return subResult; 
     }
     
     public ComplexNumber divide(){
@@ -71,8 +81,14 @@ public class Calculator {
         
     }
     
-    public ComplexNumber square(){
-        return null;
+    /**
+     *Questo metodo calcola la radice quadrata fra gli ultimi due numeri complessi presenti nello stack.
+     * @return ComplexNumber
+     * @throws StackEmptyException
+    */
+    public ComplexNumber squareRoot() throws StackEmptyException{
+        ComplexNumber c1= stack.pop(); 
+        return c1.sqrt();
     }
     
     public ComplexNumber invertSign(){
@@ -94,7 +110,7 @@ public class Calculator {
                 return prod();
             
             case "sqrt":
-                return square();
+                return squareRoot();
             
             case "+-":
                 return invertSign();

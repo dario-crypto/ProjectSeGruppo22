@@ -28,13 +28,14 @@ public class CalculatorTest {
     public void setUp() {
         calculator=new Calculator(new Stack<ComplexNumber>());
     }
-    
+   
     /**
      * Questo metodo testa il metodo insert della classe Calculator
      * Il primo test inserisce nello stack un numero reale
      * Il secondo test inserisce nello stack un numero complesso con parte reale uguale a 0
      * Il terzo test inserisce nello stack un numero complesso con parte reale e immaginaria diverse da 0
      */
+
     @Test
     public void insertTest(){
         calculator.insert(new ComplexNumber(1,0));
@@ -94,8 +95,52 @@ public class CalculatorTest {
     }
     
     
+    /**
+     * Test del metodo sub della classe Calculator.
+     * Il primo test sottrare due numeri reali il cui risultato deve dare 0.
+     * Il secondo test sottrare due numeri reali il cui risultato deve essere un numero positivo.
+     * Il terzo test sottrae due numeri reali il cui risultato deve essere un numero negativo.
+     * Il quarto test sottrare due numeri complessi il cui risultato deve essere un numero complesso con parte 
+     * reale e immaginaria negativa.
+     * Il quinto test sottare due numeri complessi il cui risultato deve essere un numero complesso 
+     * solo con parte immaginaria negativa.
+     * @throws StackEmptyException 
+     */
+    
     @Test
-    public void subTest(){
+    public void subTest() throws StackEmptyException{
+        
+        ComplexNumber n1=new ComplexNumber(2,0);
+        ComplexNumber n2=new ComplexNumber(2,0);
+        calculator.insert(n1);
+        calculator.insert(n2);
+        assertEquals(new ComplexNumber(0.0,0.0),calculator.sub());
+        
+        n1=new ComplexNumber(4,0);
+        n2=new ComplexNumber(2,0);
+        calculator.insert(n1);
+        calculator.insert(n2);
+        assertEquals(new ComplexNumber(2.0,0.0),calculator.sub());
+        
+        n1=new ComplexNumber(2,0);
+        n2=new ComplexNumber(4,0);
+        calculator.insert(n1);
+        calculator.insert(n2);
+        assertEquals(new ComplexNumber(-2.0,0.0),calculator.sub());
+        
+        n1=new ComplexNumber(2,2);
+        n2=new ComplexNumber(4,9);
+        calculator.insert(n1);
+        calculator.insert(n2);
+        assertEquals(new ComplexNumber(-2.0,-7.0),calculator.sub());
+        
+        n1=new ComplexNumber(2,0);
+        n2=new ComplexNumber(0,9);
+        calculator.insert(n1);
+        calculator.insert(n2);
+        assertEquals(new ComplexNumber(2.0,-9.0),calculator.sub());
+        
+      
         
     }
     
@@ -147,9 +192,30 @@ public class CalculatorTest {
         
     }
     
+    /**
+     * Test del metodo squareRoot della classe Calculator.
+     * Il primo caso testa la radice di un numero  positivo
+     * Il secondo caso testa la radice di un numero reale negativo
+     * Il terzo caso testa la radice di un numero complesso
+     * @throws StackEmptyException 
+     */
     @Test
-    public void squareTest(){
+    public void squareRootTest() throws StackEmptyException{
         
+
+        ComplexNumber n1=new ComplexNumber(4,0);
+        calculator.insert(n1);
+        assertEquals(new ComplexNumber(2,0),calculator.squareRoot());
+        
+        n1=new ComplexNumber(-4,0);
+        calculator.insert(n1);
+        assertEquals(new ComplexNumber(0,2),calculator.squareRoot());
+        
+        n1=new ComplexNumber(3,-4);
+        calculator.insert(n1);
+        assertEquals(new ComplexNumber(2,-1),calculator.squareRoot());
+        //assertEquals(new ComplexNumber(-2,1),calculator.squareRoot());
+               
     }
     
     @Test 
