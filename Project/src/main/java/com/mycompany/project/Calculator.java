@@ -88,7 +88,9 @@ public class Calculator {
     */
     public ComplexNumber squareRoot() throws StackEmptyException{
         ComplexNumber c1= stack.pop(); 
-        return c1.sqrt();
+        ComplexNumber result=c1.sqrt();
+        insert(result);
+        return result;
     }
     
     public ComplexNumber invertSign(){
