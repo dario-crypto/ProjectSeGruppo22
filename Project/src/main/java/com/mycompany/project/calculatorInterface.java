@@ -800,7 +800,8 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonClearActionPerformed
 
     private void jButtonSqrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSqrtActionPerformed
-        // TODO add your handling code here:
+        op = "sqrt";
+        jTextArea1.append(jButtonSqrt.getText());
     }//GEN-LAST:event_jButtonSqrtActionPerformed
 
     private void jButtonLnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLnActionPerformed
@@ -846,6 +847,7 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton0ActionPerformed
 
     private void jButtonSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubActionPerformed
+        op="-";
         jTextArea1.append(jButtonSub.getText());
     }//GEN-LAST:event_jButtonSubActionPerformed
 
