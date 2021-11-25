@@ -64,9 +64,17 @@ public class Calculator {
         
         return subResult; 
     }
-    
-    public ComplexNumber divide(){
-        return null;
+    /**
+     * This method calculates the division of the last two elements of the Calculator's stack
+     * @return
+     * @throws StackEmptyException 
+     */
+    public ComplexNumber divide() throws StackEmptyException{
+        ComplexNumber divider = stack.pop();
+        ComplexNumber dividend = stack.pop();
+        ComplexNumber result = ComplexNumber.divide(dividend, divider);
+        stack.push(result);
+        return result;
     }
     
     /**

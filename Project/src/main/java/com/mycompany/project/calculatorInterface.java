@@ -873,6 +873,7 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDivisionActionPerformed
+        op=":";
         jTextArea1.append(jButtonDivision.getText());
     }//GEN-LAST:event_jButtonDivisionActionPerformed
 

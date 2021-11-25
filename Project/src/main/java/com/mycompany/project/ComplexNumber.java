@@ -154,12 +154,15 @@ public class ComplexNumber
 	* @param z2 the second <code>ComplexNumber</code>.
 	* @return the resultant <code>ComplexNumber</code> (z1 / z2).
 	*/		
-	public static ComplexNumber divide(ComplexNumber z1, ComplexNumber z2)
-	{
-		ComplexNumber output = multiply(z1,z2.conjugate());
-		double div = Math.pow(z2.mod(),2);
-		return new ComplexNumber(output.real/div,output.imaginary/div);
-	}
+	public static ComplexNumber divide(ComplexNumber z1, ComplexNumber z2) 
+        {
+                ComplexNumber output = multiply(z1, z2.conjugate());
+                double div = multiply(z2, z2.conjugate()).real;
+                if (div == 0) {
+                    throw new ArithmeticException("Division by zero");
+                }
+                return new ComplexNumber(output.real / div, output.imaginary / div);
+        }
 
 	/**
 	* The complex conjugate of the current complex number.
