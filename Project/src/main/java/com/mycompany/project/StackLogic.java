@@ -31,19 +31,22 @@ public interface StackLogic<E> extends Iterable<E> {
      */
     boolean isEmpty();
 
-   
-
     /**
-     * Restituisce una stringa che rappresenta il contenuto dello stack
+     * Restituisce il numero di elementi presenti nello stack
      *
-     * @return una stringa che rappresenta il contenuto dello stack
+     * @return un numero intero che rappresenta il numero di elementi presenti
+     * nello stack
      */
 
-    @Override
-    String toString();
+    int getSize();
+    
+     /**
+     * Restituisce un elemento dello stack in una specifica posizione
+     *
+     * @param index valore intero che rappresenta un indice dello stack
+     * @return restituisce un elemento dello stack in posizione index
+     */
     
     E getItem(int index);
-    
-    int getSize();
 
 }

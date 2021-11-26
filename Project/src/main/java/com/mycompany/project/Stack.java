@@ -161,22 +161,7 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
         return new StackIterator();
     }
 
-    /**
-     * Restituisce una stringa che rappresenta il contenuto dello stack
-     *
-     * @return una stringa che rappresenta il contenuto dello stack
-     */
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = size - 1; i >= 0; i--) {
-            sb.append(stack[i]);
-            sb.append("\n");
-        }
-        return sb.toString();
-
-    }
+   
 
     /**
      * Restituisce un elemento dello stack in una specifica posizione

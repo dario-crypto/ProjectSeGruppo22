@@ -4,11 +4,8 @@
  */
 package com.mycompany.project;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,16 +13,15 @@ import javax.swing.DefaultListModel;
  */
 public class calculatorInterface extends javax.swing.JFrame {
 
-    Calculator c;
+    CalculatorController controller;
     DefaultListModel dlm = new DefaultListModel();
-    String op;
 
     /**
      * Creates new form calculatorInterface
      */
     public calculatorInterface() {
         initComponents();
-        c = new Calculator(new Stack<ComplexNumber>());
+        controller = new CalculatorController(new Stack<>());
 
     }
 
@@ -802,8 +798,7 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonClearActionPerformed
 
     private void jButtonSqrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSqrtActionPerformed
-        op = "sqrt";
-        jTextArea1.append(jButtonSqrt.getText());
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSqrtActionPerformed
 
     private void jButtonLnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLnActionPerformed
@@ -816,6 +811,8 @@ public class calculatorInterface extends javax.swing.JFrame {
 
     private void jButtonInvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInvertActionPerformed
         // TODO add your handling code here:
+        jTextArea1.append("+-");
+        controller.setLastOperation("+-");
     }//GEN-LAST:event_jButtonInvertActionPerformed
 
     private void jButtonComplexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComplexActionPerformed
@@ -823,14 +820,37 @@ public class calculatorInterface extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonComplexActionPerformed
 
+
     private void jButtonEqualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEqualActionPerformed
-        try {
-            c.execOperation(op);
-            viewStack();
-            jTextArea1.setText("");
-        } catch (StackEmptyException ex) {
-            Logger.getLogger(calculatorInterface.class.getName()).log(Level.SEVERE, null, ex);
+        // TODO add your handling code here:
+
+        int dimOp = CalculatorController.dimOperation(controller.getLastOperation());
+
+        if (dimOp > controller.getCalculator().getStack().getSize()) {
+            String message = "You need at least " + dimOp + " item/items on the stack!";
+            JOptionPane.showMessageDialog(this,
+                    message,
+                    "Warning",
+                    JOptionPane.WARNING_MESSAGE
+            );
+
+        } else {
+
+            try {
+                controller.execOperation(controller.getLastOperation());
+            } catch (ArithmeticException ex) {
+                JOptionPane.showMessageDialog(this,
+                        ex.getMessage(),
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            } catch (StackEmptyException ex) {
+
+            }
         }
+        viewStack();
+        clearTextArea();
+
     }//GEN-LAST:event_jButtonEqualActionPerformed
 
     private void jButtonDotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDotActionPerformed
@@ -850,14 +870,13 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton0ActionPerformed
 
     private void jButtonSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubActionPerformed
-        op = "-";
+        controller.setLastOperation("-");
         jTextArea1.append(jButtonSub.getText());
     }//GEN-LAST:event_jButtonSubActionPerformed
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        op = "+";
+        controller.setLastOperation("+");
         jTextArea1.append(jButtonAdd.getText());
-
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -873,12 +892,12 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDivisionActionPerformed
-        op=":";
+        controller.setLastOperation(":");
         jTextArea1.append(jButtonDivision.getText());
     }//GEN-LAST:event_jButtonDivisionActionPerformed
 
     private void jButtonMultiplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiplicationActionPerformed
-        op = "x";
+        controller.setLastOperation("x");
         jTextArea1.append(jButtonMultiplication.getText());
     }//GEN-LAST:event_jButtonMultiplicationActionPerformed
 
@@ -971,93 +990,31 @@ public class calculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonOverActionPerformed
 
     private void jButtonInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsActionPerformed
-        String str = jTextArea1.getText();
-        String[] splitter = str.split(" ");
-        ComplexNumber cn = new ComplexNumber();
-        if (str.contains("i")) {
-            long count = str.chars().filter(ch -> ch == 'i').count();
-            if (count == 1) {
-                if (splitter.length == 3) {
-                    //Caso in cui inserisco numeri del tipo a+ib
-                    if (splitter[2].contains("i")) {
-                        String[] newnumber = splitter[2].split("i");
-                        Double c;
-                        c = Double.parseDouble(newnumber[0]);
+        String complex = jTextArea1.getText();
 
-                        if (splitter[1].equals("-")) {
-                            cn.setImaginary(-c);
-                        } else {
-                            cn.setImaginary(c);
-                        }
-                        cn.setReal(Double.parseDouble(splitter[0]));
-                    } else {
-                        //Caso in cui inserisco numeri del tipo ib+a
-                        System.out.println("Sono qui");
-                        System.out.println(splitter[0]);
-                        String[] newnumber = splitter[0].split("i");
-                        System.out.println("Vado qui");
-                        System.out.println(newnumber);
-                        cn.setImaginary(Double.parseDouble(newnumber[0]));
-                        Double c;
-                        c=Double.parseDouble(splitter[2]);
-                        if (splitter[1].equals("-")) {
-                            cn.setReal(-c);
-                        } else {
-                            cn.setReal(c);
-                        }
-                        
-                    }
-
-                } else if (splitter.length == 1) {
-                    //Caso in cui inserisco numeri ib
-                    System.out.println("Sono quioio");
-                    if (splitter[0].length()==1){
-                        cn.setImaginary(1.0);
-                    }
-                    String[] value=splitter[0].split("i");
-                    if(value[0].contains("-")){
-                        String[] newvalue=value[0].split("-");
-                        cn.setImaginary(-Double.parseDouble(newvalue[1]));
-                        
-                    }
-                    else{
-                        cn.setImaginary(Double.parseDouble(value[0]));
-                        
-                    }
-                        
-                }
-
-            } else {
-                System.err.println("Not valid operation!");
-                return;
-            }
-
-        } else {
-            //Caso in cui inserisco numeri del tipo a
-
-            if (splitter.length == 1) {
-                cn.setReal(Double.parseDouble(splitter[0]));
-            } else {
-                System.err.println("Not valid operation!");
-                return;
-            }
-
+        if (!controller.insert(complex)) {
+            JOptionPane.showMessageDialog(this,
+                    "Not Valid Entry!",
+                    "Warning",
+                    JOptionPane.WARNING_MESSAGE);
         }
 
-        c.insert(cn);
         viewStack();
-
-        jTextArea1.setText("");
+        clearTextArea();
     }//GEN-LAST:event_jButtonInsActionPerformed
-    
-    
-    private void viewStack() {
+
+    public void viewStack() {
+
         dlm.clear();
 
-        for (int i = c.getStack().getSize() - 1; i >= 0; i--) {
-            dlm.addElement(c.getStack().getItem(i));
+        for (int i = controller.getCalculator().getStack().getSize() - 1; i >= 0; i--) {
+            dlm.addElement(controller.getCalculator().getStack().getItem(i));
         }
 
+    }
+
+    public void clearTextArea() {
+        jTextArea1.setText("");
     }
 
     /**
@@ -1074,17 +1031,23 @@ public class calculatorInterface extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(calculatorInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(calculatorInterface.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(calculatorInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(calculatorInterface.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(calculatorInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(calculatorInterface.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(calculatorInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(calculatorInterface.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
