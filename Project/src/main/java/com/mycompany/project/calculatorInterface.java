@@ -716,7 +716,6 @@ public class calculatorInterface extends javax.swing.JFrame {
         jButtonIns.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInsActionPerformed(evt);
-				
             }
         });
 
@@ -823,29 +822,32 @@ public class calculatorInterface extends javax.swing.JFrame {
 
     private void jButtonEqualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEqualActionPerformed
         // TODO add your handling code here:
+        if (controller.getLastOperation() != null) {
+            int dimOp = CalculatorController.dimOperation(controller.getLastOperation());
 
-        int dimOp = CalculatorController.dimOperation(controller.getLastOperation());
-
-        if (dimOp > controller.getCalculator().getStack().getSize()) {
-            String message = "You need at least " + dimOp + " item/items on the stack!";
-            JOptionPane.showMessageDialog(this,
-                    message,
-                    "Warning",
-                    JOptionPane.WARNING_MESSAGE
-            );
-
-        } else {
-
-            try {
-                controller.execOperation(controller.getLastOperation());
-            } catch (ArithmeticException ex) {
+            if (dimOp > controller.getCalculator().getStack().getSize()) {
+                String message = "You need at least " + dimOp + " item/items on the stack!";
                 JOptionPane.showMessageDialog(this,
-                        ex.getMessage(),
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE
+                        message,
+                        "Warning",
+                        JOptionPane.WARNING_MESSAGE
                 );
-            } catch (StackEmptyException ex) {
 
+            } else {
+
+                try {
+
+                    controller.execOperation(controller.getLastOperation());
+
+                } catch (ArithmeticException ex) {
+                    JOptionPane.showMessageDialog(this,
+                            ex.getMessage(),
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                } catch (StackEmptyException ex) {
+
+                }
             }
         }
         viewStack();
