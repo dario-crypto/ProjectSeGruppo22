@@ -154,7 +154,10 @@ public class ComplexNumber {
      */
     public static ComplexNumber multiply(ComplexNumber z1, ComplexNumber z2) {
         double _real = z1.real * z2.real - z1.imaginary * z2.imaginary;
+        double temp = z1.real * z2.imaginary;
+        double temp2 = z1.imaginary * z2.real;
         double _imaginary = z1.real * z2.imaginary + z1.imaginary * z2.real;
+
         return new ComplexNumber(_real, _imaginary);
     }
 
@@ -181,7 +184,8 @@ public class ComplexNumber {
      * current complex number
      */
     public ComplexNumber conjugate() {
-        return new ComplexNumber(this.real, -this.imaginary);
+
+        return new ComplexNumber(real, -imaginary);
     }
 
     /**
@@ -212,6 +216,13 @@ public class ComplexNumber {
     public String toString() {
         String re = this.real + "";
         String im = "";
+        if (this.imaginary == -0.0) {
+            this.imaginary = 0.0;
+        }
+        if (this.real == -0.0) {
+            this.real = 0.0;
+        }
+
         if (this.imaginary < 0) {
             im = this.imaginary + "i";
         } else {
@@ -459,18 +470,9 @@ public class ComplexNumber {
      * This method Inverts the sign of a complex number
      */
     public void invertSign() {
-        this.real = -this.real;
-        this.imaginary = -this.imaginary;
+        real = -real;
+        imaginary = -imaginary;
     }
 
-    public static void main(String args[]) {
-        ComplexNumber c1 = new ComplexNumber(2, 0);
-        ComplexNumber c2 = new ComplexNumber(-1, 0);
-        System.out.println(ComplexNumber.divide(c1, c2).toString());
-        
-     
-        
-        
-    }
-
+  
 }
