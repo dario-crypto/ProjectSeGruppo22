@@ -461,8 +461,8 @@ public class ComplexNumber {
     public ComplexNumber sqrt() {
         double r = this.mod();
         double halfTheta = this.getArg() / 2;
-        double real = (double) Math.round(Math.sqrt(r) * Math.round(Math.cos(halfTheta) * 1000000)) / 1000000;
-        double image = (double) Math.round(Math.sqrt(r) * Math.sin(halfTheta) * 1000000) / 1000000;
+        double real = (double) Math.round(Math.sqrt(r) * Math.round(Math.cos(halfTheta) * 100000000)) / 100000000;
+        double image = (double) Math.round(Math.sqrt(r) * Math.sin(halfTheta) * 100000000) / 100000000;
         return new ComplexNumber(real, image);
     }
 

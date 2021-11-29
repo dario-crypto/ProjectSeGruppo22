@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author immacolata
  */
-public class calculatorInterface extends javax.swing.JFrame {
+public class CalculatorInterface extends javax.swing.JFrame {
 
     CalculatorController controller;
     DefaultListModel dlm = new DefaultListModel();
@@ -19,7 +19,7 @@ public class calculatorInterface extends javax.swing.JFrame {
     /**
      * Creates new form calculatorInterface
      */
-    public calculatorInterface() {
+    public CalculatorInterface() {
         initComponents();
         controller = new CalculatorController(new Stack<>());
 
@@ -59,9 +59,9 @@ public class calculatorInterface extends javax.swing.JFrame {
         jPanelVariable = new javax.swing.JPanel();
         jButtonInX = new javax.swing.JButton();
         jButtonTox = new javax.swing.JButton();
-        jButtonAddToVariable = new javax.swing.JButton();
-        jButtonSubToVariable = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jButtonSubToVariable = new javax.swing.JButton();
+        jButtonAddToVariable = new javax.swing.JButton();
         jPanelOperation = new javax.swing.JPanel();
         jButtonComplex = new javax.swing.JButton();
         jButtonInvert = new javax.swing.JButton();
@@ -77,7 +77,6 @@ public class calculatorInterface extends javax.swing.JFrame {
         jButtonASin = new javax.swing.JButton();
         jButtonACos = new javax.swing.JButton();
         jButtonATan = new javax.swing.JButton();
-        jButtonClear = new javax.swing.JButton();
         jScrollPaneStack = new javax.swing.JScrollPane();
         jListStack = new javax.swing.JList<>(dlm);
         jPanelStackOperation = new javax.swing.JPanel();
@@ -85,6 +84,7 @@ public class calculatorInterface extends javax.swing.JFrame {
         jButtonDup = new javax.swing.JButton();
         jButtonDrop = new javax.swing.JButton();
         jButtonOver = new javax.swing.JButton();
+        jButtonClear = new javax.swing.JButton();
         jScrollPaneTextArea = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButtonIns = new javax.swing.JButton();
@@ -371,29 +371,30 @@ public class calculatorInterface extends javax.swing.JFrame {
         jButtonTox.setBackground(new java.awt.Color(224, 225, 255));
         jButtonTox.setText("<x");
 
-        jButtonAddToVariable.setBackground(new java.awt.Color(224, 225, 255));
-        jButtonAddToVariable.setText("+x");
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " " }));
 
         jButtonSubToVariable.setBackground(new java.awt.Color(224, 225, 255));
         jButtonSubToVariable.setText("-x");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " " }));
+        jButtonAddToVariable.setBackground(new java.awt.Color(224, 225, 255));
+        jButtonAddToVariable.setText("+x");
 
         javax.swing.GroupLayout jPanelVariableLayout = new javax.swing.GroupLayout(jPanelVariable);
         jPanelVariable.setLayout(jPanelVariableLayout);
         jPanelVariableLayout.setHorizontalGroup(
             jPanelVariableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelVariableLayout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonInX, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonTox, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonSubToVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonAddToVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jButtonInX, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonTox, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jButtonSubToVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonAddToVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         jPanelVariableLayout.setVerticalGroup(
             jPanelVariableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -402,9 +403,9 @@ public class calculatorInterface extends javax.swing.JFrame {
                 .addGroup(jPanelVariableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonInX)
                     .addComponent(jButtonTox)
-                    .addComponent(jButtonAddToVariable)
                     .addComponent(jButtonSubToVariable)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonAddToVariable)
+                    .addComponent(jComboBox1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -560,16 +561,6 @@ public class calculatorInterface extends javax.swing.JFrame {
             }
         });
 
-        jButtonClear.setBackground(new java.awt.Color(255, 51, 51));
-        jButtonClear.setForeground(new java.awt.Color(204, 204, 204));
-        jButtonClear.setText("CLEAR");
-        jButtonClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonClearActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanelOperationLayout = new javax.swing.GroupLayout(jPanelOperation);
         jPanelOperation.setLayout(jPanelOperationLayout);
         jPanelOperationLayout.setHorizontalGroup(
@@ -604,9 +595,8 @@ public class calculatorInterface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonACos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonATan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonClear))))
+                        .addComponent(jButtonATan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(1, 1, 1))
         );
         jPanelOperationLayout.setVerticalGroup(
             jPanelOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -616,8 +606,7 @@ public class calculatorInterface extends javax.swing.JFrame {
                     .addComponent(jButtonTan, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonASin, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonACos, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonATan, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonATan, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSqrt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -636,12 +625,13 @@ public class calculatorInterface extends javax.swing.JFrame {
 
         jListStack.setBackground(new java.awt.Color(230, 230, 230));
         jListStack.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jListStack.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jScrollPaneStack.setViewportView(jListStack);
 
         jPanelStackOperation.setBackground(new java.awt.Color(51, 51, 51));
 
-        jButtonSwap.setBackground(new java.awt.Color(255, 51, 51));
-        jButtonSwap.setForeground(new java.awt.Color(204, 204, 204));
+        jButtonSwap.setBackground(new java.awt.Color(255, 0, 0));
+        jButtonSwap.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSwap.setText("SWAP");
         jButtonSwap.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonSwap.addActionListener(new java.awt.event.ActionListener() {
@@ -650,8 +640,8 @@ public class calculatorInterface extends javax.swing.JFrame {
             }
         });
 
-        jButtonDup.setBackground(new java.awt.Color(255, 51, 51));
-        jButtonDup.setForeground(new java.awt.Color(204, 204, 204));
+        jButtonDup.setBackground(new java.awt.Color(255, 0, 0));
+        jButtonDup.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDup.setText("DUP");
         jButtonDup.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonDup.addActionListener(new java.awt.event.ActionListener() {
@@ -660,8 +650,8 @@ public class calculatorInterface extends javax.swing.JFrame {
             }
         });
 
-        jButtonDrop.setBackground(new java.awt.Color(255, 51, 51));
-        jButtonDrop.setForeground(new java.awt.Color(204, 204, 204));
+        jButtonDrop.setBackground(new java.awt.Color(255, 0, 0));
+        jButtonDrop.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDrop.setText("DROP");
         jButtonDrop.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonDrop.addActionListener(new java.awt.event.ActionListener() {
@@ -670,8 +660,8 @@ public class calculatorInterface extends javax.swing.JFrame {
             }
         });
 
-        jButtonOver.setBackground(new java.awt.Color(255, 51, 51));
-        jButtonOver.setForeground(new java.awt.Color(204, 204, 204));
+        jButtonOver.setBackground(new java.awt.Color(255, 0, 0));
+        jButtonOver.setForeground(new java.awt.Color(255, 255, 255));
         jButtonOver.setText("OVER");
         jButtonOver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonOver.addActionListener(new java.awt.event.ActionListener() {
@@ -680,43 +670,64 @@ public class calculatorInterface extends javax.swing.JFrame {
             }
         });
 
+        jButtonClear.setBackground(new java.awt.Color(255, 0, 0));
+        jButtonClear.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonClear.setText("CLEAR");
+        jButtonClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelStackOperationLayout = new javax.swing.GroupLayout(jPanelStackOperation);
         jPanelStackOperation.setLayout(jPanelStackOperationLayout);
         jPanelStackOperationLayout.setHorizontalGroup(
             jPanelStackOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelStackOperationLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jButtonSwap, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonDrop, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addGap(12, 12, 12)
-                .addComponent(jButtonDup, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jButtonOver, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jButtonSwap, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonDup, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonOver, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanelStackOperationLayout.setVerticalGroup(
             jPanelStackOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelStackOperationLayout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(jPanelStackOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSwap, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonDup, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonOver, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanelStackOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonSwap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelStackOperationLayout.createSequentialGroup()
+                        .addGroup(jPanelStackOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelStackOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButtonDrop, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelStackOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButtonDup, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonOver, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jTextArea1.setRows(5);
         jTextArea1.setWrapStyleWord(true);
         jScrollPaneTextArea.setViewportView(jTextArea1);
 
+        jButtonIns.setBackground(new java.awt.Color(255, 0, 0));
+        jButtonIns.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jButtonIns.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIns.setText("INS");
         jButtonIns.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInsActionPerformed(evt);
-				
             }
         });
 
@@ -726,43 +737,46 @@ public class calculatorInterface extends javax.swing.JFrame {
             jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCalculatorLayout.createSequentialGroup()
                 .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCalculatorLayout.createSequentialGroup()
+                        .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanelOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanelNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPaneStack, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanelCalculatorLayout.createSequentialGroup()
-                            .addComponent(jPanelNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPaneStack, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPaneTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanelOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCalculatorLayout.createSequentialGroup()
-                                    .addGap(7, 7, 7)
-                                    .addComponent(jButtonIns, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jPanelStackOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(jPanelVariable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 11, Short.MAX_VALUE))
+                            .addGap(14, 14, 14)
+                            .addComponent(jScrollPaneTextArea)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButtonIns, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanelVariable, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCalculatorLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanelStackOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanelCalculatorLayout.setVerticalGroup(
             jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCalculatorLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPaneTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCalculatorLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPaneTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelCalculatorLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jButtonIns)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanelVariable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelStackOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCalculatorLayout.createSequentialGroup()
-                        .addComponent(jPanelStackOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPaneStack, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCalculatorLayout.createSequentialGroup()
-                        .addComponent(jButtonIns, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanelOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanelNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(37, 37, 37))
+                        .addComponent(jPanelNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPaneStack, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jMenu1.setText("File");
@@ -780,7 +794,7 @@ public class calculatorInterface extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jPanelCalculator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -829,7 +843,7 @@ public class calculatorInterface extends javax.swing.JFrame {
         int dimOp = CalculatorController.dimOperation(controller.getLastOperation());
 
         if (dimOp > controller.getCalculator().getStack().getSize()) {
-            String message = "You need at least " + dimOp + " item/items on the stack!";
+            String message = "You need at least " + dimOp + " items on the stack!";
             JOptionPane.showMessageDialog(this,
                     message,
                     "Warning",
@@ -1001,6 +1015,7 @@ public class calculatorInterface extends javax.swing.JFrame {
                     "Warning",
                     JOptionPane.WARNING_MESSAGE);
         }
+        controller.setLastOperation(null);
 
         viewStack();
         clearTextArea();
@@ -1038,25 +1053,27 @@ public class calculatorInterface extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(calculatorInterface.class
+            java.util.logging.Logger.getLogger(CalculatorInterface.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(calculatorInterface.class
+            java.util.logging.Logger.getLogger(CalculatorInterface.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(calculatorInterface.class
+            java.util.logging.Logger.getLogger(CalculatorInterface.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(calculatorInterface.class
+            java.util.logging.Logger.getLogger(CalculatorInterface.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new calculatorInterface().setVisible(true);
+                new CalculatorInterface().setVisible(true);
             }
         });
     }

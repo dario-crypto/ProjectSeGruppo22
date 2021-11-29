@@ -43,7 +43,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="jPanelCalculator" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -79,54 +79,59 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jPanelNumber" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPaneStack" min="-2" pref="110" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jPanelOperation" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jPanelNumber" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="jScrollPaneTextArea" alignment="1" min="-2" pref="348" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jPanelOperation" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                      <Component id="jButtonIns" min="-2" pref="90" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jPanelStackOperation" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jScrollPaneStack" min="-2" pref="276" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jPanelVariable" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <Component id="jScrollPaneTextArea" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButtonIns" min="-2" pref="90" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jPanelVariable" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="jPanelStackOperation" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                  <Component id="jScrollPaneTextArea" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                          <Component id="jScrollPaneTextArea" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                          <Component id="jButtonIns" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jPanelVariable" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jPanelStackOperation" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jPanelStackOperation" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPaneStack" min="-2" pref="240" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jButtonIns" min="-2" pref="29" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jPanelOperation" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanelNumber" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jScrollPaneStack" min="-2" pref="282" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -573,16 +578,17 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" pref="83" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonInX" min="-2" pref="59" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonTox" min="-2" pref="60" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonSubToVariable" min="-2" pref="60" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonAddToVariable" min="-2" pref="59" max="-2" attributes="0"/>
+                      <Component id="jComboBox1" min="-2" pref="84" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="jButtonInX" min="-2" pref="92" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButtonTox" min="-2" pref="92" max="-2" attributes="0"/>
+                      <EmptySpace pref="15" max="32767" attributes="0"/>
+                      <Component id="jButtonSubToVariable" min="-2" pref="92" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButtonAddToVariable" min="-2" pref="85" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -593,9 +599,9 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButtonInX" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonTox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonAddToVariable" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonSubToVariable" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonAddToVariable" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBox1" alignment="3" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -617,22 +623,6 @@
                   <Color blue="ff" green="e1" red="e0" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&lt;x"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonAddToVariable">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="e1" red="e0" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="+x"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonSubToVariable">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="e1" red="e0" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="-x"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox1">
@@ -672,6 +662,22 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonSubToVariable">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="e1" red="e0" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="-x"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonAddToVariable">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="e1" red="e0" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="+x"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -718,10 +724,9 @@
                               <Component id="jButtonACos" min="-2" pref="43" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButtonATan" min="-2" pref="43" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonClear" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -734,7 +739,6 @@
                           <Component id="jButtonASin" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="jButtonACos" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="jButtonATan" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                          <Component id="jButtonClear" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1033,25 +1037,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonATanActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonClear">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="33" red="ff" type="rgb"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="CLEAR"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                    <BevelBorder/>
-                  </Border>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonClearActionPerformed"/>
-              </Events>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="jScrollPaneStack">
@@ -1070,6 +1055,9 @@
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder roundedCorners="true" thickness="2"/>
                   </Border>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Grande" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="0"/>
@@ -1092,14 +1080,16 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="jButtonSwap" min="-2" pref="51" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButtonDrop" pref="50" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="jButtonDup" min="-2" pref="51" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="jButtonOver" min="-2" pref="47" max="-2" attributes="0"/>
+                      <EmptySpace pref="24" max="32767" attributes="0"/>
+                      <Component id="jButtonSwap" min="-2" pref="63" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonDrop" min="-2" pref="65" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonClear" min="-2" pref="66" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonDup" min="-2" pref="57" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonOver" min="-2" pref="59" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1107,14 +1097,24 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonSwap" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                          <Component id="jButtonDup" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                          <Component id="jButtonDrop" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                          <Component id="jButtonOver" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jButtonSwap" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jButtonDrop" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                                      <Component id="jButtonClear" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jButtonDup" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                                      <Component id="jButtonOver" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1123,10 +1123,10 @@
             <Component class="javax.swing.JButton" name="jButtonSwap">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="33" red="ff" type="rgb"/>
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="SWAP"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1142,10 +1142,10 @@
             <Component class="javax.swing.JButton" name="jButtonDup">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="33" red="ff" type="rgb"/>
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="DUP"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1161,10 +1161,10 @@
             <Component class="javax.swing.JButton" name="jButtonDrop">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="33" red="ff" type="rgb"/>
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="DROP"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1180,10 +1180,10 @@
             <Component class="javax.swing.JButton" name="jButtonOver">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="33" red="ff" type="rgb"/>
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="OVER"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1194,6 +1194,25 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonOverActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonClear">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="CLEAR"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonClearActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -1208,6 +1227,9 @@
             <Component class="javax.swing.JTextArea" name="jTextArea1">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Grande" size="18" style="0"/>
+                </Property>
                 <Property name="rows" type="int" value="5"/>
                 <Property name="wrapStyleWord" type="boolean" value="true"/>
               </Properties>
@@ -1216,6 +1238,15 @@
         </Container>
         <Component class="javax.swing.JButton" name="jButtonIns">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="INS"/>
           </Properties>
           <Events>
