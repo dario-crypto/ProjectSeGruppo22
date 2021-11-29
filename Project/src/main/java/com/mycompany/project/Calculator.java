@@ -120,7 +120,8 @@ public class Calculator {
         return c1;
     }
 
-    public void clear() {
+    public void clear() throws StackEmptyException {
+        stack.clear();
 
     }
 
@@ -132,7 +133,11 @@ public class Calculator {
 
     }
 
-    public void swap() {
+    public void swap() throws StackEmptyException{
+        ComplexNumber c1=stack.pop();
+        ComplexNumber c2=stack.pop();
+        stack.push(c2);
+        stack.push(c1);
 
     }
 
