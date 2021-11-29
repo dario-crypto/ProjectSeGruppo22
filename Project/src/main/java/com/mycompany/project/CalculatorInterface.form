@@ -581,9 +581,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jComboBox1" min="-2" pref="84" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="jButtonInX" min="-2" pref="92" max="-2" attributes="0"/>
+                      <Component id="jButtonSaveToVariable" min="-2" pref="92" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButtonTox" min="-2" pref="92" max="-2" attributes="0"/>
+                      <Component id="jButtonSaveToStack" min="-2" pref="92" max="-2" attributes="0"/>
                       <EmptySpace pref="15" max="32767" attributes="0"/>
                       <Component id="jButtonSubToVariable" min="-2" pref="92" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -597,8 +597,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonInX" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonTox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonSaveToVariable" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonSaveToStack" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonSubToVariable" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonAddToVariable" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jComboBox1" alignment="3" max="32767" attributes="0"/>
@@ -609,7 +609,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButtonInX">
+            <Component class="javax.swing.JButton" name="jButtonSaveToVariable">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="e1" red="e0" type="rgb"/>
@@ -617,7 +617,7 @@
                 <Property name="text" type="java.lang.String" value="&gt;x"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonTox">
+            <Component class="javax.swing.JButton" name="jButtonSaveToStack">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="e1" red="e0" type="rgb"/>

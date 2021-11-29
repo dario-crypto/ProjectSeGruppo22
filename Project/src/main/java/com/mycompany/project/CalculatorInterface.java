@@ -57,8 +57,8 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonDot = new javax.swing.JButton();
         jButtonEqual = new javax.swing.JButton();
         jPanelVariable = new javax.swing.JPanel();
-        jButtonInX = new javax.swing.JButton();
-        jButtonTox = new javax.swing.JButton();
+        jButtonSaveToVariable = new javax.swing.JButton();
+        jButtonSaveToStack = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButtonSubToVariable = new javax.swing.JButton();
         jButtonAddToVariable = new javax.swing.JButton();
@@ -365,11 +365,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
         jPanelVariable.setBackground(new java.awt.Color(51, 51, 51));
 
-        jButtonInX.setBackground(new java.awt.Color(224, 225, 255));
-        jButtonInX.setText(">x");
+        jButtonSaveToVariable.setBackground(new java.awt.Color(224, 225, 255));
+        jButtonSaveToVariable.setText(">x");
 
-        jButtonTox.setBackground(new java.awt.Color(224, 225, 255));
-        jButtonTox.setText("<x");
+        jButtonSaveToStack.setBackground(new java.awt.Color(224, 225, 255));
+        jButtonSaveToStack.setText("<x");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " " }));
 
@@ -387,9 +387,9 @@ public class CalculatorInterface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jButtonInX, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonSaveToVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonTox, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonSaveToStack, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jButtonSubToVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -401,8 +401,8 @@ public class CalculatorInterface extends javax.swing.JFrame {
             .addGroup(jPanelVariableLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelVariableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonInX)
-                    .addComponent(jButtonTox)
+                    .addComponent(jButtonSaveToVariable)
+                    .addComponent(jButtonSaveToStack)
                     .addComponent(jButtonSubToVariable)
                     .addComponent(jButtonAddToVariable)
                     .addComponent(jComboBox1))
@@ -1107,7 +1107,6 @@ public class CalculatorInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDup;
     private javax.swing.JButton jButtonEqual;
     private javax.swing.JButton jButtonExp;
-    private javax.swing.JButton jButtonInX;
     private javax.swing.JButton jButtonIns;
     private javax.swing.JButton jButtonInvert;
     private javax.swing.JButton jButtonLn;
@@ -1116,13 +1115,14 @@ public class CalculatorInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonOP;
     private javax.swing.JButton jButtonOver;
     private javax.swing.JButton jButtonPow;
+    private javax.swing.JButton jButtonSaveToStack;
+    private javax.swing.JButton jButtonSaveToVariable;
     private javax.swing.JButton jButtonSin;
     private javax.swing.JButton jButtonSqrt;
     private javax.swing.JButton jButtonSub;
     private javax.swing.JButton jButtonSubToVariable;
     private javax.swing.JButton jButtonSwap;
     private javax.swing.JButton jButtonTan;
-    private javax.swing.JButton jButtonTox;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JList<String> jListStack;
     private javax.swing.JMenu jMenu1;
