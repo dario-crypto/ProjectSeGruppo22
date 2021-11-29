@@ -308,8 +308,12 @@ public class CalculatorTest {
     }
     
     @Test
-    public void testDrop(){
-        
+    public void testDrop() throws StackEmptyException{
+        calculator.insert(new ComplexNumber(3,1));
+        calculator.insert(new ComplexNumber(4,5));
+        calculator.drop();
+        calculator.drop();
+        assertEquals(true,calculator.getStack().isEmpty());
     }
     
     @Test
