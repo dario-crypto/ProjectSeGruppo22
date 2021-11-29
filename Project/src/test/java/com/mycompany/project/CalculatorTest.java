@@ -293,5 +293,48 @@ public class CalculatorTest {
         assertEquals(new ComplexNumber(2, 1), calculator.getStack().top());
 
     }
+    
+    /**
+     * This method tests the method clear of the Claculator class
+     * @throws StackEmptyException
+     */
+    
+    @Test
+    public void testClear() throws StackEmptyException{
+        calculator.insert(new ComplexNumber(2,1));
+        calculator.insert(new ComplexNumber(3,67));
+        calculator.clear();
+        assertEquals(true,calculator.getStack().isEmpty());
+    }
+    
+    @Test
+    public void testDrop(){
+        
+    }
+    
+    @Test
+    public void testDup(){
+        
+    }
+    
+    /**
+     * This method tests the method swap of the Claculator class
+     * @throws StackEmptyException 
+     */
+    
+    @Test
+    public void testSwap() throws StackEmptyException{
+        calculator.insert(new ComplexNumber(2,1));
+        calculator.insert(new ComplexNumber(3,67));
+        calculator.swap();
+        assertEquals(calculator.getStack().pop(),new ComplexNumber(3,67));
+        assertEquals(calculator.getStack().pop(),new ComplexNumber(2,1));
+        
+    }
+    
+    @Test
+    public void testOver(){
+        
+    }
 
 }

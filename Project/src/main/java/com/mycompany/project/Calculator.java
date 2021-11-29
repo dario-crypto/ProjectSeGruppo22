@@ -125,9 +125,9 @@ public class Calculator {
 
     }
 
-    public ComplexNumber drop() throws StackEmptyException {
+    public void drop() throws StackEmptyException {
        ComplexNumber c = stack.pop();
-       return c;
+       
  }
 
     public void dup() {

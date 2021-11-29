@@ -48,5 +48,7 @@ public interface StackLogic<E> extends Iterable<E> {
      */
     
     E getItem(int index);
+    
+    void clear() throws StackEmptyException;
 
 }

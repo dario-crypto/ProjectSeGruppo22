@@ -89,5 +89,15 @@ public class StackTest {
         st.pop();
         assertEquals(true, st.isEmpty());
     }
+    
+    /* Test of isEmpty method, of class Stack.*/  
+    
+    @Test
+    public void testClear() throws StackEmptyException{
+        st.push(4);
+        st.push(5);
+        st.clear();
+        assertEquals(true,st.isEmpty());
+    }
 
 }

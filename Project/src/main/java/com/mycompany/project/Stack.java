@@ -181,5 +181,20 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     public int getCurrentCapacity() {
         return currentCapacity;
     }
+    
+    /**
+     * This metod removes all of stack's items
+     * @throws StackEmptyException
+     */
+    
+    @Override
+     public void clear() throws StackEmptyException{
+        while(!isEmpty())
+            pop();
+    }
+    
+    
+    
+    
 
 }
