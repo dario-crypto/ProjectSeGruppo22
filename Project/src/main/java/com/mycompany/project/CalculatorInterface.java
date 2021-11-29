@@ -4,8 +4,8 @@
  */
 package com.mycompany.project;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -379,6 +379,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonSaveToStack.setText("<x");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " " }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jButtonSubToVariable.setBackground(new java.awt.Color(224, 225, 255));
         jButtonSubToVariable.setText("-x");
@@ -1002,7 +1007,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         try {
             controller.drop();
         } catch (StackEmptyException ex) {
-            Logger.getLogger(CalculatorInterface.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this,
+                        ex.getMessage(),
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE
+                );
         }
         viewStack();
         clearTextArea();
@@ -1030,7 +1039,6 @@ public class CalculatorInterface extends javax.swing.JFrame {
                     JOptionPane.WARNING_MESSAGE);
         }
         controller.setLastOperation(null);
-
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonInsActionPerformed
@@ -1038,6 +1046,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
     private void jButtonSaveToVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveToVariableActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSaveToVariableActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        String var = (String) jComboBox1.getSelectedItem();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     public void viewStack() {
 
