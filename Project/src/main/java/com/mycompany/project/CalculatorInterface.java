@@ -4,6 +4,8 @@
  */
 package com.mycompany.project;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -367,6 +369,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
         jButtonSaveToVariable.setBackground(new java.awt.Color(224, 225, 255));
         jButtonSaveToVariable.setText(">x");
+        jButtonSaveToVariable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveToVariableActionPerformed(evt);
+            }
+        });
 
         jButtonSaveToStack.setBackground(new java.awt.Color(224, 225, 255));
         jButtonSaveToStack.setText("<x");
@@ -992,6 +999,13 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDropActionPerformed
         // TODO add your handling code here:
+        try {
+            controller.drop();
+        } catch (StackEmptyException ex) {
+            Logger.getLogger(CalculatorInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonDropActionPerformed
 
     private void jButtonDupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDupActionPerformed
@@ -1020,6 +1034,10 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonInsActionPerformed
+
+    private void jButtonSaveToVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveToVariableActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSaveToVariableActionPerformed
 
     public void viewStack() {
 
