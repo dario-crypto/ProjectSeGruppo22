@@ -8,21 +8,14 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     private int size = 0;
     private int currentCapacity;
 
-    /**
-     * Costruttore della classe Stack
-     *
-     * @param initialCapacity valore intero che rappresenta la capacità inziale
-     * dello stack
-     */
+
     public Stack(int initialCapacity) {
         this.stack = (E[]) new Object[initialCapacity];
         this.currentCapacity = initialCapacity;
 
     }
 
-    /**
-     * Costruttore della classe stack. Setta una capacità iniziale di default
-     */
+    
     public Stack() {
         int defaultCapacity = 30;
         this.stack = (E[]) new Object[defaultCapacity];
@@ -30,19 +23,18 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     }
 
     /**
-     * Restituisce il numero di elementi presenti nello stack
+     * This method returns the number of elements of the stack
      *
-     * @return un numero intero che rappresenta il numero di elementi presenti
-     * nello stack
+     * @return size
      */
     public int getSize() {
         return size;
     }
 
     /**
-     * Restituisce l'elemento in cima allo stack
+     * It returns the element on top of the stack
      *
-     * @return un elemento in cima allo stack
+     * @return last element
      */
     @Override
     public E top() {
@@ -50,9 +42,9 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     }
 
     /**
-     * Inserisce un elemento in cima allo stack
+     * This method inserts an item into the stack
      *
-     * @param item rappresenta l'elemento che si vuole inserire nello stack
+     * @param item
      */
     @Override
     public void push(E item) {
@@ -67,10 +59,9 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     }
 
     /**
-     * Rialloca gli elementi dello vecchio stack in un nuovo stack con capacità
-     * specificata
+     * This method inserts the stack into a new stack with specified capacity
      *
-     * @param newCapacity capacità del nuovo stack
+     * @param newCapacity
      */
     private void realloc(int newCapacity) {
         E[] newStack = (E[]) new Object[newCapacity];
@@ -81,10 +72,10 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     }
 
     /**
-     * Rimuove l'elemento in cima allo stack e lo restituisce
+     * It removes the element on top of the stack
      *
-     * @return restituisce l'elemento in cima allo stack
-     * @throws StackEmptyException nel caso in cui lo stack è vuoto
+     * @return last element
+     * @throws StackEmptyException
      */
     @Override
     public E pop() throws StackEmptyException {
@@ -99,18 +90,18 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     }
 
     /**
-     * Controlla se lo stack è pieno
+     * This method checks if the stack is full
      *
-     * @return true nel caso lo stack è pieno, altrimenti restituisce false
+     * @return true if the stack is Full, false otherwise
      */
     private boolean isFull() {
         return size >= currentCapacity;
     }
 
     /**
-     * Controlla se lo stack è vuoto
+     * This method checks if the stack is empty
      *
-     * @return true se lo stack è vuoto, altrimenti restituisce false
+     * @return true if the stack is empty,false otherwise
      */
     @Override
     public boolean isEmpty() {
@@ -118,17 +109,17 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     }
 
     /**
-     * Classe che permette allo stack di essere iterato
+     * This Class allows to iterate the stack
      */
     public class StackIterator implements Iterator<E> {
 
         int index = 0;
 
         /**
-         * Controlla se è presente il successivo elemento
+         * This method checks if there is a following item in the stack
          *
-         * @return true nel caso in cui è presente l'elemento successivo,
-         * altrimenti restituisce false
+         * @return true if there is a following item,
+         * otherwise it returns false
          */
         @Override
         public boolean hasNext() {
@@ -136,9 +127,9 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
         }
 
         /**
-         * Restituisce il successivo elemento
+         * This method returns the following item
          *
-         * @return restituisce il successivo elemento
+         * @return following element
          */
         @Override
         public E next() {
@@ -152,9 +143,9 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     }
 
     /**
-     * Restituisce l'iteratore dello stack
+     * This method returns the iterator of the stack
      *
-     * @return l'iteratore dello stack
+     * @return iterator
      */
     @Override
     public Iterator<E> iterator() {
@@ -164,19 +155,18 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
    
 
     /**
-     * Restituisce un elemento dello stack in una specifica posizione
+     * This method return the element of the stack in the given index
      *
-     * @param index valore intero che rappresenta un indice dello stack
-     * @return restituisce un elemento dello stack in posizione index
+     * @param index
      */
     public E getItem(int index) {
         return stack[index];
     }
 
     /**
-     * Restituisce la capacità corrente dello stack
+     * This method returns the current capacity of the stack
      *
-     * @return un valore intero che rappresenta la capacità corrente dello stack
+     * @return current capacity
      */
     public int getCurrentCapacity() {
         return currentCapacity;

@@ -119,6 +119,11 @@ public class Calculator {
         stack.push(c1);
         return c1;
     }
+    
+    /**
+     * This method removes all of the items of the Calculator's stack
+     * @throws StackEmptyException 
+     */
 
     public void clear() throws StackEmptyException {
         stack.clear();
@@ -133,12 +138,18 @@ public class Calculator {
     public void dup() {
 
     }
+    
+    /**
+     * This method exchanges the last two items of the Calculator's stack
+     * @throws StackEmptyException 
+     */
 
     public void swap() throws StackEmptyException{
         ComplexNumber c1=stack.pop();
         ComplexNumber c2=stack.pop();
-        stack.push(c2);
         stack.push(c1);
+        stack.push(c2);
+        
 
     }
 

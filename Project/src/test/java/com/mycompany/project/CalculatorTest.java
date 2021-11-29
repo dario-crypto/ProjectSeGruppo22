@@ -32,7 +32,7 @@ public class CalculatorTest {
      * and imaginary parts different from zero into the Calculator's stack
      */
     @Test
-    public void insertTest() {
+    public void testInsert() {
         calculator.insert(new ComplexNumber(1, 0));
         assertEquals(new ComplexNumber(1, 0), calculator.getStack().top());
         calculator.insert(new ComplexNumber(0, -1));
@@ -56,7 +56,7 @@ public class CalculatorTest {
      * @throws StackEmptyException
      */
     @Test
-    public void sumTest() throws StackEmptyException {
+    public void testSum() throws StackEmptyException {
         //calculator=new Calculator(new Stack<ComplexNumber>());
         ComplexNumber c1 = new ComplexNumber(1, 0);
         ComplexNumber c2 = new ComplexNumber(-1, 0);
@@ -105,7 +105,7 @@ public class CalculatorTest {
      * @throws StackEmptyException
      */
     @Test
-    public void subTest() throws StackEmptyException {
+    public void testSub() throws StackEmptyException {
 
         ComplexNumber n1 = new ComplexNumber(2, 0);
         ComplexNumber n2 = new ComplexNumber(2, 0);
@@ -158,7 +158,7 @@ public class CalculatorTest {
      * @throws StackEmptyException
      */
     @Test
-    public void prodTest() throws StackEmptyException {
+    public void testProd() throws StackEmptyException {
         ComplexNumber c1 = new ComplexNumber(1, 0);
         ComplexNumber c2 = new ComplexNumber(1, 0);
         calculator.insert(c1);
@@ -205,7 +205,7 @@ public class CalculatorTest {
      * @throws StackEmptyException
      */
     @Test
-    public void squareRootTest() throws StackEmptyException {
+    public void testSquareRoot() throws StackEmptyException {
 
         ComplexNumber n1 = new ComplexNumber(4, 0);
         calculator.insert(n1);
@@ -233,7 +233,7 @@ public class CalculatorTest {
      * @throws StackEmptyException
      */
     @Test
-    public void divideTest() throws StackEmptyException {
+    public void testDivide() throws StackEmptyException {
 
         //caso numeri reali
         ComplexNumber c1 = new ComplexNumber(10, 0);
@@ -259,9 +259,19 @@ public class CalculatorTest {
         assertEquals("Division by zero", assertThrows.getMessage());
 
     }
+    
+    /**
+     * This method tests the method invertSign of the Calculator class
+     * The first case tests the invertion of sign of the null value
+     * The second case tests the invertion of sign of a complex number with both real and imaginary part positive
+     * The third case tests the invertion of sign of a complex number with positive real part and negative imaginary part
+     * The fourth case tests the invertion of sign of a complex number with negative real part and positive imaginary part
+     * The fifth case tests the invertion of sign of a complex number with both real and imaginary part negative
+     * @throws StackEmptyException 
+     */
 
     @Test
-    public void invertSignTest() throws StackEmptyException {
+    public void testInvertSign() throws StackEmptyException {
         ComplexNumber c1 = new ComplexNumber(0, 0);
         calculator.insert(c1);
 
@@ -327,8 +337,8 @@ public class CalculatorTest {
         calculator.insert(new ComplexNumber(2,1));
         calculator.insert(new ComplexNumber(3,67));
         calculator.swap();
-        assertEquals(calculator.getStack().pop(),new ComplexNumber(3,67));
         assertEquals(calculator.getStack().pop(),new ComplexNumber(2,1));
+        assertEquals(calculator.getStack().pop(),new ComplexNumber(3,67));
         
     }
     

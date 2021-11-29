@@ -815,7 +815,14 @@ public class CalculatorInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            controller.clear();
+        } catch (StackEmptyException ex) {
+            
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonClearActionPerformed
 
     private void jButtonSqrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSqrtActionPerformed
@@ -1013,7 +1020,18 @@ public class CalculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDupActionPerformed
 
     private void jButtonSwapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSwapActionPerformed
-        // TODO add your handling code here:
+        try {
+            boolean control=controller.swap();
+            if (control==false){
+                
+                JOptionPane.showMessageDialog(this, "You need at least 2 items", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        } catch (StackEmptyException ex) {
+            Logger.getLogger(CalculatorInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonSwapActionPerformed
 
     private void jButtonOverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverActionPerformed
