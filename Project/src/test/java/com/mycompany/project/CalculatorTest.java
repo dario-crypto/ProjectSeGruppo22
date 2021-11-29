@@ -316,7 +316,10 @@ public class CalculatorTest {
         calculator.clear();
         assertEquals(true,calculator.getStack().isEmpty());
     }
-    
+    /**
+     * This method tests the drop of the Calculator class
+     * @throws StackEmptyException 
+     */
     @Test
     public void testDrop() throws StackEmptyException{
         calculator.insert(new ComplexNumber(3,1));
@@ -332,7 +335,7 @@ public class CalculatorTest {
     }
     
     /**
-     * This method tests the method swap of the Claculator class
+     * This method tests the method swap of the Calculator class
      * @throws StackEmptyException 
      */
     
