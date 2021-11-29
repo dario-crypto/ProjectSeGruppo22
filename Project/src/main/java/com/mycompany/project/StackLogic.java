@@ -2,53 +2,55 @@ package com.mycompany.project;
 
 public interface StackLogic<E> extends Iterable<E> {
 
-    /**
-     * Inserisce un elemento in cima allo stack
+      /**
+     * This method inserts an item into the stack
      *
-     * @param item rappresenta l'elemento che si vuole inserire nello stack
+     * @param item
      */
     void push(E item);
 
     /**
-     * Rimuove l'elemento in cima allo stack e lo restituisce
+     * It removes the element on top of the stack
      *
-     * @return restituisce l'elemento in cima allo stack
-     * @throws StackEmptyException nel caso in cui lo stack è vuoto
+     * @return last element
+     * @throws StackEmptyException
      */
     E pop() throws StackEmptyException;
 
     /**
-     * Restituisce l'elemento in cima allo stack
+     * It returns the element on top of the stack
      *
-     * @return un elemento in cima allo stack
+     * @return last element
      */
     E top();
-
+    
     /**
-     * Controlla se lo stack è vuoto
+     * This method checks if the stack is empty
      *
-     * @return true se lo stack è vuoto, altrimenti restituisce false
+     * @return true if the stack is empty,false otherwise
      */
     boolean isEmpty();
 
-    /**
-     * Restituisce il numero di elementi presenti nello stack
+        /**
+     * This method returns the number of elements of the stack
      *
-     * @return un numero intero che rappresenta il numero di elementi presenti
-     * nello stack
+     * @return size
      */
 
     int getSize();
     
-     /**
-     * Restituisce un elemento dello stack in una specifica posizione
+    /**
+     * This method return the element of the stack in the given index
      *
-     * @param index valore intero che rappresenta un indice dello stack
-     * @return restituisce un elemento dello stack in posizione index
+     * @param index
      */
     
     E getItem(int index);
     
+    /**
+     * This metod removes all of stack's items
+     * @throws StackEmptyException
+     */
     void clear() throws StackEmptyException;
 
 }

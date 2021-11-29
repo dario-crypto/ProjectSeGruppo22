@@ -93,8 +93,25 @@ public class CalculatorController {
 
     }
     
+    public void clear() throws StackEmptyException{
+        calculator.clear();
+    }
+    
     public void drop() throws StackEmptyException{
         calculator.drop();
- }
+    }
+    
+    public void dup(){
+        
+    }
+    
+    public boolean swap() throws StackEmptyException{
+        if (calculator.getStack().getSize()>1){
+            calculator.swap();
+            return true;
+        }
+        return false;
+        
+    }
 
 }
