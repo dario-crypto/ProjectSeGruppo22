@@ -92,5 +92,9 @@ public class CalculatorController {
         }
 
     }
+    
+    public void drop() throws StackEmptyException{
+        calculator.drop();
+ }
 
 }
