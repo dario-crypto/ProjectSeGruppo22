@@ -378,6 +378,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
         jButtonSaveToStack.setBackground(new java.awt.Color(224, 225, 255));
         jButtonSaveToStack.setText("<x");
+        jButtonSaveToStack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveToStackActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " " }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -1091,6 +1096,14 @@ public class CalculatorInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         String var = (String) jComboBox1.getSelectedItem();
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButtonSaveToStackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveToStackActionPerformed
+        // TODO add your handling code here:
+        controller.saveToStack((String) jComboBox1.getSelectedItem());
+        viewStack();
+        clearTextArea();
+        
+    }//GEN-LAST:event_jButtonSaveToStackActionPerformed
 
     public void viewStack() {
 

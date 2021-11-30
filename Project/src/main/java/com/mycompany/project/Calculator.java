@@ -171,8 +171,15 @@ public class Calculator {
     public void saveToVariable(String name) {
 
     }
+    
+    /**
+     * This method takes the value of a variable and inserts it into the Calculator's stack
+     * @param name 
+     */
 
-    public void saveToStack(String name) {
+    public void saveToStack(String name,VariablesSpace vs) {
+        ComplexNumber c=vs.get(name);
+        stack.push(c);
 
     }
 

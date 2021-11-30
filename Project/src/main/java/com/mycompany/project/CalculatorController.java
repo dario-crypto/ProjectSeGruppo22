@@ -14,9 +14,11 @@ public class CalculatorController {
 
     private Calculator calculator;
     private String lastOperation;
+    private VariablesSpace vs;
 
     public CalculatorController(StackLogic<ComplexNumber> stack) {
         calculator = new Calculator(stack);
+        vs=new VariablesSpace();
 
     }
 
@@ -120,5 +122,9 @@ public class CalculatorController {
             return true;
         }
         return false;
+    }
+    
+    public void saveToStack(String name){
+        calculator.saveToStack(name,vs);
     }
 }
