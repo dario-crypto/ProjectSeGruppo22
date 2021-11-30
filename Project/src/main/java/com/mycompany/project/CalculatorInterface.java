@@ -1089,7 +1089,16 @@ public class CalculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInsActionPerformed
 
     private void jButtonSaveToVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveToVariableActionPerformed
-        // TODO add your handling code here:
+        String var = (String) jComboBox1.getSelectedItem();
+        try {
+            controller.saveToVariable(var);
+        } catch (StackEmptyException ex) {
+            JOptionPane.showMessageDialog(this,
+                    ex.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
     }//GEN-LAST:event_jButtonSaveToVariableActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

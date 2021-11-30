@@ -127,4 +127,9 @@ public class CalculatorController {
     public void saveToStack(String name){
         calculator.saveToStack(name,vs);
     }
+    
+    public void saveToVariable(String name) throws StackEmptyException{
+        calculator.saveToVariable(name,vs);
+    }
+    
 }

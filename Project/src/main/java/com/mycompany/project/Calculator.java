@@ -167,9 +167,15 @@ public class Calculator {
         insert(c1);
         insert(c2);  
     }
-
-    public void saveToVariable(String name) {
-
+/**
+ * This method takes the top element from the stack and saves it into the variable 
+ * @param name
+ * @param vs
+ * @throws StackEmptyException 
+ */
+    public void saveToVariable(String name, VariablesSpace vs) throws StackEmptyException {
+       ComplexNumber c1=stack.pop();
+       boolean update=vs.update(name, c1);
     }
     
     /**
