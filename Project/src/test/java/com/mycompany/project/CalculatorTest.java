@@ -365,19 +365,15 @@ public class CalculatorTest {
      */
     @Test
     public void testOver() throws StackEmptyException{
-        ComplexNumber c1 = new ComplexNumber(7, 0);
-        calculator.insert(c1);
-        calculator.over();
-        assertEquals(c1,calculator.getStack().top());
-        
-        
-        c1=new ComplexNumber(2, 1);
+        ComplexNumber c1 = new ComplexNumber(2, 1);
         ComplexNumber c2 = new ComplexNumber(3, 0);
         calculator.insert(c1);
         calculator.insert(c2);
         calculator.over();
         assertEquals(c1,calculator.getStack().pop());
-        assertEquals(c1,calculator.getStack().pop());  
+        assertEquals(c2,calculator.getStack().pop());
+        assertEquals(c1,calculator.getStack().pop());
+        
         
     }
     
