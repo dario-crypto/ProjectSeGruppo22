@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
 public class CalculatorTest {
 
     Calculator calculator;
+    VariablesSpace vs;
 
     public CalculatorTest() {
     }
@@ -22,6 +23,7 @@ public class CalculatorTest {
     @Before
     public void setUp() {
         calculator = new Calculator(new Stack<ComplexNumber>());
+        vs=new VariablesSpace();
     }
 
     /**
@@ -376,6 +378,16 @@ public class CalculatorTest {
         calculator.over();
         assertEquals(c1,calculator.getStack().pop());
         assertEquals(c1,calculator.getStack().pop());  
+        
+    }
+    
+    @Test
+    public void testSaveToStack(){
+        String name="a";
+        vs.update(name,new ComplexNumber(45,78));
+        calculator.saveToStack(name, vs);
+        assertEquals(calculator.getStack().top(),vs.get(name));
+        
         
     }
 
