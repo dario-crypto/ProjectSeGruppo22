@@ -359,8 +359,7 @@ public class CalculatorTest {
         
     }
     /**
-     * This method tests the method over of the Claculator class.
-     * The first case tests the method when there isn't the second last element in the stack
+     * This method tests the method over of the Calculator class.
      * @throws StackEmptyException 
      */
     @Test
@@ -376,7 +375,22 @@ public class CalculatorTest {
         
         
     }
+    /**
+     * This method tests the method saveToVariable of the Calculator class 
+     * @throws StackEmptyException 
+     */
+    @Test
+    public void testSaveToVariable() throws StackEmptyException{
+        String name="b";
+        ComplexNumber c1 = new ComplexNumber(9, -1);
+        calculator.insert(c1);
+        calculator.saveToVariable(name, vs);
+        assertEquals(vs.get(name),c1);
+    }
     
+   /**
+    * This method tests the method saveToStack of the Calculator class
+    */
     @Test
     public void testSaveToStack(){
         String name="a";
@@ -386,5 +400,38 @@ public class CalculatorTest {
         
         
     }
-
+    
+    /**
+     * This method tests the method addToVariable of the Calculator class
+     * @throws StackEmptyException 
+     */
+    @Test
+    public void testaddToVariablek() throws StackEmptyException{
+        String name="c";
+        ComplexNumber c1 = new ComplexNumber(2, 1);
+        vs.update(name,c1);
+        ComplexNumber c2 = new ComplexNumber(3, 5);
+        calculator.insert(c2);
+        calculator.addToVariable(name, vs);
+        assertEquals(vs.get(name),ComplexNumber.add(c1, c2));
+              
+    }
+    
+    /**
+     * This method tests the method subToVariable of the Calculator class
+     * @throws StackEmptyException 
+     */
+    @Test
+    public void testsubToVariablek() throws StackEmptyException{
+        String name="d";
+        ComplexNumber c1 = new ComplexNumber(2, -1);
+        vs.update(name,c1);
+        ComplexNumber c2 = new ComplexNumber(-3, -4);
+        calculator.insert(c2);
+        calculator.subToVariable(name, vs);
+        assertEquals(vs.get(name),ComplexNumber.subtract(c1, c2));
+              
+    }
+    
+ 
 }
