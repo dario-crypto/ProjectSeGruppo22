@@ -4,7 +4,6 @@
  */
 package com.mycompany.project;
 
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
@@ -826,7 +825,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
             // TODO add your handling code here:
             controller.clear();
         } catch (StackEmptyException ex) {
-            
+
         }
         viewStack();
         clearTextArea();
@@ -1017,36 +1016,57 @@ public class CalculatorInterface extends javax.swing.JFrame {
             controller.drop();
         } catch (StackEmptyException ex) {
             JOptionPane.showMessageDialog(this,
-                        ex.getMessage(),
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE
-                );
+                    ex.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
         }
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonDropActionPerformed
 
     private void jButtonDupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDupActionPerformed
-        // TODO add your handling code here:
+        try {
+            controller.dup();
+        } catch (StackEmptyException ex) {
+            JOptionPane.showMessageDialog(this,
+                    ex.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonDupActionPerformed
 
     private void jButtonSwapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSwapActionPerformed
         try {
-            boolean control=controller.swap();
-            if (control==false){
-                
+            if (!controller.swap()) {
+
                 JOptionPane.showMessageDialog(this, "You need at least 2 items", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            
+
         } catch (StackEmptyException ex) {
-            Logger.getLogger(CalculatorInterface.class.getName()).log(Level.SEVERE, null, ex);
+
         }
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonSwapActionPerformed
 
     private void jButtonOverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverActionPerformed
-        // TODO add your handling code here:
+        try {
+            if (!controller.over()) {
+                String message = "You need at least 2 items on the stack!";
+                JOptionPane.showMessageDialog(this,
+                        message,
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (StackEmptyException ex) {
+
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonOverActionPerformed
 
     private void jButtonInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsActionPerformed

@@ -328,9 +328,17 @@ public class CalculatorTest {
         calculator.drop();
         assertEquals(true,calculator.getStack().isEmpty());
     }
-    
+    /**
+     * This method tests the method dup of the Claculator class
+     * @throws StackEmptyException 
+     */
     @Test
-    public void testDup(){
+    public void testDup() throws StackEmptyException{
+        ComplexNumber c1 = new ComplexNumber(1, 0);
+        calculator.insert(c1);
+        calculator.dup();
+        assertEquals(c1,calculator.getStack().pop());
+        assertEquals(c1,calculator.getStack().pop());
         
     }
     
@@ -348,9 +356,26 @@ public class CalculatorTest {
         assertEquals(calculator.getStack().pop(),new ComplexNumber(3,67));
         
     }
-    
+    /**
+     * This method tests the method over of the Claculator class.
+     * The first case tests the method when there isn't the second last element in the stack
+     * @throws StackEmptyException 
+     */
     @Test
-    public void testOver(){
+    public void testOver() throws StackEmptyException{
+        ComplexNumber c1 = new ComplexNumber(7, 0);
+        calculator.insert(c1);
+        calculator.over();
+        assertEquals(c1,calculator.getStack().top());
+        
+        
+        c1=new ComplexNumber(2, 1);
+        ComplexNumber c2 = new ComplexNumber(3, 0);
+        calculator.insert(c1);
+        calculator.insert(c2);
+        calculator.over();
+        assertEquals(c1,calculator.getStack().pop());
+        assertEquals(c1,calculator.getStack().pop());  
         
     }
 

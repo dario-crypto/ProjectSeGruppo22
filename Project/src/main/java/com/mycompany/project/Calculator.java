@@ -134,9 +134,14 @@ public class Calculator {
        ComplexNumber c = stack.pop();
        
  }
-
-    public void dup() {
-
+/**
+ * This method pushes a copy of the last element
+ * @throws StackEmptyException 
+ */
+    public void dup() throws StackEmptyException {
+        ComplexNumber c=stack.pop();
+        stack.push(c);
+        stack.push(c);
     }
     
     /**
@@ -152,9 +157,15 @@ public class Calculator {
         
 
     }
-
-    public void over() {
-
+/**
+ * This method pushes a copy of the second last element
+ * @throws StackEmptyException 
+ */
+    public void over() throws StackEmptyException {
+        ComplexNumber c1=stack.pop();
+        ComplexNumber c2=stack.top();
+        insert(c1);
+        insert(c2);  
     }
 
     public void saveToVariable(String name) {

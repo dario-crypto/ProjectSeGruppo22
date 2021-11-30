@@ -101,8 +101,8 @@ public class CalculatorController {
         calculator.drop();
     }
     
-    public void dup(){
-        
+    public void dup() throws StackEmptyException{
+        calculator.dup();
     }
     
     public boolean swap() throws StackEmptyException{
@@ -113,5 +113,12 @@ public class CalculatorController {
         return false;
         
     }
-
+    
+    public boolean over() throws StackEmptyException{
+        if(calculator.getStack().getSize()>1){
+            calculator.over();
+            return true;
+        }
+        return false;
+    }
 }
