@@ -188,12 +188,31 @@ public class Calculator {
         stack.push(c);
 
     }
-
-    public void addToVariable(String name) {
+/**
+ * This method takes the top element from the stack and adds it to the value of the variable 
+ * @param name
+ * @param vs
+ * @throws StackEmptyException 
+ */
+    public void addToVariable(String name,VariablesSpace vs) throws StackEmptyException {
+        ComplexNumber c1=vs.get(name);
+        ComplexNumber c2= stack.pop();
+        ComplexNumber result = ComplexNumber.add(c1, c2);
+        boolean update=vs.update(name, result);
 
     }
 
-    public void subToVariable(String name) {
+    /**
+     * This method takes the top element from the stack and subtracts it from the value of the variable "x"
+     * @param name
+     * @param vs
+     * @throws StackEmptyException 
+     */
+    public void subToVariable(String name,VariablesSpace vs) throws StackEmptyException {
+        ComplexNumber c1=vs.get(name);
+        ComplexNumber c2= stack.pop();
+        ComplexNumber result = ComplexNumber.subtract(c1, c2);
+        boolean update=vs.update(name, result);
 
     }
 

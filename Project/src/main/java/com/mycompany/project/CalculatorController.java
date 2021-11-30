@@ -132,4 +132,10 @@ public class CalculatorController {
         calculator.saveToVariable(name,vs);
     }
     
+    public void addToVariable(String name) throws StackEmptyException{
+        calculator.addToVariable(name, vs);
+    }
+    public void subToVariable(String name) throws StackEmptyException{
+        calculator.subToVariable(name, vs);
+    }
 }

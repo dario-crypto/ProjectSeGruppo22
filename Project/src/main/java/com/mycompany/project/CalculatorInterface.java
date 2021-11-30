@@ -393,9 +393,19 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
         jButtonSubToVariable.setBackground(new java.awt.Color(224, 225, 255));
         jButtonSubToVariable.setText("-x");
+        jButtonSubToVariable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSubToVariableActionPerformed(evt);
+            }
+        });
 
         jButtonAddToVariable.setBackground(new java.awt.Color(224, 225, 255));
         jButtonAddToVariable.setText("+x");
+        jButtonAddToVariable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddToVariableActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelVariableLayout = new javax.swing.GroupLayout(jPanelVariable);
         jPanelVariable.setLayout(jPanelVariableLayout);
@@ -1099,6 +1109,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE
             );
         }
+        viewStack();
     }//GEN-LAST:event_jButtonSaveToVariableActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -1113,6 +1124,34 @@ public class CalculatorInterface extends javax.swing.JFrame {
         clearTextArea();
         
     }//GEN-LAST:event_jButtonSaveToStackActionPerformed
+
+    private void jButtonAddToVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddToVariableActionPerformed
+        String var = (String) jComboBox1.getSelectedItem();
+        try {
+            controller.addToVariable(var);
+        } catch (StackEmptyException ex) {
+            JOptionPane.showMessageDialog(this,
+                    ex.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+        viewStack();
+    }//GEN-LAST:event_jButtonAddToVariableActionPerformed
+
+    private void jButtonSubToVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubToVariableActionPerformed
+        String var = (String) jComboBox1.getSelectedItem();
+        try {
+            controller.subToVariable(var);
+        } catch (StackEmptyException ex) {
+            JOptionPane.showMessageDialog(this,
+                    ex.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+        viewStack();
+    }//GEN-LAST:event_jButtonSubToVariableActionPerformed
 
     public void viewStack() {
 

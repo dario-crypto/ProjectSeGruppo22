@@ -679,6 +679,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="-x"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSubToVariableActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonAddToVariable">
               <Properties>
@@ -687,6 +690,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="+x"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddToVariableActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
