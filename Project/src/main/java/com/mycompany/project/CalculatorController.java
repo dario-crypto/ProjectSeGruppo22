@@ -4,8 +4,6 @@
  */
 package com.mycompany.project;
 
-
-
 /**
  *
  * @author Dario
@@ -18,16 +16,7 @@ public class CalculatorController {
 
     public CalculatorController(StackLogic<ComplexNumber> stack) {
         calculator = new Calculator(stack);
-        vs=new VariablesSpace();
-
-    }
-
-    public static int dimOperation(String op) {
-        if (op.equals("+-") || op.equals("sqrt")) {
-            return 1;
-        } else {
-            return 2;
-        }
+        vs = new VariablesSpace();
 
     }
 
@@ -47,14 +36,6 @@ public class CalculatorController {
         return false;
     }
 
-    public void setLastOperation(String lastOperation) {
-        this.lastOperation = lastOperation;
-    }
-
-    public String getLastOperation() {
-        return lastOperation;
-    }
-
     public Calculator getCalculator() {
         return this.calculator;
     }
@@ -65,77 +46,146 @@ public class CalculatorController {
      * operation.
      *
      * @param op
-     * @return ComplexNumber
+     * @return boolean
      * @throws StackEmptyException
+     * @throws OperationDoesNotExist
      */
-    public ComplexNumber execOperation(String op) throws StackEmptyException {
+    public boolean execOperation(String op) throws StackEmptyException, OperationDoesNotExist {
+        if (op == null) {
+            throw new OperationDoesNotExist("Invalid Operation!");
+        }
         switch (op) {
             case "+":
-                return calculator.sum();
+                return sum();
 
             case "-":
-                return calculator.sub();
+                return sub();
 
             case ":":
-                return calculator.divide();
+                return divide();
 
             case "x":
-                return calculator.prod();
+                return prod();
 
             case "sqrt":
-                return calculator.squareRoot();
+                calculator.squareRoot();
+                return true;
 
             case "+-":
-                return calculator.invertSign();
+                calculator.invertSign();
+                return true;
+
+            case "swap":
+                calculator.swap();
+                return true;
+
+            case "dup":
+                calculator.dup();
+                return true;
+
+            case "over":
+                calculator.over();
+                return true;
+
+            case "drop":
+                calculator.drop();
+                return true;
 
             default:
-                return null;
-
+                throw new OperationDoesNotExist("Operation: " + op + " doesn't exist!");
         }
+    }
 
+    public boolean sum() throws StackEmptyException {
+        if (calculator.getStack().getSize() > 1) {
+            calculator.sum();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean sub() throws StackEmptyException {
+        if (calculator.getStack().getSize() > 1) {
+            calculator.sub();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean prod() throws StackEmptyException {
+        if (calculator.getStack().getSize() > 1) {
+            calculator.prod();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean divide() throws StackEmptyException {
+        if (calculator.getStack().getSize() > 1) {
+            calculator.divide();
+            return true;
+        }
+        return false;
     }
     
-    public void clear() throws StackEmptyException{
+     public void squareRoot() throws StackEmptyException {
+          calculator.squareRoot();
+    }
+     
+    public void invertSign() throws StackEmptyException {
+          calculator.invertSign();
+    }
+
+    public void clear() throws StackEmptyException {
         calculator.clear();
     }
-    
-    public void drop() throws StackEmptyException{
+
+    public void drop() throws StackEmptyException {
         calculator.drop();
     }
-    
-    public void dup() throws StackEmptyException{
+
+    public void dup() throws StackEmptyException {
         calculator.dup();
     }
-    
-    public boolean swap() throws StackEmptyException{
-        if (calculator.getStack().getSize()>1){
+
+    public boolean swap() throws StackEmptyException {
+        if (calculator.getStack().getSize() > 1) {
             calculator.swap();
             return true;
         }
         return false;
-        
+
     }
-    
-    public boolean over() throws StackEmptyException{
-        if(calculator.getStack().getSize()>1){
+
+    public boolean over() throws StackEmptyException {
+        if (calculator.getStack().getSize() > 1) {
             calculator.over();
             return true;
         }
         return false;
     }
-    
-    public void saveToStack(String name){
-        calculator.saveToStack(name,vs);
+
+    public void saveToStack(String name) {
+        calculator.saveToStack(name, vs);
     }
-    
-    public void saveToVariable(String name) throws StackEmptyException{
-        calculator.saveToVariable(name,vs);
+
+    public void saveToVariable(String name) throws StackEmptyException {
+        calculator.saveToVariable(name, vs);
     }
-    
-    public void addToVariable(String name) throws StackEmptyException{
+
+    public void addToVariable(String name) throws StackEmptyException {
         calculator.addToVariable(name, vs);
     }
-    public void subToVariable(String name) throws StackEmptyException{
+
+    public void subToVariable(String name) throws StackEmptyException {
         calculator.subToVariable(name, vs);
     }
+
+    public void executeFormula(String formula) throws StackEmptyException, OperationDoesNotExist {
+        String[] formulaSplit = formula.split("\\s+");
+        for (String f : formulaSplit) {
+            execOperation(f);
+        }
+    }
+
 }
