@@ -78,23 +78,21 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonIns = new javax.swing.JButton();
         jButtonSaveFormula = new javax.swing.JButton();
         jButtonAddFormula1 = new javax.swing.JButton();
-        jScrollPaneStack1 = new javax.swing.JScrollPane();
+        jScrollPaneFormulas = new javax.swing.JScrollPane();
         jListFormulas = new javax.swing.JList<>();
         jButtonExeFormula = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanelCalculator.setBackground(new java.awt.Color(51, 51, 51));
-        jPanelCalculator.setBorder(new javax.swing.border.SoftBevelBorder(0, new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), null, new java.awt.Color(255, 255, 255)));
+        jPanelCalculator.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), null, new java.awt.Color(255, 255, 255)));
 
         jPanelNumber.setBackground(new java.awt.Color(51, 51, 51));
 
         jButtonMultiplication.setBackground(new java.awt.Color(204, 204, 204));
+        jButtonMultiplication.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jButtonMultiplication.setText("x");
-        jButtonMultiplication.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonMultiplication.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonMultiplication.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMultiplicationActionPerformed(evt);
@@ -102,8 +100,9 @@ public class CalculatorInterface extends javax.swing.JFrame {
         });
 
         jButtonDivision.setBackground(new java.awt.Color(204, 204, 204));
+        jButtonDivision.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jButtonDivision.setText(":");
-        jButtonDivision.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonDivision.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonDivision.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDivisionActionPerformed(evt);
@@ -111,8 +110,9 @@ public class CalculatorInterface extends javax.swing.JFrame {
         });
 
         jButtonAdd.setBackground(new java.awt.Color(204, 204, 204));
+        jButtonAdd.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jButtonAdd.setText("+");
-        jButtonAdd.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonAdd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddActionPerformed(evt);
@@ -120,8 +120,9 @@ public class CalculatorInterface extends javax.swing.JFrame {
         });
 
         jButtonSub.setBackground(new java.awt.Color(204, 204, 204));
+        jButtonSub.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jButtonSub.setText("-");
-        jButtonSub.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonSub.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonSub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSubActionPerformed(evt);
@@ -133,29 +134,30 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jPanelNumberLayout.setHorizontalGroup(
             jPanelNumberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelNumberLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelNumberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelNumberLayout.createSequentialGroup()
-                        .addComponent(jButtonMultiplication, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonDivision, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelNumberLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelNumberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanelNumberLayout.createSequentialGroup()
                         .addComponent(jButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonSub, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonMultiplication, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelNumberLayout.createSequentialGroup()
+                        .addComponent(jButtonSub, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonDivision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanelNumberLayout.setVerticalGroup(
             jPanelNumberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelNumberLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(jPanelNumberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(jButtonMultiplication, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelNumberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonMultiplication, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonDivision, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelNumberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSub, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35))
+                    .addComponent(jButtonDivision, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSub, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         jPanelVariable.setBackground(new java.awt.Color(51, 51, 51));
@@ -204,17 +206,15 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jPanelVariableLayout.setHorizontalGroup(
             jPanelVariableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelVariableLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addComponent(jComboBox1, 0, 111, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonSaveToVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonSaveToStack, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonSubToVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonAddToVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonAddToVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanelVariableLayout.setVerticalGroup(
             jPanelVariableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,10 +231,10 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
         jPanelOperation.setBackground(new java.awt.Color(51, 51, 51));
 
-        jButtonComplex.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonComplex.setBackground(new java.awt.Color(0, 51, 255));
         jButtonComplex.setForeground(new java.awt.Color(255, 255, 255));
         jButtonComplex.setText("i");
-        jButtonComplex.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonComplex.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonComplex.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonComplexActionPerformed(evt);
@@ -244,7 +244,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonInvert.setBackground(new java.awt.Color(0, 0, 0));
         jButtonInvert.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInvert.setText("+-");
-        jButtonInvert.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonInvert.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonInvert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInvertActionPerformed(evt);
@@ -255,7 +255,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonMod.setForeground(new java.awt.Color(255, 255, 255));
         jButtonMod.setText("mod");
         jButtonMod.setToolTipText("");
-        jButtonMod.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonMod.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModActionPerformed(evt);
@@ -265,7 +265,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonLn.setBackground(new java.awt.Color(0, 0, 0));
         jButtonLn.setForeground(new java.awt.Color(255, 255, 255));
         jButtonLn.setText("LN");
-        jButtonLn.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonLn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonLn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLnActionPerformed(evt);
@@ -275,7 +275,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonSqrt.setBackground(new java.awt.Color(0, 0, 0));
         jButtonSqrt.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSqrt.setText("sqrt");
-        jButtonSqrt.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonSqrt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonSqrt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSqrtActionPerformed(evt);
@@ -286,7 +286,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonArg.setForeground(new java.awt.Color(255, 255, 255));
         jButtonArg.setText("arg");
         jButtonArg.setToolTipText("");
-        jButtonArg.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonArg.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonArg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonArgActionPerformed(evt);
@@ -297,7 +297,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonPow.setForeground(new java.awt.Color(255, 255, 255));
         jButtonPow.setText("pow");
         jButtonPow.setToolTipText("");
-        jButtonPow.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonPow.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonPow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPowActionPerformed(evt);
@@ -308,7 +308,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonExp.setForeground(new java.awt.Color(255, 255, 255));
         jButtonExp.setText("exp");
         jButtonExp.setToolTipText("");
-        jButtonExp.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonExp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonExp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExpActionPerformed(evt);
@@ -319,7 +319,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonSin.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSin.setText("sin");
         jButtonSin.setToolTipText("");
-        jButtonSin.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonSin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonSin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSinActionPerformed(evt);
@@ -330,7 +330,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonCos.setForeground(new java.awt.Color(255, 255, 255));
         jButtonCos.setText("cos");
         jButtonCos.setToolTipText("");
-        jButtonCos.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonCos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonCos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCosActionPerformed(evt);
@@ -341,7 +341,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonTan.setForeground(new java.awt.Color(255, 255, 255));
         jButtonTan.setText("tan");
         jButtonTan.setToolTipText("");
-        jButtonTan.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonTan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonTan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonTanActionPerformed(evt);
@@ -352,7 +352,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonASin.setForeground(new java.awt.Color(255, 255, 255));
         jButtonASin.setText("asin");
         jButtonASin.setToolTipText("");
-        jButtonASin.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonASin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonASin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonASinActionPerformed(evt);
@@ -363,7 +363,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonACos.setForeground(new java.awt.Color(255, 255, 255));
         jButtonACos.setText("acos");
         jButtonACos.setToolTipText("");
-        jButtonACos.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonACos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonACos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonACosActionPerformed(evt);
@@ -374,7 +374,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonATan.setForeground(new java.awt.Color(255, 255, 255));
         jButtonATan.setText("atan");
         jButtonATan.setToolTipText("");
-        jButtonATan.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonATan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonATan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonATanActionPerformed(evt);
@@ -386,61 +386,61 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jPanelOperationLayout.setHorizontalGroup(
             jPanelOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelOperationLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanelOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelOperationLayout.createSequentialGroup()
                         .addComponent(jButtonComplex, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonInvert, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonMod, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonArg, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonPow, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelOperationLayout.createSequentialGroup()
                         .addComponent(jButtonSqrt, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonPow, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonMod, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonExp, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonLn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonLn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelOperationLayout.createSequentialGroup()
                         .addComponent(jButtonSin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonCos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelOperationLayout.createSequentialGroup()
+                        .addComponent(jButtonCos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonTan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonASin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonACos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonATan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1, 1, 1))
+                        .addComponent(jButtonATan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonArg, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanelOperationLayout.setVerticalGroup(
             jPanelOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOperationLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(jPanelOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonComplex, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonInvert, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSqrt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonPow, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonExp, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonLn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonMod, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
                 .addGroup(jPanelOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSin, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCos, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonTan, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonASin, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonACos, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonATan, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSqrt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonExp, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonLn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSin, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCos, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonComplex, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonInvert, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonMod, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonArg, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonPow, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButtonATan, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonArg, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jListStack.setBackground(new java.awt.Color(230, 230, 230));
@@ -453,7 +453,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonSwap.setBackground(new java.awt.Color(255, 0, 0));
         jButtonSwap.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSwap.setText("SWAP");
-        jButtonSwap.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonSwap.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonSwap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSwapActionPerformed(evt);
@@ -463,7 +463,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonDup.setBackground(new java.awt.Color(255, 0, 0));
         jButtonDup.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDup.setText("DUP");
-        jButtonDup.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonDup.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonDup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDupActionPerformed(evt);
@@ -473,7 +473,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonDrop.setBackground(new java.awt.Color(255, 0, 0));
         jButtonDrop.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDrop.setText("DROP");
-        jButtonDrop.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonDrop.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonDrop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDropActionPerformed(evt);
@@ -483,7 +483,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonOver.setBackground(new java.awt.Color(255, 0, 0));
         jButtonOver.setForeground(new java.awt.Color(255, 255, 255));
         jButtonOver.setText("OVER");
-        jButtonOver.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonOver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonOver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOverActionPerformed(evt);
@@ -493,7 +493,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonClear.setBackground(new java.awt.Color(255, 0, 0));
         jButtonClear.setForeground(new java.awt.Color(255, 255, 255));
         jButtonClear.setText("CLEAR");
-        jButtonClear.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonClearActionPerformed(evt);
@@ -531,8 +531,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
                             .addGroup(jPanelStackOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jButtonDup, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jButtonOver, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jTextArea1.setColumns(20);
@@ -548,7 +547,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jTextArea1.getAccessibleContext().setAccessibleParent(jTextArea1);
 
         jButtonIns.setBackground(new java.awt.Color(255, 0, 0));
-        jButtonIns.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jButtonIns.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         jButtonIns.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIns.setText("INS");
         jButtonIns.addActionListener(new java.awt.event.ActionListener() {
@@ -561,7 +560,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonSaveFormula.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
         jButtonSaveFormula.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSaveFormula.setText("SAVE FORMULA");
-        jButtonSaveFormula.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jButtonSaveFormula.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonSaveFormula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSaveFormulaActionPerformed(evt);
@@ -581,7 +580,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jListFormulas.setBackground(new java.awt.Color(230, 230, 230));
         jListFormulas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         jListFormulas.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jScrollPaneStack1.setViewportView(jListFormulas);
+        jScrollPaneFormulas.setViewportView(jListFormulas);
 
         jButtonExeFormula.setBackground(new java.awt.Color(102, 0, 153));
         jButtonExeFormula.setFont(new java.awt.Font("Lucida Grande", 1, 8)); // NOI18N
@@ -597,86 +596,72 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jPanelCalculator.setLayout(jPanelCalculatorLayout);
         jPanelCalculatorLayout.setHorizontalGroup(
             jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCalculatorLayout.createSequentialGroup()
-                .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelCalculatorLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonSaveFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCalculatorLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jScrollPaneTextArea)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonIns, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAddFormula1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonExeFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(123, 123, 123))
             .addGroup(jPanelCalculatorLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelVariable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelCalculatorLayout.createSequentialGroup()
                         .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelCalculatorLayout.createSequentialGroup()
+                                .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanelVariable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPaneTextArea))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelCalculatorLayout.createSequentialGroup()
-                                        .addGap(64, 64, 64)
-                                        .addComponent(jPanelNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(102, 102, 102))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCalculatorLayout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jPanelOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                .addComponent(jScrollPaneStack, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelCalculatorLayout.createSequentialGroup()
-                                .addGap(117, 117, 117)
-                                .addComponent(jPanelStackOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 12, 12)
-                        .addComponent(jScrollPaneStack1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                                    .addComponent(jButtonIns, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonExeFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonAddFormula1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanelCalculatorLayout.createSequentialGroup()
+                                    .addComponent(jPanelStackOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(37, 37, 37)
+                                    .addComponent(jButtonSaveFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelCalculatorLayout.createSequentialGroup()
+                                    .addComponent(jPanelNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jPanelOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanelCalculatorLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPaneStack, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(jScrollPaneFormulas, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanelCalculatorLayout.setVerticalGroup(
             jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCalculatorLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelCalculatorLayout.createSequentialGroup()
-                        .addComponent(jButtonIns, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonAddFormula1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPaneTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonExeFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanelVariable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelStackOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSaveFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCalculatorLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelCalculatorLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jPanelOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanelNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPaneStack1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneStack))
-                .addContainerGap())
+                        .addComponent(jButtonIns, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jButtonExeFormula)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonAddFormula1))
+                    .addGroup(jPanelCalculatorLayout.createSequentialGroup()
+                        .addComponent(jScrollPaneTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelVariable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonSaveFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelStackOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPaneStack, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneFormulas))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelCalculator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -685,7 +670,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelCalculator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 66, Short.MAX_VALUE))
+                .addGap(0, 69, Short.MAX_VALUE))
         );
 
         pack();
@@ -1105,16 +1090,13 @@ public class CalculatorInterface extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JList<String> jListFormulas;
     private javax.swing.JList<String> jListStack;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanelCalculator;
     private javax.swing.JPanel jPanelNumber;
     private javax.swing.JPanel jPanelOperation;
     private javax.swing.JPanel jPanelStackOperation;
     private javax.swing.JPanel jPanelVariable;
+    private javax.swing.JScrollPane jScrollPaneFormulas;
     private javax.swing.JScrollPane jScrollPaneStack;
-    private javax.swing.JScrollPane jScrollPaneStack1;
     private javax.swing.JScrollPane jScrollPaneTextArea;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
