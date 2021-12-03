@@ -33,7 +33,7 @@ public class Formulas {
      * @throws IOException
      */
     public void save(String path) throws FileNotFoundException, IOException {
-        try ( ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path))) {
+        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path))) {
             os.writeObject(formulaMap);
 
         }
@@ -109,7 +109,7 @@ public class Formulas {
      */
     public TreeMap<String, String> reaload(String path) throws FileNotFoundException, IOException, ClassNotFoundException {
 
-        try ( ObjectInputStream is = new ObjectInputStream(new FileInputStream(path))) {
+        try (ObjectInputStream is = new ObjectInputStream(new FileInputStream(path))) {
             formulaMap = (TreeMap<String, String>) is.readObject();
 
         }
@@ -199,10 +199,9 @@ public class Formulas {
         formulaMap.forEach((name, formule) -> sb.append(name).append("\t").append(formule).append("\n"));
         return sb.toString();
     }
-    
-    
-    
- 
-    
+
+    boolean contains(String f) {
+        return formulaMap.get(f) != null;
+    }
 
 }

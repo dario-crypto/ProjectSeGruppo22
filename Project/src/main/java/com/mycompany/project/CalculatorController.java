@@ -4,6 +4,11 @@
  */
 package com.mycompany.project;
 
+import java.util.ArrayList;
+import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author Dario
@@ -11,12 +16,26 @@ package com.mycompany.project;
 public class CalculatorController {
 
     private Calculator calculator;
-    private String lastOperation;
     private VariablesSpace vs;
+    private Formulas formulas;
+    private ArrayList<String> availableOp;
 
     public CalculatorController(StackLogic<ComplexNumber> stack) {
         calculator = new Calculator(stack);
         vs = new VariablesSpace();
+        formulas = new Formulas();
+        availableOp = new ArrayList<>();
+        availableOp.add("+");
+        availableOp.add("-");
+        availableOp.add(":");
+        availableOp.add("x");
+        availableOp.add("sqrt");
+        availableOp.add("+-");
+        availableOp.add("swap");
+        availableOp.add("dup");
+        availableOp.add("over");
+        availableOp.add("drop");
+        availableOp.add("clear");
 
     }
 
@@ -24,7 +43,7 @@ public class CalculatorController {
         ComplexNumber cn = null;
         try {
             cn = ComplexNumber.parseComplex(complex);
-        } catch (NumberFormatException ex) {
+        } catch (Exception ex) {
             return false;
         }
         if (cn != null) {
@@ -127,13 +146,13 @@ public class CalculatorController {
         }
         return false;
     }
-    
-     public void squareRoot() throws StackEmptyException {
-          calculator.squareRoot();
+
+    public void squareRoot() throws StackEmptyException {
+        calculator.squareRoot();
     }
-     
+
     public void invertSign() throws StackEmptyException {
-          calculator.invertSign();
+        calculator.invertSign();
     }
 
     public void clear() throws StackEmptyException {
@@ -183,9 +202,92 @@ public class CalculatorController {
 
     public void executeFormula(String formula) throws StackEmptyException, OperationDoesNotExist {
         String[] formulaSplit = formula.split("\\s+");
+
         for (String f : formulaSplit) {
-            execOperation(f);
+
+            if (formulas.contains(f)) {
+                String form = formulas.get(f);
+                executeFormula(form);
+
+            } else {
+
+                execOperation(f);
+
+            }
         }
     }
+
+    public boolean isOperationVariable(String op) {
+        Pattern pattern = Pattern.compile("^[< \\+ \\- >]{1}[a-z]{1}$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(op);
+        return matcher.find();
+    }
+    
+    /*
+    
+   
+     public boolean checkFormula(String formula) {
+        Pattern pattern = Pattern.compile("^[< \\+ \\- >]{1}[a-z]{1}$", Pattern.CASE_INSENSITIVE);
+        String[] formulaSplit = formula.split("\\s+");
+
+        for (String op : formulaSplit) {
+
+            if (availableOp.contains(op)) {
+                continue;
+            } else {
+                Matcher matcher = pattern.matcher(op);
+                if (!matcher.find()) {
+                    return false;
+                }
+
+            }
+
+        }
+
+        return true;
+    }
+*/
+
+    public boolean isFormula(String formula) {
+        String[] formulaSplit = formula.split("\\s+");
+
+        for (String op : formulaSplit) {
+            if (!availableOp.contains(op) && !isOperationVariable(op)) {
+                return false;
+            }
+
+        }
+        return true;
+    }
+    
+    public boolean addFormula(String formula) throws FormulaAlreadyExsist, FormatFormulaException {
+        String[] formulaSplit = formula.split("=");
+        if (formulaSplit.length == 2) {
+
+            String name = formulaSplit[0].replaceAll("\\s+", "");
+            String form = formulaSplit[1].trim();
+            if (isFormula(form) & !isFormula(name)) { 
+
+                if (formulas.add(name, form)) {
+                    availableOp.add(name);
+                    return true;
+                }
+            } else {
+                throw new FormatFormulaException("Not Valid Formula!");
+            }
+        } else {
+            throw new FormatFormulaException("Not Valid Formula!");
+
+        }
+        return false;
+    }
+
+    public TreeMap<String, String> getMapFormulas() {
+        return formulas.getMap();
+    }
+    
+    
+    
+    
 
 }

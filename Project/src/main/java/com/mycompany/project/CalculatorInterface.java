@@ -19,6 +19,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     CalculatorController controller;
     DefaultListModel dlm = new DefaultListModel();
+    DefaultListModel dlmFormulas = new DefaultListModel();
 
     /**
      * Creates new form calculatorInterface
@@ -79,7 +80,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jButtonSaveFormula = new javax.swing.JButton();
         jButtonAddFormula1 = new javax.swing.JButton();
         jScrollPaneFormulas = new javax.swing.JScrollPane();
-        jListFormulas = new javax.swing.JList<>();
+        jListFormulas = new javax.swing.JList<>(dlmFormulas);
         jButtonExeFormula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -936,9 +937,9 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
         // TODO add your handling code here:
-        switch (evt.getKeyCode()) {
-            case (KeyEvent.VK_ENTER):
-                insert();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            insert();
+            clearTextArea();
         }
         viewStack();
 
@@ -948,8 +949,36 @@ public class CalculatorInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSaveFormulaActionPerformed
 
+    public void viewFormulas() {
+        dlmFormulas.clear();
+
+        controller.getMapFormulas().forEach((name, formula) -> {
+
+            String containerFormula = name + " = " + formula;
+            dlmFormulas.addElement(containerFormula);
+        });
+
+    }
+
+
     private void jButtonAddFormula1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddFormula1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            String formula = jTextArea1.getText();
+            if (!controller.addFormula(formula)) {
+                popUp("Name Formula Already Exists!", "info");
+            }
+        } catch (FormulaAlreadyExsist ex) {
+
+            popUp(ex.getMessage(), "warning");
+        } catch (FormatFormulaException ex) {
+            popUp(ex.getMessage(), "error");
+        }
+
+        clearTextArea();
+        viewFormulas();
+
+
     }//GEN-LAST:event_jButtonAddFormula1ActionPerformed
 
     private void jButtonExeFormulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExeFormulaActionPerformed
@@ -1054,6 +1083,33 @@ public class CalculatorInterface extends javax.swing.JFrame {
                     JOptionPane.WARNING_MESSAGE);
         }
     }
+
+    private void popUp(String message, String type) {
+
+        switch (type) {
+            case "info":
+                JOptionPane.showMessageDialog(this,
+                        message,
+                        "Info",
+                        JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case "warning":
+                JOptionPane.showMessageDialog(this,
+                        message,
+                        "Warning",
+                        JOptionPane.WARNING_MESSAGE);
+                break;
+            case "error":
+                JOptionPane.showMessageDialog(this,
+                        message,
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                break;
+
+        }
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonACos;
