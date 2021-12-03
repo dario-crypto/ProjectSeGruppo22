@@ -474,5 +474,9 @@ public class ComplexNumber {
         imaginary = -imaginary;
     }
 
-  
+    @Override
+    public Object clone() {
+        return new ComplexNumber(real, imaginary);
+    }
+
 }

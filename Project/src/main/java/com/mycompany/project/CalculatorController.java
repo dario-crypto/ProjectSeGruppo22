@@ -75,16 +75,20 @@ public class CalculatorController {
         }
         switch (op) {
             case "+":
-                return sum();
+                sum();
+                return true;
 
             case "-":
-                return sub();
+                sub();
+                return true;
 
             case ":":
-                return divide();
+                divide();
+                return true;
 
             case "x":
-                return prod();
+                prod();
+                return true;
 
             case "sqrt":
                 calculator.squareRoot();
@@ -115,36 +119,23 @@ public class CalculatorController {
         }
     }
 
-    public boolean sum() throws StackEmptyException {
-        if (calculator.getStack().getSize() > 1) {
-            calculator.sum();
-            return true;
-        }
-        return false;
+    public void sum() throws StackEmptyException {
+        calculator.sum();
     }
 
-    public boolean sub() throws StackEmptyException {
-        if (calculator.getStack().getSize() > 1) {
-            calculator.sub();
-            return true;
-        }
-        return false;
+    public void sub() throws StackEmptyException {
+        calculator.sub();
+
     }
 
-    public boolean prod() throws StackEmptyException {
-        if (calculator.getStack().getSize() > 1) {
-            calculator.prod();
-            return true;
-        }
-        return false;
+    public void prod() throws StackEmptyException {
+        calculator.prod();
     }
 
-    public boolean divide() throws StackEmptyException {
-        if (calculator.getStack().getSize() > 1) {
-            calculator.divide();
-            return true;
-        }
-        return false;
+    public void divide() throws StackEmptyException, ArithmeticException {
+
+        calculator.divide();
+
     }
 
     public void squareRoot() throws StackEmptyException {
@@ -167,22 +158,18 @@ public class CalculatorController {
         calculator.dup();
     }
 
-    public boolean swap() throws StackEmptyException {
-        if (calculator.getStack().getSize() > 1) {
-            calculator.swap();
-            return true;
-        }
-        return false;
+    public void swap() throws StackEmptyException {
+        calculator.swap();
 
     }
 
-    public boolean over() throws StackEmptyException {
-        if (calculator.getStack().getSize() > 1) {
+    public void over() throws StackEmptyException {
+        
             calculator.over();
-            return true;
+
         }
-        return false;
-    }
+
+    
 
     public void saveToStack(String name) {
         calculator.saveToStack(name, vs);
@@ -222,31 +209,6 @@ public class CalculatorController {
         Matcher matcher = pattern.matcher(op);
         return matcher.find();
     }
-    
-    /*
-    
-   
-     public boolean checkFormula(String formula) {
-        Pattern pattern = Pattern.compile("^[< \\+ \\- >]{1}[a-z]{1}$", Pattern.CASE_INSENSITIVE);
-        String[] formulaSplit = formula.split("\\s+");
-
-        for (String op : formulaSplit) {
-
-            if (availableOp.contains(op)) {
-                continue;
-            } else {
-                Matcher matcher = pattern.matcher(op);
-                if (!matcher.find()) {
-                    return false;
-                }
-
-            }
-
-        }
-
-        return true;
-    }
-*/
 
     public boolean isFormula(String formula) {
         String[] formulaSplit = formula.split("\\s+");
@@ -259,14 +221,14 @@ public class CalculatorController {
         }
         return true;
     }
-    
+
     public boolean addFormula(String formula) throws FormulaAlreadyExsist, FormatFormulaException {
         String[] formulaSplit = formula.split("=");
         if (formulaSplit.length == 2) {
 
             String name = formulaSplit[0].replaceAll("\\s+", "");
             String form = formulaSplit[1].trim();
-            if (isFormula(form) & !isFormula(name)) { 
+            if (isFormula(form) & !isFormula(name)) {
 
                 if (formulas.add(name, form)) {
                     availableOp.add(name);
@@ -285,9 +247,5 @@ public class CalculatorController {
     public TreeMap<String, String> getMapFormulas() {
         return formulas.getMap();
     }
-    
-    
-    
-    
 
 }

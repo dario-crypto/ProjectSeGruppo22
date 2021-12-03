@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 public class CalculatorInterface extends javax.swing.JFrame {
 
     CalculatorController controller;
+    CommandController commandController;
     DefaultListModel dlm = new DefaultListModel();
     DefaultListModel dlmFormulas = new DefaultListModel();
 
@@ -27,6 +28,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
     public CalculatorInterface() {
         initComponents();
         controller = new CalculatorController(new Stack<>());
+        commandController = new CommandController();
 
     }
 
@@ -690,14 +692,15 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonSqrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSqrtActionPerformed
         try {
-            // TODO add your handling code here:
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
             controller.squareRoot();
+            commandController.popCommand();
+
         } catch (StackEmptyException ex) {
-            String message = "You need at least one item in the stack!";
-            JOptionPane.showMessageDialog(this,
-                    message,
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
+
+            popUp("You need at least one item in the stack!", "warning");
+            commandController.undo();
         }
         viewStack();
         clearTextArea();
@@ -714,13 +717,14 @@ public class CalculatorInterface extends javax.swing.JFrame {
     private void jButtonInvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInvertActionPerformed
         // TODO add your handling code here:
         try {
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
             controller.invertSign();
+            commandController.popCommand();
         } catch (StackEmptyException ex) {
-            String message = "You need at least one item in the stack!";
-            JOptionPane.showMessageDialog(this,
-                    message,
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
+            popUp("You need at least one item in the stack!", "warning");
+            commandController.undo();
+
         }
         viewStack();
         clearTextArea();
@@ -733,14 +737,14 @@ public class CalculatorInterface extends javax.swing.JFrame {
     private void jButtonSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubActionPerformed
         // TODO add your handling code here:
         try {
-            if (!controller.sub()) {
-                String message = "You need at least 2 items in the stack!";
-                JOptionPane.showMessageDialog(this,
-                        message,
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
+            controller.sub();
+            commandController.popCommand();
+
         } catch (StackEmptyException ex) {
+            popUp("You need at least 2 items in the stack!", "warning");
+            commandController.undo();
         }
         viewStack();
         clearTextArea();
@@ -748,15 +752,15 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         try {
-            if (!controller.sum()) {
-                String message = "You need at least 2 items in the stack!";
-                JOptionPane.showMessageDialog(this,
-                        message,
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (StackEmptyException ex) {
 
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
+            controller.sum();
+            commandController.popCommand();
+
+        } catch (StackEmptyException ex) {
+            popUp("You need at least 2 items in the stack!", "warning");
+            commandController.undo();
         }
         viewStack();
         clearTextArea();
@@ -765,15 +769,17 @@ public class CalculatorInterface extends javax.swing.JFrame {
     private void jButtonDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDivisionActionPerformed
         // TODO add your handling code here:
         try {
-            if (!controller.divide()) {
-                String message = "You need at least 2 items in the stack!";
-                JOptionPane.showMessageDialog(this,
-                        message,
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (StackEmptyException ex) {
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
+            controller.divide();
+            commandController.popCommand();
 
+        } catch (StackEmptyException ex) {
+            popUp("You need at least 2 items in the stack!", "warning");
+            commandController.undo();
+        } catch (ArithmeticException ex) {
+            popUp(ex.getMessage(), "error");
+            commandController.undo();
         }
         viewStack();
         clearTextArea();
@@ -820,11 +826,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         try {
             controller.drop();
         } catch (StackEmptyException ex) {
-            JOptionPane.showMessageDialog(this,
-                    ex.getMessage(),
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE
-            );
+            popUp(ex.getMessage(), "warning");
         }
         viewStack();
         clearTextArea();
@@ -834,11 +836,8 @@ public class CalculatorInterface extends javax.swing.JFrame {
         try {
             controller.dup();
         } catch (StackEmptyException ex) {
-            JOptionPane.showMessageDialog(this,
-                    ex.getMessage(),
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE
-            );
+            popUp(ex.getMessage(), "warning");
+
         }
         viewStack();
         clearTextArea();
@@ -846,13 +845,14 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonSwapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSwapActionPerformed
         try {
-            if (!controller.swap()) {
 
-                JOptionPane.showMessageDialog(this, "You need at least 2 items!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
+            controller.swap();
+            commandController.popCommand();
         } catch (StackEmptyException ex) {
-
+            commandController.undo();
+            popUp("You need at least 2 items!", "warning");
         }
         viewStack();
         clearTextArea();
@@ -860,15 +860,14 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonOverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverActionPerformed
         try {
-            if (!controller.over()) {
-                String message = "You need at least 2 items!";
-                JOptionPane.showMessageDialog(this,
-                        message,
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (StackEmptyException ex) {
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
+            controller.over();
+            commandController.popCommand();
 
+        } catch (StackEmptyException ex) {
+            commandController.undo();
+            popUp("You need at least 2 items!", "warning");
         }
         viewStack();
         clearTextArea();
@@ -883,13 +882,15 @@ public class CalculatorInterface extends javax.swing.JFrame {
     private void jButtonSaveToVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveToVariableActionPerformed
         String var = (String) jComboBox1.getSelectedItem();
         try {
+
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
             controller.saveToVariable(var);
+            commandController.popCommand();
         } catch (StackEmptyException ex) {
-            JOptionPane.showMessageDialog(this,
-                    ex.getMessage(),
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE
-            );
+            commandController.undo();
+            popUp(ex.getMessage(), "warning");
+
         }
         viewStack();
     }//GEN-LAST:event_jButtonSaveToVariableActionPerformed
@@ -910,13 +911,15 @@ public class CalculatorInterface extends javax.swing.JFrame {
     private void jButtonAddToVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddToVariableActionPerformed
         String var = (String) jComboBox1.getSelectedItem();
         try {
-            controller.addToVariable(var);
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
+            controller.saveToVariable(var);
+            commandController.popCommand();
+
         } catch (StackEmptyException ex) {
-            JOptionPane.showMessageDialog(this,
-                    ex.getMessage(),
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE
-            );
+            commandController.undo();
+            popUp(ex.getMessage(), "warning");
+
         }
         viewStack();
     }//GEN-LAST:event_jButtonAddToVariableActionPerformed
@@ -924,13 +927,13 @@ public class CalculatorInterface extends javax.swing.JFrame {
     private void jButtonSubToVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubToVariableActionPerformed
         String var = (String) jComboBox1.getSelectedItem();
         try {
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
             controller.subToVariable(var);
+            commandController.popCommand();
         } catch (StackEmptyException ex) {
-            JOptionPane.showMessageDialog(this,
-                    ex.getMessage(),
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE
-            );
+            commandController.undo();
+            popUp(ex.getMessage(), "warning");
         }
         viewStack();
     }//GEN-LAST:event_jButtonSubToVariableActionPerformed
@@ -985,16 +988,17 @@ public class CalculatorInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             String formula = jTextArea1.getText();
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
             controller.executeFormula(formula);
+            commandController.popCommand();
         } catch (StackEmptyException ex) {
-            Logger.getLogger(CalculatorInterface.class
-                    .getName()).log(Level.SEVERE, null, ex);
+
+            popUp("Insufficient number of elements!", "warning");
+            commandController.undo();
         } catch (OperationDoesNotExist ex) {
-            JOptionPane.showMessageDialog(this,
-                    ex.getMessage(),
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE
-            );
+            popUp(ex.getMessage(), "error");
+
         }
         viewStack();
         clearTextArea();
@@ -1002,14 +1006,13 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonMultiplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiplicationActionPerformed
         try {
-            if (!controller.prod()) {
-                String message = "You need at least 2 items in the stack!";
-                JOptionPane.showMessageDialog(this,
-                        message,
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
+            controller.prod();
+            commandController.popCommand();
         } catch (StackEmptyException ex) {
+            popUp("You need at least 2 items in the stack!", "warning");
+            commandController.undo();
 
         }
         viewStack();
