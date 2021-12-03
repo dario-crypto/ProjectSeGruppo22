@@ -164,12 +164,10 @@ public class CalculatorController {
     }
 
     public void over() throws StackEmptyException {
-        
-            calculator.over();
 
-        }
+        calculator.over();
 
-    
+    }
 
     public void saveToStack(String name) {
         calculator.saveToStack(name, vs);
@@ -187,6 +185,13 @@ public class CalculatorController {
         calculator.subToVariable(name, vs);
     }
 
+    /**
+     * This method executes the formula which is in the ArrayList
+     *
+     * @param formula
+     * @throws StackEmptyException
+     * @throws OperationDoesNotExist
+     */
     public void executeFormula(String formula) throws StackEmptyException, OperationDoesNotExist {
         String[] formulaSplit = formula.split("\\s+");
 
@@ -204,12 +209,24 @@ public class CalculatorController {
         }
     }
 
+    /**
+     * This method verifies the validity of the operation you want to perform
+     *
+     * @param op
+     * @return boolean
+     */
     public boolean isOperationVariable(String op) {
         Pattern pattern = Pattern.compile("^[< \\+ \\- >]{1}[a-z]{1}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(op);
         return matcher.find();
     }
 
+    /**
+     * This method verifies the validity of the formula you want to apply
+     *
+     * @param formula
+     * @return boolean
+     */
     public boolean isFormula(String formula) {
         String[] formulaSplit = formula.split("\\s+");
 
@@ -222,28 +239,39 @@ public class CalculatorController {
         return true;
     }
 
+    /**
+     * This method adds the formula in ArrayList
+     *
+     * @param formula
+     * @return boolean
+     * @throws FormulaAlreadyExsist
+     * @throws FormatFormulaException
+     */
     public boolean addFormula(String formula) throws FormulaAlreadyExsist, FormatFormulaException {
         String[] formulaSplit = formula.split("=");
-        if (formulaSplit.length == 2) {
+        String name = formulaSplit[0].replaceAll("\\s+", "");
+        String form = formulaSplit[1].trim();
 
-            String name = formulaSplit[0].replaceAll("\\s+", "");
-            String form = formulaSplit[1].trim();
-            if (isFormula(form) & !isFormula(name)) {
+        if (isFormula(name)) {
+            return false;
+        }
+        if (formulaSplit.length == 2 & isFormula(form)) {
 
-                if (formulas.add(name, form)) {
-                    availableOp.add(name);
-                    return true;
-                }
-            } else {
-                throw new FormatFormulaException("Not Valid Formula!");
+            if (formulas.add(name, form)) {
+                availableOp.add(name);
+                return true;
             }
         } else {
             throw new FormatFormulaException("Not Valid Formula!");
-
         }
         return false;
     }
 
+    /**
+     * Returns a map representing formulas
+     *
+     * @return map representing formulas
+     */
     public TreeMap<String, String> getMapFormulas() {
         return formulas.getMap();
     }
