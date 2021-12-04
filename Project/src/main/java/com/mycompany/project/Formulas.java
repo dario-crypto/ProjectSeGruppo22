@@ -158,9 +158,7 @@ public class Formulas {
             }
 
         }
-
     }
-
     /**
      * Delete a formule by name
      *
