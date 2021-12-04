@@ -11,14 +11,18 @@ import java.util.Objects;
  *
  * @author dilet
  */
-public class VariablesSpace  implements VariablesSpaceLogic{
+public class VariablesSpace {
 
     private HashMap<String, ComplexNumber> variablesMap;
-    private HashMap<String, ComplexNumber> save;
 
     public VariablesSpace() {
         variablesMap = new HashMap<>();
         initSpace();
+
+    }
+
+    void setVariablesMap(HashMap<String, ComplexNumber> variablesMap) {
+        this.variablesMap = variablesMap;
 
     }
 
@@ -42,22 +46,10 @@ public class VariablesSpace  implements VariablesSpaceLogic{
         }
     }
 
-
-    public ComplexNumber get(String name)  {
+    public ComplexNumber get(String name) {
 
         return variablesMap.get(name);
 
-    }
-
-    public void save() {
-
-        save = (HashMap<String, ComplexNumber>) variablesMap.clone();
-    }
-
-    public void restore() {
-        if (save != null) {
-            variablesMap = save;
-        }
     }
 
     @Override
@@ -80,17 +72,17 @@ public class VariablesSpace  implements VariablesSpaceLogic{
         final VariablesSpace other = (VariablesSpace) obj;
         return Objects.equals(this.variablesMap, other.variablesMap);
     }
-    
-    
-    
-    @Override
-    public String toString(){
-        StringBuilder sb = new StringBuilder();
-        variablesMap.forEach((name,complex)->sb.append(name).append("\t").append(complex).append("\n"));
-        return sb.toString();
-        
+
+    public HashMap<String, ComplexNumber> getVariablesMap() {
+        return variablesMap;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        variablesMap.forEach((name, complex) -> sb.append(name).append("\t").append(complex).append("\n"));
+        return sb.toString();
+
+    }
 
 }

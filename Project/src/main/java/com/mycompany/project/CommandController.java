@@ -5,10 +5,8 @@
  */
 package com.mycompany.project;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
+ * This class rappresents the Invoker
  *
  * @author user
  */

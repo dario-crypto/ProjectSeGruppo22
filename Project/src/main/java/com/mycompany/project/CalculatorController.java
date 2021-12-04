@@ -4,7 +4,6 @@
  */
 package com.mycompany.project;
 
-import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,24 +17,11 @@ public class CalculatorController {
     private Calculator calculator;
     private VariablesSpace vs;
     private Formulas formulas;
-    private ArrayList<String> availableOp;
 
     public CalculatorController(StackLogic<ComplexNumber> stack) {
         calculator = new Calculator(stack);
         vs = new VariablesSpace();
         formulas = new Formulas();
-        availableOp = new ArrayList<>();
-        availableOp.add("+");
-        availableOp.add("-");
-        availableOp.add(":");
-        availableOp.add("x");
-        availableOp.add("sqrt");
-        availableOp.add("+-");
-        availableOp.add("swap");
-        availableOp.add("dup");
-        availableOp.add("over");
-        availableOp.add("drop");
-        availableOp.add("clear");
 
     }
 
@@ -59,64 +45,17 @@ public class CalculatorController {
         return this.calculator;
     }
 
-    /**
-     * This method takes as input a string that indicates which operation the
-     * calculator needs to compute. It returns the result of the correct
-     * operation.
-     *
-     * @param op
-     * @return boolean
-     * @throws StackEmptyException
-     * @throws OperationDoesNotExist
-     */
-    public boolean execOperation(String op) throws StackEmptyException, OperationDoesNotExist {
-        if (op == null) {
-            throw new OperationDoesNotExist("Invalid Operation!");
+    public void execOperation(String op) throws StackEmptyException, OperationDoesNotExist {
+
+        if (FactoryOperator.contains(op)) {
+            FactoryOperator.getOperation(op).apply(calculator);
+        } else if (isOperationVariable(op)) {
+            processVariableOp(op);
+
+        } else {
+            throw new OperationDoesNotExist("The operation: " + op + "does not exist!");
         }
-        switch (op) {
-            case "+":
-                sum();
-                return true;
 
-            case "-":
-                sub();
-                return true;
-
-            case ":":
-                divide();
-                return true;
-
-            case "x":
-                prod();
-                return true;
-
-            case "sqrt":
-                calculator.squareRoot();
-                return true;
-
-            case "+-":
-                calculator.invertSign();
-                return true;
-
-            case "swap":
-                calculator.swap();
-                return true;
-
-            case "dup":
-                calculator.dup();
-                return true;
-
-            case "over":
-                calculator.over();
-                return true;
-
-            case "drop":
-                calculator.drop();
-                return true;
-
-            default:
-                throw new OperationDoesNotExist("Operation: " + op + " doesn't exist!");
-        }
     }
 
     public void sum() throws StackEmptyException {
@@ -164,12 +103,9 @@ public class CalculatorController {
     }
 
     public void over() throws StackEmptyException {
-        
-            calculator.over();
+        calculator.over();
 
-        }
-
-    
+    }
 
     public void saveToStack(String name) {
         calculator.saveToStack(name, vs);
@@ -192,6 +128,7 @@ public class CalculatorController {
 
         for (String f : formulaSplit) {
 
+            //caso in cui è presente una nome di una formula nella formula 
             if (formulas.contains(f)) {
                 String form = formulas.get(f);
                 executeFormula(form);
@@ -204,48 +141,79 @@ public class CalculatorController {
         }
     }
 
-    public boolean isOperationVariable(String op) {
+    private boolean isOperationVariable(String op) {
         Pattern pattern = Pattern.compile("^[< \\+ \\- >]{1}[a-z]{1}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(op);
         return matcher.find();
     }
 
-    public boolean isFormula(String formula) {
+    private boolean isFormula(String formula) {
         String[] formulaSplit = formula.split("\\s+");
 
         for (String op : formulaSplit) {
-            if (!availableOp.contains(op) && !isOperationVariable(op)) {
+            if (!FactoryOperator.contains(op) && !isOperationVariable(op) && !formulas.contains(op)) {
                 return false;
+
             }
 
         }
         return true;
     }
 
-    public boolean addFormula(String formula) throws FormulaAlreadyExsist, FormatFormulaException {
+    private boolean isName(String name) {
+        return !FactoryOperator.contains(name) && !isOperationVariable(name);
+    }
+
+    //formatta correttamente una formula
+    private String formulaBuilder(String formula) {
+        String[] formulaSplit = formula.split("\\s+");
+        StringBuilder sb = new StringBuilder();
+        for (String f : formulaSplit) {
+            sb.append(f).append(" ");
+        }
+        return sb.toString().trim();
+
+    }
+
+    public void addFormula(String formula) throws FormulaAlreadyExsist, FormatFormulaException, NameFormulaAlreadyExsist {
         String[] formulaSplit = formula.split("=");
         if (formulaSplit.length == 2) {
 
-            String name = formulaSplit[0].replaceAll("\\s+", "");
+            String name = formulaSplit[0].trim();
             String form = formulaSplit[1].trim();
-            if (isFormula(form) & !isFormula(name)) {
+            if (isFormula(form) && isName(name)) {
+                form = formulaBuilder(form);
+                formulas.add(name, form);
 
-                if (formulas.add(name, form)) {
-                    availableOp.add(name);
-                    return true;
-                }
-            } else {
-                throw new FormatFormulaException("Not Valid Formula!");
+                return;
             }
-        } else {
-            throw new FormatFormulaException("Not Valid Formula!");
-
         }
-        return false;
+        throw new FormatFormulaException("Not Valid Formula!");
+
     }
 
     public TreeMap<String, String> getMapFormulas() {
         return formulas.getMap();
+    }
+
+    private void processVariableOp(String op) throws StackEmptyException {
+
+        String[] opSplit = op.split("");
+        String name = opSplit[1];
+        if (("<" + name).equals(op)) {
+            calculator.saveToStack(name, vs);
+        } else if ((">" + name).equals(op)) {
+            calculator.saveToVariable(name, vs);
+        } else if (("+" + name).equals(op)) {
+            calculator.addToVariable(name, vs);
+        } else if (("-" + name).equals(op)) {
+            calculator.subToVariable(name, vs);
+        }
+    }
+
+    public boolean removeFormula(String formula) {
+        String name = formula.split("=")[0].trim();
+        return formulas.delete(name);
     }
 
 }

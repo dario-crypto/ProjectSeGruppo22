@@ -143,16 +143,20 @@ public class Formulas {
      * @return false if the operation is unsuccessful, otherwise it returns true
      * @throws FormulaAlreadyExsist if formula is already present
      */
-    public boolean add(String name, String formule) throws FormulaAlreadyExsist {
-
-        if (!formulaMap.containsKey(name)) {
-
-            if (!checkFormule(formule)) {
-                throw new FormulaAlreadyExsist("Formule: " + formule + " already exsist!");
-            }
-            return formulaMap.put(name, formule) == null;
+    public void add(String name, String formule) throws FormulaAlreadyExsist, NameFormulaAlreadyExsist {
+      
+        if (!checkFormule(formule)) {
+            throw new FormulaAlreadyExsist("Formula: " + formule + " already exsist!");
         } else {
-            return false;
+
+            //modifica formula
+            if (formulaMap.containsKey(name)) {
+                throw new NameFormulaAlreadyExsist("Name: " + name + " already exist!",name,formule);
+            } else {
+
+                formulaMap.put(name, formule);
+            }
+
         }
 
     }

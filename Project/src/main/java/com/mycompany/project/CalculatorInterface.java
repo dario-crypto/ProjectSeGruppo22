@@ -7,7 +7,6 @@ package com.mycompany.project;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -84,6 +83,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jScrollPaneFormulas = new javax.swing.JScrollPane();
         jListFormulas = new javax.swing.JList<>(dlmFormulas);
         jButtonExeFormula = new javax.swing.JButton();
+        removeFormula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -595,6 +595,17 @@ public class CalculatorInterface extends javax.swing.JFrame {
             }
         });
 
+        removeFormula.setBackground(new java.awt.Color(102, 0, 153));
+        removeFormula.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
+        removeFormula.setForeground(new java.awt.Color(255, 255, 255));
+        removeFormula.setText("REMOVE FORMULA");
+        removeFormula.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        removeFormula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeFormulaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelCalculatorLayout = new javax.swing.GroupLayout(jPanelCalculator);
         jPanelCalculator.setLayout(jPanelCalculatorLayout);
         jPanelCalculatorLayout.setHorizontalGroup(
@@ -613,15 +624,18 @@ public class CalculatorInterface extends javax.swing.JFrame {
                                     .addComponent(jButtonIns, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButtonExeFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButtonAddFormula1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanelCalculatorLayout.createSequentialGroup()
-                                    .addComponent(jPanelStackOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(37, 37, 37)
-                                    .addComponent(jButtonSaveFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanelCalculatorLayout.createSequentialGroup()
-                                    .addComponent(jPanelNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jPanelOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanelCalculatorLayout.createSequentialGroup()
+                                .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanelCalculatorLayout.createSequentialGroup()
+                                        .addComponent(jPanelStackOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(37, 37, 37)
+                                        .addComponent(jButtonSaveFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelCalculatorLayout.createSequentialGroup()
+                                        .addComponent(jPanelNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanelOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(removeFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanelCalculatorLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -651,7 +665,9 @@ public class CalculatorInterface extends javax.swing.JFrame {
                     .addComponent(jPanelOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonSaveFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonSaveFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(removeFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanelStackOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -965,19 +981,30 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
 
     private void jButtonAddFormula1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddFormula1ActionPerformed
+        String formula = jTextArea1.getText();
+
         try {
             // TODO add your handling code here:
-            String formula = jTextArea1.getText();
-            if (!controller.addFormula(formula)) {
-                popUp("Name Formula Already Exists!", "info");
-            }
-        } catch (FormulaAlreadyExsist ex) {
 
+            controller.addFormula(formula);
+
+        } catch (FormulaAlreadyExsist ex) {
             popUp(ex.getMessage(), "warning");
         } catch (FormatFormulaException ex) {
             popUp(ex.getMessage(), "error");
-        }
+        } catch (NameFormulaAlreadyExsist ex) {
 
+            int n = JOptionPane.showConfirmDialog(
+                    this,
+                    ex.getMessage() + "\n Are you sure you want to change the formula?",
+                    "warning",
+                    JOptionPane.YES_NO_OPTION);
+            if (n == 0) {
+
+                controller.getMapFormulas().put(ex.getName(), ex.getFormula());
+
+            }
+        }
         clearTextArea();
         viewFormulas();
 
@@ -1006,6 +1033,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonMultiplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiplicationActionPerformed
         try {
+
             CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
             commandController.executeCommand(copy);
             controller.prod();
@@ -1018,6 +1046,16 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonMultiplicationActionPerformed
+
+    private void removeFormulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeFormulaActionPerformed
+        String formula = jListFormulas.getSelectedValue();
+        if (formula != null) {
+            controller.removeFormula(formula);
+        } else {
+            popUp("Select formula", "info");
+        }
+        viewFormulas();
+    }//GEN-LAST:event_removeFormulaActionPerformed
 
     public void viewStack() {
 
@@ -1158,5 +1196,6 @@ public class CalculatorInterface extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneStack;
     private javax.swing.JScrollPane jScrollPaneTextArea;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton removeFormula;
     // End of variables declaration//GEN-END:variables
 }
