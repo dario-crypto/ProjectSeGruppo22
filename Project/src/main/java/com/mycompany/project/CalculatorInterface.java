@@ -21,7 +21,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
     CommandController commandController;
     DefaultListModel dlm = new DefaultListModel();
     DefaultListModel dlmFormulas = new DefaultListModel();
-
+    
     /**
      * Creates new form calculatorInterface
      */
@@ -53,6 +53,8 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jButtonSubToVariable = new javax.swing.JButton();
         jButtonAddToVariable = new javax.swing.JButton();
+        jButtonSaveVariable = new javax.swing.JButton();
+        jButtonRestoreVariable = new javax.swing.JButton();
         jPanelOperation = new javax.swing.JPanel();
         jButtonComplex = new javax.swing.JButton();
         jButtonInvert = new javax.swing.JButton();
@@ -205,6 +207,22 @@ public class CalculatorInterface extends javax.swing.JFrame {
             }
         });
 
+        jButtonSaveVariable.setBackground(new java.awt.Color(224, 225, 255));
+        jButtonSaveVariable.setText(" SAVE VAR");
+        jButtonSaveVariable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveVariableActionPerformed(evt);
+            }
+        });
+
+        jButtonRestoreVariable.setBackground(new java.awt.Color(224, 225, 255));
+        jButtonRestoreVariable.setText("RESTORE VAR");
+        jButtonRestoreVariable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRestoreVariableActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelVariableLayout = new javax.swing.GroupLayout(jPanelVariable);
         jPanelVariable.setLayout(jPanelVariableLayout);
         jPanelVariableLayout.setHorizontalGroup(
@@ -219,6 +237,12 @@ public class CalculatorInterface extends javax.swing.JFrame {
                 .addComponent(jButtonSubToVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonAddToVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanelVariableLayout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(jButtonSaveVariable, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonRestoreVariable)
+                .addGap(34, 34, 34))
         );
         jPanelVariableLayout.setVerticalGroup(
             jPanelVariableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,6 +254,10 @@ public class CalculatorInterface extends javax.swing.JFrame {
                     .addComponent(jButtonSubToVariable)
                     .addComponent(jButtonAddToVariable)
                     .addComponent(jComboBox1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelVariableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSaveVariable)
+                    .addComponent(jButtonRestoreVariable))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -654,7 +682,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
             jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCalculatorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelCalculatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCalculatorLayout.createSequentialGroup()
                         .addComponent(jButtonIns, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
@@ -695,7 +723,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelCalculator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 69, Short.MAX_VALUE))
+                .addGap(0, 35, Short.MAX_VALUE))
         );
 
         pack();
@@ -1087,6 +1115,18 @@ public class CalculatorInterface extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jListFormulasMouseClicked
 
+    private void jButtonSaveVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveVariableActionPerformed
+        // TODO add your handling code here:
+        CopySpaceVariablesCommand vsc = new CopySpaceVariablesCommand(controller.getVs());
+        commandController.executeCommand(vsc);
+        
+    }//GEN-LAST:event_jButtonSaveVariableActionPerformed
+
+    private void jButtonRestoreVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRestoreVariableActionPerformed
+        // TODO add your handling code here:
+        commandController.undo();
+    }//GEN-LAST:event_jButtonRestoreVariableActionPerformed
+
     public void viewStack() {
 
         dlm.clear();
@@ -1205,9 +1245,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMultiplication;
     private javax.swing.JButton jButtonOver;
     private javax.swing.JButton jButtonPow;
+    private javax.swing.JButton jButtonRestoreVariable;
     private javax.swing.JButton jButtonSaveFormula;
     private javax.swing.JButton jButtonSaveToStack;
     private javax.swing.JButton jButtonSaveToVariable;
+    private javax.swing.JButton jButtonSaveVariable;
     private javax.swing.JButton jButtonSin;
     private javax.swing.JButton jButtonSqrt;
     private javax.swing.JButton jButtonSub;

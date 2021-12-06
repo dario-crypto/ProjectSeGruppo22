@@ -229,5 +229,10 @@ public class CalculatorController {
     public void renameFormula(String oldName, String name) {
         formulas.rename(oldName, name);
     }
+
+    public VariablesSpace getVs() {
+        return vs;
+    }
+    
     
 }
