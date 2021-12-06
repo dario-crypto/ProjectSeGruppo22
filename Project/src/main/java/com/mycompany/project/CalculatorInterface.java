@@ -754,6 +754,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonComplexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComplexActionPerformed
         // TODO add your handling code here:
+        jTextArea1.append("i");
     }//GEN-LAST:event_jButtonComplexActionPerformed
 
     private void jButtonSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubActionPerformed
