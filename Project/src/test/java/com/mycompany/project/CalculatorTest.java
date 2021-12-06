@@ -433,5 +433,40 @@ public class CalculatorTest {
               
     }
     
+    /**
+     * This method tests the method mod() of Calculator's class
+     * The first two cases deal with real numbers, the first positive,the second negative
+     * The next three cases deal with complex number with both real and imaginary part different from zero, the first with both real and imaginary positive,
+     * the second with both negative and the third with one positive and the other negative.
+     * The last two tests deal with two complex number with real part equal to 0, the first with imaginary part positive the other negative
+     * @throws StackEmptyException 
+     */
+    
+    @Test
+    public void testMod() throws StackEmptyException{
+        ComplexNumber c=new ComplexNumber(2,0);
+        calculator.insert(c);
+        assertEquals(calculator.mod(),new ComplexNumber(2,0));
+        c=new ComplexNumber(-2,0);
+        calculator.insert(c);
+        assertEquals(calculator.mod(),new ComplexNumber(2,0));
+        c=new ComplexNumber(3,4);
+        calculator.insert(c);
+        assertEquals(calculator.mod(),new ComplexNumber(5,0));
+        c=new ComplexNumber(-3,-4);
+        calculator.insert(c);
+        assertEquals(calculator.mod(),new ComplexNumber(5,0));
+        c=new ComplexNumber(-3,4);
+        calculator.insert(c);
+        assertEquals(calculator.mod(),new ComplexNumber(5,0));
+        c=new ComplexNumber(0,2);
+        calculator.insert(c);
+        assertEquals(calculator.mod(),new ComplexNumber(2,0));
+        c=new ComplexNumber(0,-2);
+        calculator.insert(c);
+        assertEquals(calculator.mod(),new ComplexNumber(2,0));
+        
+    }
+    
  
 }

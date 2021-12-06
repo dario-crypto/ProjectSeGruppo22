@@ -234,5 +234,9 @@ public class CalculatorController {
         return vs;
     }
     
+    public void mod() throws StackEmptyException{
+        calculator.mod();
+    }
+    
     
 }

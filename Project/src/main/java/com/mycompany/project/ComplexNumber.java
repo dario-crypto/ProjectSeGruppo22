@@ -194,7 +194,7 @@ public class ComplexNumber {
      * @return the magnitude or modulus of current complex number
      */
     public double mod() {
-        return Math.sqrt(Math.pow(this.real, 2) + Math.pow(this.imaginary, 2));
+        return (double) Math.round(Math.sqrt((Math.pow(this.real, 2) + Math.pow(this.imaginary, 2)))*100000000)/100000000;
     }
 
     /**

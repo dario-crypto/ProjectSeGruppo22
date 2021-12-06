@@ -231,5 +231,19 @@ public class Calculator {
         boolean update = vs.update(name, result);
 
     }
+    
+    /**
+     * This method calculates the modulus of a complex number
+     * @return Double
+     * @throws StackEmptyException 
+     */
+    
+    public ComplexNumber mod() throws StackEmptyException{
+        ComplexNumber c=stack.pop();
+        Double result = c.mod();
+        ComplexNumber resultCN=ComplexNumber.parseComplex(result.toString());
+        insert(resultCN);
+        return resultCN;
+    }
 
 }

@@ -29,6 +29,8 @@ public class FactoryOperator {
         Operation over = (calculator) -> calculator.over();
         Operation clear = (calculator) -> calculator.clear();
         Operation drop = (calculator) -> calculator.drop();
+        
+        Operation mod=(calculator) -> calculator.mod();
 
         OperationVariable saveToStack = (calculator, name, vs) -> calculator.saveToStack(name, vs);
         OperationVariable saveToVariable = (calculator, name, vs) -> calculator.saveToVariable(name, vs);
@@ -47,6 +49,8 @@ public class FactoryOperator {
         opMap.put("over", over);
         opMap.put("clear", clear);
         opMap.put("drop", drop);
+        
+        opMap.put("mod", mod);
 
         //operazioni sullo spazio delle variabili
         opMap.put("<", saveToStack);

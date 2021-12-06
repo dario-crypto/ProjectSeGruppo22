@@ -761,7 +761,19 @@ public class CalculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLnActionPerformed
 
     private void jButtonModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModActionPerformed
-        // TODO add your handling code here:
+        try {
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
+            controller.mod();
+            commandController.popCommand();
+
+        } catch (StackEmptyException ex) {
+
+            popUp("You need at least one item in the stack!", "warning");
+            commandController.undo();
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonModActionPerformed
 
     private void jButtonInvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInvertActionPerformed
