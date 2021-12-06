@@ -7,7 +7,6 @@ package com.mycompany.project;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.TreeMap;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

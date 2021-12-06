@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
@@ -583,6 +584,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         jListFormulas.setBackground(new java.awt.Color(230, 230, 230));
         jListFormulas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         jListFormulas.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jListFormulas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListFormulasMouseClicked(evt);
+            }
+        });
         jScrollPaneFormulas.setViewportView(jListFormulas);
 
         jButtonExeFormula.setBackground(new java.awt.Color(102, 0, 153));
@@ -989,7 +995,16 @@ public class CalculatorInterface extends javax.swing.JFrame {
             controller.addFormula(formula);
 
         } catch (FormulaAlreadyExsist ex) {
-            popUp(ex.getMessage(), "warning");
+            int n = JOptionPane.showConfirmDialog(
+                    this,
+                    ex.getMessage() + "\n You want to rename the formula?",
+                    "warning",
+                    JOptionPane.YES_NO_OPTION);
+            if (n == 0) {
+
+                controller.renameFormula(ex.getOldName(), ex.getName());
+            }
+
         } catch (FormatFormulaException ex) {
             popUp(ex.getMessage(), "error");
         } catch (NameFormulaAlreadyExsist ex) {
@@ -1001,7 +1016,8 @@ public class CalculatorInterface extends javax.swing.JFrame {
                     JOptionPane.YES_NO_OPTION);
             if (n == 0) {
 
-                controller.getMapFormulas().put(ex.getName(), ex.getFormula());
+                //controller.getMapFormulas().put(ex.getName(), ex.getFormula());
+                controller.updateFormula(ex.getName(), ex.getFormula());
 
             }
         }
@@ -1056,6 +1072,19 @@ public class CalculatorInterface extends javax.swing.JFrame {
         }
         viewFormulas();
     }//GEN-LAST:event_removeFormulaActionPerformed
+
+    private void jListFormulasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListFormulasMouseClicked
+       
+            JList list = (JList) evt.getSource();
+            if (evt.getClickCount() > 1) {
+                Object formula = list.getSelectedValue();
+                if (formula != null) {
+                    jTextArea1.setText(formula.toString());
+                }
+            }
+
+        
+    }//GEN-LAST:event_jListFormulasMouseClicked
 
     public void viewStack() {
 

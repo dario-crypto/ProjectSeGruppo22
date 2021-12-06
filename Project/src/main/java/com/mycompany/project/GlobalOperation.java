@@ -9,16 +9,12 @@ package com.mycompany.project;
  *
  * @author user
  */
-@FunctionalInterface  
-public interface Operation  extends GlobalOperation{
+public interface GlobalOperation {
     
-   
-    @Override
-    void apply(Calculator c) throws StackEmptyException;
-    
+    default void apply(Calculator c)throws StackEmptyException{
+        
+    }
+    default void apply(Calculator c, String name,VariablesSpace vs)throws StackEmptyException{
+        
+    }
 }
-
-
-
-
-

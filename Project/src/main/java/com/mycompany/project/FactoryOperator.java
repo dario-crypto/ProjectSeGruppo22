@@ -14,7 +14,7 @@ import java.util.Set;
  */
 public class FactoryOperator {
 
-    public static HashMap<String, Operation> opMap;
+    public static HashMap<String, GlobalOperation> opMap;
 
     static {
         opMap = new HashMap<>();
@@ -30,6 +30,12 @@ public class FactoryOperator {
         Operation clear = (calculator) -> calculator.clear();
         Operation drop = (calculator) -> calculator.drop();
 
+        OperationVariable saveToStack = (calculator, name, vs) -> calculator.saveToStack(name, vs);
+        OperationVariable saveToVariable = (calculator, name, vs) -> calculator.saveToVariable(name, vs);
+        OperationVariable addToVariable = (calculator, name, vs) -> calculator.addToVariable(name, vs);
+        OperationVariable subToVariable = (calculator, name, vs) -> calculator.subToVariable(name, vs);
+
+        //operazioni sullo stack
         opMap.put("+", sum);
         opMap.put("-", sub);
         opMap.put("x", prod);
@@ -42,9 +48,15 @@ public class FactoryOperator {
         opMap.put("clear", clear);
         opMap.put("drop", drop);
 
+        //operazioni sullo spazio delle variabili
+        opMap.put("<", saveToStack);
+        opMap.put(">", saveToVariable);
+        opMap.put("+", addToVariable);
+        opMap.put("-", subToVariable);
+
     }
 
-    public static Operation getOperation(String op) throws StackEmptyException {
+    public static GlobalOperation getOperation(String op) throws StackEmptyException {
 
         return opMap.get(op);
 
@@ -58,8 +70,5 @@ public class FactoryOperator {
     public static boolean contains(String op) {
         return opMap.get(op) != null;
     }
-    
-   
-    
 
 }

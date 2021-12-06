@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -85,13 +86,15 @@ public class Formulas {
      * @return false if the operation is unsuccessful, otherwise it returns true
      * @throws FormulaAlreadyExsist if newFormule is already present
      */
-    public boolean update(String name, String newFormula) throws FormulaAlreadyExsist {
+    public boolean update(String name, String newFormula)  {
 
         boolean status = false;
         if (formulaMap.containsKey(name)) {
+            /*
             if (!checkFormule(newFormula)) {
                 throw new FormulaAlreadyExsist("Formule: " + newFormula + " already exsist!");
             }
+            */
             status = formulaMap.put(name, newFormula) != null;
         }
         return status;
@@ -146,7 +149,8 @@ public class Formulas {
     public void add(String name, String formule) throws FormulaAlreadyExsist, NameFormulaAlreadyExsist {
       
         if (!checkFormule(formule)) {
-            throw new FormulaAlreadyExsist("Formula: " + formule + " already exsist!");
+            String oldName = getNameByFormula(formule);
+            throw new FormulaAlreadyExsist("Formula: " + formule + " already exsist!",oldName,name);
         } else {
 
             //modifica formula
@@ -204,6 +208,18 @@ public class Formulas {
 
     boolean contains(String f) {
         return formulaMap.get(f) != null;
+    }
+
+    private String getNameByFormula(String formule) {
+        String name = null;
+        for (Map.Entry<String, String> set :formulaMap.entrySet()){
+         
+            if(set.getValue().equals(formule)){
+                return set.getKey();
+            }
+            
+        }
+        return null;
     }
 
 }

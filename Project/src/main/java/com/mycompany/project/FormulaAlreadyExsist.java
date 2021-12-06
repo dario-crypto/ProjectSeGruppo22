@@ -9,11 +9,22 @@ package com.mycompany.project;
  * @author Dario
  */
 public class FormulaAlreadyExsist extends Exception {
+    private String oldName;;
+    private String name;
     
     
-    
-    public FormulaAlreadyExsist(String message){
+    public FormulaAlreadyExsist(String message,String oldName,String name){
         super(message);
+        this.oldName = oldName;
+        this.name = name;
+    }
+
+    public String getOldName() {
+        return oldName;
+    }
+
+    public String getName() {
+        return name;
     }
     
     
