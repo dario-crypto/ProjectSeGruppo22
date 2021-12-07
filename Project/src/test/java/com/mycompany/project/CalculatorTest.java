@@ -4,6 +4,11 @@
  */
 package com.mycompany.project;
 
+import com.mycompany.project.model.VariablesSpace;
+import com.mycompany.project.exception.StackEmptyException;
+import com.mycompany.project.model.Stack;
+import com.mycompany.project.model.ComplexNumber;
+import com.mycompany.project.model.Calculator;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -465,6 +470,23 @@ public class CalculatorTest {
         c=new ComplexNumber(0,-2);
         calculator.insert(c);
         assertEquals(calculator.mod(),new ComplexNumber(2,0));
+        
+    }
+    
+    /**
+     * This method tests the method exp of Calculator's class
+     * The first case tests the exponential  of a real positive number 
+     * The second case tests the exponential of a complex number 
+     * @throws StackEmptyException 
+     */
+    @Test
+    public void testExp() throws StackEmptyException{
+        ComplexNumber c=new ComplexNumber(2,0);
+        calculator.insert(c);
+        assertEquals(calculator.exp(),new ComplexNumber(7.3890561,0));
+        c=new ComplexNumber(2,2);
+        calculator.insert(c);
+        assertEquals(calculator.exp(),new ComplexNumber(-3.07493232,6.7188497));
         
     }
     

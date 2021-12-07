@@ -4,6 +4,8 @@
  */
 package com.mycompany.project;
 
+import com.mycompany.project.exception.StackEmptyException;
+import com.mycompany.project.model.Stack;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

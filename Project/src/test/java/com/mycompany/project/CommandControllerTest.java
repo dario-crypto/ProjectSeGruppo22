@@ -5,6 +5,8 @@
  */
 package com.mycompany.project;
 
+import com.mycompany.project.command.Command;
+import com.mycompany.project.controller.CommandController;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

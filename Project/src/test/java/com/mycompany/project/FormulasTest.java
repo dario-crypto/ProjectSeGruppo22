@@ -4,6 +4,9 @@
  */
 package com.mycompany.project;
 
+import com.mycompany.project.exception.FormulaAlreadyExsist;
+import com.mycompany.project.model.Formulas;
+import com.mycompany.project.exception.NameFormulaAlreadyExsist;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -101,12 +104,12 @@ public class FormulasTest {
 
         formulas.add(name1, formule1);
         formulas.add(name2, formule2);
-        formulas.save(path);
+        formulas.save();
 
         //verifico che il file è stato creato
         File file = new File(path);
         // assertEquals(true, file.exists());
-        formulas.reaload(path);
+        formulas.reaload();
         assertEquals(formule1, formulas.get(name1));
         assertEquals(formule2, formulas.get(name2));
 
