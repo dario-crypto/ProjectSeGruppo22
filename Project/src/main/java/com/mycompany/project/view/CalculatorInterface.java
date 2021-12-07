@@ -33,7 +33,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
     CommandController commandController;
     DefaultListModel dlm = new DefaultListModel();
     static DefaultListModel dlmFormulas = new DefaultListModel();
-    
+
     /**
      * Creates new form calculatorInterface
      */
@@ -862,6 +862,18 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonArgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArgActionPerformed
         // TODO add your handling code here:
+        try {
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
+            controller.arg();
+            commandController.popCommand();
+
+        } catch (StackEmptyException ex) {
+            popUp("You need at least one item in the stack!", "warning");
+            commandController.undo();
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonArgActionPerformed
 
     private void jButtonPowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPowActionPerformed
@@ -870,7 +882,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExpActionPerformed
         // TODO add your handling code here:
-          try {
+        try {
 
             CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
             commandController.executeCommand(copy);
@@ -887,14 +899,48 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonSinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSinActionPerformed
         // TODO add your handling code here:
+        try {
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
+            controller.sen();
+            commandController.popCommand();
+
+        } catch (StackEmptyException ex) {
+            popUp("You need at least one item in the stack!", "warning");
+            commandController.undo();
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonSinActionPerformed
 
     private void jButtonCosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCosActionPerformed
         // TODO add your handling code here:
+        try {
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
+            controller.cosen();
+            commandController.popCommand();
+        } catch (StackEmptyException ex) {
+            popUp("You need at least one item in the stack!", "warning");
+            commandController.undo();
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonCosActionPerformed
 
     private void jButtonTanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTanActionPerformed
         // TODO add your handling code here:
+        try {
+            CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+            commandController.executeCommand(copy);
+            controller.tan();
+            commandController.popCommand();
+        } catch (StackEmptyException ex) {
+            popUp("You need at least one item in the stack!", "warning");
+            commandController.undo();
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonTanActionPerformed
 
     private void jButtonASinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonASinActionPerformed
@@ -1038,7 +1084,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonSaveFormulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveFormulaActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
             controller.saveFile();
         } catch (FileNotFoundException ex) {
             popUp(ex.getMessage(), "error");
@@ -1147,23 +1193,23 @@ public class CalculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_removeFormulaActionPerformed
 
     private void jListFormulasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListFormulasMouseClicked
-       
-            JList list = (JList) evt.getSource();
-            if (evt.getClickCount() > 1) {
-                Object formula = list.getSelectedValue();
-                if (formula != null) {
-                    jTextArea1.setText(formula.toString());
-                }
-            }
 
-        
+        JList list = (JList) evt.getSource();
+        if (evt.getClickCount() > 1) {
+            Object formula = list.getSelectedValue();
+            if (formula != null) {
+                jTextArea1.setText(formula.toString());
+            }
+        }
+
+
     }//GEN-LAST:event_jListFormulasMouseClicked
 
     private void jButtonSaveVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveVariableActionPerformed
         // TODO add your handling code here:
         CopySpaceVariablesCommand vsc = new CopySpaceVariablesCommand(controller.getVs());
         commandController.executeCommand(vsc);
-        
+
     }//GEN-LAST:event_jButtonSaveVariableActionPerformed
 
     private void jButtonRestoreVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRestoreVariableActionPerformed

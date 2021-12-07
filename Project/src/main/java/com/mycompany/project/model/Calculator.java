@@ -234,33 +234,85 @@ public class Calculator {
         boolean update = vs.update(name, result);
 
     }
-    
+
     /**
      * This method calculates the modulus of a complex number
+     *
      * @return Double
-     * @throws StackEmptyException 
+     * @throws StackEmptyException
      */
-    
-    public ComplexNumber mod() throws StackEmptyException{
-        ComplexNumber c=stack.pop();
+    public ComplexNumber mod() throws StackEmptyException {
+        ComplexNumber c = stack.pop();
         Double result = c.mod();
-        ComplexNumber resultCN=ComplexNumber.parseComplex(result.toString());
+        ComplexNumber resultCN = ComplexNumber.parseComplex(result.toString());
         insert(resultCN);
         return resultCN;
     }
-    
-    
+
     /**
-     * This method calculates the exponential of a complex number 
+     * This method calculates the exponential of a complex number
+     *
      * @return
-     * @throws StackEmptyException 
+     * @throws StackEmptyException
      */
-    public ComplexNumber exp() throws StackEmptyException{
-        ComplexNumber c=stack.pop();
+    public ComplexNumber exp() throws StackEmptyException {
+        ComplexNumber c = stack.pop();
         ComplexNumber result = ComplexNumber.exp(c);
         insert(result);
         return result;
-    
+
+    }
+
+    /**
+     * This method calculates the argument of a complex number
+     *
+     * @return
+     * @throws StackEmptyException
+     */
+    public ComplexNumber arg() throws StackEmptyException {
+        ComplexNumber c1 = stack.pop();
+        ComplexNumber argument = new ComplexNumber(c1.getArg(), 0);
+        insert(argument);
+        return argument;
+    }
+
+    /**
+     * This method calculates the sine of a complex number
+     *
+     * @return
+     * @throws StackEmptyException
+     */
+    public ComplexNumber sen() throws StackEmptyException {
+        ComplexNumber c1 = stack.pop();
+        ComplexNumber s = c1.sen(c1);
+        insert(s);
+        return s;
+    }
+
+    /**
+     * This method calculates the cosine of a complex number
+     *
+     * @return
+     * @throws StackEmptyException
+     */
+    public ComplexNumber cosen() throws StackEmptyException {
+        ComplexNumber c1 = stack.pop();
+        ComplexNumber s = c1.cosen(c1);
+        insert(s);
+        return s;
+    }
+
+    /**
+     * This method calculates the tangent of a complex number
+     *
+     * @return
+     * @throws StackEmptyException
+     */
+    public ComplexNumber tan() throws StackEmptyException {
+        ComplexNumber c1 = stack.pop();
+        ComplexNumber s = c1.tang(c1);
+        insert(s);
+        return s;
     }
 
 }

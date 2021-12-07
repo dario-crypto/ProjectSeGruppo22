@@ -490,5 +490,149 @@ public class CalculatorTest {
         
     }
     
+     /**
+     * This method tests the method arg() of Calculator's class.
+     * The first case tests the argument with null values (0,0) ;
+     * The second case tests the argument of a complex number with both (real and imaginary) positive part;
+     * The third case tests the argument of a complex number with positive real part and negative imaginary part;
+     * The fourth case tests the argument of a complex number with negative real part and positive imaginary part;
+     * The fifth case tests the argument of a complex number with both (real and imaginary) negative part.
+     * @throws StackEmptyException 
+     */
+     @Test
+    public void testArg() throws StackEmptyException{
+        ComplexNumber c1 = new ComplexNumber(0, 0);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(0, 0), calculator.arg());
+    
+        ComplexNumber c2 = new ComplexNumber(1, 1);
+        calculator.insert(c2);
+        assertEquals(new ComplexNumber(0.785398163, 0), calculator.arg());
+        assertEquals(new ComplexNumber(0.785398163, 0), calculator.getStack().top());
+        
+        ComplexNumber c3 = new ComplexNumber(2, -1);
+        calculator.insert(c3);
+        assertEquals(new ComplexNumber(-0.463647609, 0), calculator.arg());
+        assertEquals(new ComplexNumber(-0.463647609, 0), calculator.getStack().top());
+        
+        ComplexNumber c4 = new ComplexNumber(-2, 1);
+        calculator.insert(c4);
+        assertEquals(new ComplexNumber(2.677945045, 0), calculator.arg());
+        assertEquals(new ComplexNumber(2.677945045, 0), calculator.getStack().top());
+        
+        ComplexNumber c5 = new ComplexNumber(-2, -1);
+        calculator.insert(c5);
+        assertEquals(new ComplexNumber(-2.677945045, 0), calculator.arg());
+        assertEquals(new ComplexNumber(-2.677945045, 0), calculator.getStack().top());
+    }
+    
+     /**
+     * This method tests the method sen() of Calculator's class.
+     * The first case tests the sine with null values (0,0) ;
+     * The second case tests the sine of a complex number with a positive real part and a null imaginary part;
+     * The third case tests the sine of a complex number with positive real part and negative imaginary part;
+     * The fourth case tests the sine of a complex number with negative real part and positive imaginary part;
+     * The fifth case tests the sine of a complex number with both (real and imaginary) negative part.
+     * @throws StackEmptyException 
+     */
+    @Test
+    public void testSen() throws StackEmptyException{
+        ComplexNumber c1 = new ComplexNumber(0, 0);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(0, 0), calculator.sen());
+        
+        ComplexNumber c2 = new ComplexNumber(8, 0);
+        calculator.insert(c2);
+        assertEquals(new ComplexNumber(0.98935825, 0), calculator.sen());
+        assertEquals(new ComplexNumber(0.98935825, 0), calculator.getStack().top());
+        
+        ComplexNumber c3 = new ComplexNumber(2, -2);
+        calculator.insert(c3);
+        assertEquals(new ComplexNumber(3.42095486, 1.50930649), calculator.sen());
+        assertEquals(new ComplexNumber(3.42095486, 1.50930649), calculator.getStack().top());
+        
+        ComplexNumber c4 = new ComplexNumber(-2, 2);
+        calculator.insert(c4);
+        assertEquals(new ComplexNumber(-3.42095486, -1.50930649), calculator.sen());
+        assertEquals(new ComplexNumber(-3.42095486, -1.50930649), calculator.getStack().top());
+        
+        ComplexNumber c5 = new ComplexNumber(-2, -2);
+        calculator.insert(c5);
+        assertEquals(new ComplexNumber(-3.42095486, 1.50930649), calculator.sen());
+        assertEquals(new ComplexNumber(-3.42095486, 1.50930649), calculator.getStack().top());
+    }
+    
+    /**
+     * This method tests the method cosen() of Calculator's class.
+     * The first case tests the cosine with null values (0,0) ;
+     * The second case tests the cosine of a complex number with both (real and imaginary) positive part;
+     * The third case tests the cosine of a complex number with positive real part and negative imaginary part;
+     * The fourth case tests the cosine of a complex number with negative real part and positive imaginary part;
+     * The fifth case tests the cosine of a complex number with both (real and imaginary) negative part.
+     * @throws StackEmptyException 
+     */
+    @Test
+    public void testCosen() throws StackEmptyException{
+        ComplexNumber c1 = new ComplexNumber(0, 0);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(1, 0), calculator.cosen());
+        
+        ComplexNumber c2 = new ComplexNumber(2, 3);
+        calculator.insert(c2);
+        assertEquals(new ComplexNumber(-4.18962569, -9.10922789), calculator.cosen());
+        assertEquals(new ComplexNumber(-4.18962569, -9.10922789), calculator.getStack().top());
+        
+        ComplexNumber c3 = new ComplexNumber(2, -3);
+        calculator.insert(c3);
+        assertEquals(new ComplexNumber(-4.18962569, 9.10922789), calculator.cosen());
+        assertEquals(new ComplexNumber(-4.18962569, 9.10922789), calculator.getStack().top());
+        
+        ComplexNumber c4 = new ComplexNumber(-2, 3);
+        calculator.insert(c4);
+        assertEquals(new ComplexNumber(-4.18962569, 9.10922789), calculator.cosen());
+        assertEquals(new ComplexNumber(-4.18962569, 9.10922789), calculator.getStack().top());
+        
+        ComplexNumber c5 = new ComplexNumber(-2, -3);
+        calculator.insert(c5);
+        assertEquals(new ComplexNumber(-4.18962569, -9.10922789), calculator.cosen());
+        assertEquals(new ComplexNumber(-4.18962569, -9.10922789), calculator.getStack().top());
+    }
+    
+    /**
+     * This method tests the method tan() of Calculator's class.
+     * The first case tests the tangent with null values (0,0) ;
+     * The second case tests the tangent of a complex number with both (real and imaginary) positive part;
+     * The third case tests the tangent of a complex number with positive real part and negative imaginary part;
+     * The fourth case tests the tangent of a complex number with negative real part and positive imaginary part;
+     * The fifth case tests the tangent of a complex number with both (real and imaginary) negative part.
+     * @throws StackEmptyException 
+     */
+    @Test
+    public void testTan() throws StackEmptyException{
+        ComplexNumber c1 = new ComplexNumber(0, 0);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(0, 0), calculator.tan());
+        
+        ComplexNumber c2 = new ComplexNumber(2, 3);
+        calculator.insert(c2);
+        assertEquals(new ComplexNumber(-0.0037640258375647375, 1.0032386280164864), calculator.tan());
+        assertEquals(new ComplexNumber(-0.0037640258375647375, 1.0032386280164864), calculator.getStack().top());
+        
+        ComplexNumber c3 = new ComplexNumber(2, -3);
+        calculator.insert(c3);
+        assertEquals(new ComplexNumber(-0.0037640258375647375, -1.0032386280164864), calculator.tan());
+        assertEquals(new ComplexNumber(-0.0037640258375647375, -1.0032386280164864), calculator.getStack().top());
+        
+        ComplexNumber c4 = new ComplexNumber(-2, 3);
+        calculator.insert(c4);
+        assertEquals(new ComplexNumber(0.0037640258375647375, 1.0032386280164864), calculator.tan());
+        assertEquals(new ComplexNumber(0.0037640258375647375, 1.0032386280164864), calculator.getStack().top());
+        
+        ComplexNumber c5 = new ComplexNumber(-2, -3);
+        calculator.insert(c5);
+        assertEquals(new ComplexNumber(0.0037640258375647375, -1.0032386280164864), calculator.tan());
+        assertEquals(new ComplexNumber(0.0037640258375647375, -1.0032386280164864), calculator.getStack().top());;
+    }
+    
  
 }

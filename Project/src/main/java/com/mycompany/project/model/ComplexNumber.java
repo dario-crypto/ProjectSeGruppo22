@@ -228,6 +228,10 @@ public class ComplexNumber {
         } else {
             im = "+" + this.imaginary + "i";
         }
+        
+        if(this.imaginary == 0.0){
+            im = "";
+        }
         return re + im;
     }
 
@@ -354,8 +358,8 @@ public class ComplexNumber {
      *
      * @return arg(z) - the argument of current complex number
      */
-    public double getArg() {
-        return Math.atan2(imaginary, real);
+     public double getArg() {
+        return (double)Math.round(Math.atan2(imaginary, real) * 1000000000) / 1000000000;
     }
 
     /**
@@ -477,6 +481,27 @@ public class ComplexNumber {
     @Override
     public Object clone() {
         return new ComplexNumber(real, imaginary);
+    }
+    
+    public ComplexNumber sen(ComplexNumber z){
+       double x = Math.exp(z.imaginary);
+       double x_inv = 1 / x;
+       double r = (double) Math.round((Math.sin(z.real) * (x + x_inv) / 2) * 100000000) / 100000000;
+       double i = (double) Math.round((Math.cos(z.real) * (x - x_inv) / 2) * 100000000) / 100000000;
+       return new ComplexNumber(r,i);    
+   }
+    
+   
+    public ComplexNumber cosen(ComplexNumber z) {
+        double x = Math.exp(z.imaginary);
+        double x_inv = 1 / x;
+        double r =  (double) Math.round((Math.cos(z.real) * (x + x_inv) / 2) * 100000000) / 100000000;
+        double i = (double) Math.round(-(Math.sin(z.real) * (x - x_inv) / 2) * 100000000) / 100000000;
+        return new ComplexNumber(r, i);
+    }
+    
+      public ComplexNumber tang(ComplexNumber z) {
+        return divide(sen(z), cosen(z));
     }
 
 }

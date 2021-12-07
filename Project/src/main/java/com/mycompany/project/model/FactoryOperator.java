@@ -33,6 +33,10 @@ public class FactoryOperator {
         Operation drop = (calculator) -> calculator.drop();
         
         Operation mod=(calculator) -> calculator.mod();
+        Operation arg = (calculator) -> calculator.arg();
+        Operation sen = (calculator) -> calculator.sen();
+        Operation cosen = (calculator) -> calculator.cosen();
+        Operation tan = (calculator) -> calculator.tan();
 
         OperationVariable saveToStack = (calculator, name, vs) -> calculator.saveToStack(name, vs);
         OperationVariable saveToVariable = (calculator, name, vs) -> calculator.saveToVariable(name, vs);
@@ -53,6 +57,11 @@ public class FactoryOperator {
         opMap.put("drop", drop);
         
         opMap.put("mod", mod);
+        opMap.put("arg", arg);
+        opMap.put("sen", sen);
+        opMap.put("cosen", cosen);
+        opMap.put("tan", tan);
+        
 
         //operazioni sullo spazio delle variabili
         opMap.put("<", saveToStack);
