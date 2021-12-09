@@ -514,5 +514,16 @@ public class ComplexNumber {
         return true;
 
     }
+    
+    /**
+     * This method calculates the logarithm of a complex number
+     * @return the logarithm of a complex number
+     */
+     public ComplexNumber logarithm() {
+        double z=mod();
+        double real = (double) Math.round( Math.log(z)*100000000)/100000000;
+        double image =(double) Math.round(getArg()*100000000)/100000000;
+        return new ComplexNumber(real, image);
+    }
 
 }

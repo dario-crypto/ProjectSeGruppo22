@@ -34,6 +34,7 @@ public class FactoryOperator {
         Operation clear = (calculator, commandProcessor, vs) -> calculator.clear();
         Operation sen = (calculator, commandProcessor, vs) -> calculator.sen();
         Operation exp = (calculator, commandProcessor, vs) -> calculator.exp();
+        Operation logarithm = (calculator, commandProcessor, vs) -> calculator.logarithm();
         Operation tan = (calculator, commandProcessor, vs) -> calculator.tan();
         Operation cosen = (calculator, commandProcessor, vs) -> calculator.cosen();
         Operation arg = (calculator, commandProcessor, vs) -> calculator.arg();
@@ -66,6 +67,7 @@ public class FactoryOperator {
         opMap.put("drop", drop);
         opMap.put("sen", sen);
         opMap.put("exp", exp);
+        opMap.put("logarithm", logarithm);
         opMap.put("tan", tan);
         opMap.put("cosen", cosen);
         opMap.put("arg", arg);

@@ -631,7 +631,31 @@ public class CalculatorTest {
         ComplexNumber c5 = new ComplexNumber(-2, -3);
         calculator.insert(c5);
         assertEquals(new ComplexNumber(0.0037640258375647375, -1.0032386280164864), calculator.tan());
-        assertEquals(new ComplexNumber(0.0037640258375647375, -1.0032386280164864), calculator.getStack().top());;
+        assertEquals(new ComplexNumber(0.0037640258375647375, -1.0032386280164864), calculator.getStack().top());
+    }
+    
+     /**
+     * This method tests the method logarithm of Calculator's class
+     * @throws StackEmptyException 
+     */
+    @Test
+    public void testLogarithm() throws StackEmptyException{
+        ComplexNumber c=new ComplexNumber(2,0);
+        calculator.insert(c);
+        assertEquals(new ComplexNumber(0.69314718,0),calculator.logarithm());
+        assertEquals(new ComplexNumber(0.69314718,0), calculator.getStack().top());
+        
+        c=new ComplexNumber(-4,0);
+        calculator.insert(c);
+        assertEquals(new ComplexNumber(1.38629436,3.14159265),calculator.logarithm());
+        assertEquals(new ComplexNumber(1.38629436,3.14159265), calculator.getStack().top());
+        
+        c=new ComplexNumber(0,2);
+        calculator.insert(c);
+        assertEquals(new ComplexNumber(0.69314718,1.57079633),calculator.logarithm());
+        assertEquals(new ComplexNumber(0.69314718,1.57079633), calculator.getStack().top());
+        
+        
     }
     
  

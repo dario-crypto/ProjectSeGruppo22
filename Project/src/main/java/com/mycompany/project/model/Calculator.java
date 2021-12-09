@@ -264,6 +264,19 @@ public class Calculator {
     }
 
     /**
+     * This method calculates the logarithm of the last  item of the Calculator's stack
+     *
+     * @return
+     * @throws StackEmptyException
+     */
+    public ComplexNumber logarithm() throws StackEmptyException {
+        ComplexNumber c = stack.pop();
+        ComplexNumber result = c.logarithm();
+        insert(result);
+        return result;
+    }
+
+    /**
      * This method calculates the argument of a complex number
      *
      * @return

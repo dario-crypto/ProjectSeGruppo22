@@ -781,6 +781,19 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonLnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLnActionPerformed
         // TODO add your handling code here:
+         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+        try {
+
+            copy.exec();
+            controller.execOperation("logarithm");
+
+        } catch (StackEmptyException ex) {
+            copy.undo();
+            popUp(ex.getMessage(), "warning");
+        } catch (OperationDoesNotExist ex) {
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonLnActionPerformed
 
     private void jButtonModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModActionPerformed
