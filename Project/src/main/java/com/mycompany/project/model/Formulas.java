@@ -180,11 +180,10 @@ public class Formulas {
     }
 
     /**
-     * Restituisce true se un nome della formula è già presente
+     * Returns true if the name of the formula already exists
      *
-     * @param name stringa che rappresenta il nome della formula
-     * @return true se il nome della formula è presente, altrimenti restituisce
-     * false
+     * @param name represents the name of the formula
+     * @return true if the name already exists,otherwise false
      */
     public boolean contains(String name) {
         return formulaMap.get(name) != null;

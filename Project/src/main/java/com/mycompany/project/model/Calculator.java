@@ -327,5 +327,58 @@ public class Calculator {
         insert(s);
         return s;
     }
+    
+     /**
+     * This method calculates the arcosine of a complex number
+     *
+     * @return asen
+     * @throws StackEmptyException
+     */
+    public ComplexNumber asen() throws StackEmptyException {
+        ComplexNumber c1 = stack.pop();
+        ComplexNumber asen = new ComplexNumber(c1.asen(c1), 0);
+        insert(asen);
+        return asen;
+    }
+       
+    /**
+     * This method calculates the arcocosine of a complex number
+     *
+     * @return acosen
+     * @throws StackEmptyException
+     */
+    public ComplexNumber acosen() throws StackEmptyException {
+        ComplexNumber c1 = stack.pop();
+        ComplexNumber acosen = new ComplexNumber(c1.acosen(c1), 0);
+        insert(acosen);
+        return acosen;
+    }
+    
+    /**
+     * This method calculates the arcotangent of a complex number
+     *
+     * @return atangent
+     * @throws StackEmptyException
+     */
+    public ComplexNumber atang() throws StackEmptyException {
+        ComplexNumber c1 = stack.pop();
+        ComplexNumber atangent = new ComplexNumber(c1.atang(c1), 0);
+        insert(atangent);
+        return atangent;
+    }
+    
+    /**
+     * This method calculates the pow of a complex number
+     * @return
+     * @throws StackEmptyException 
+     */
+    
+    public ComplexNumber pow() throws StackEmptyException {
+        ComplexNumber c1 = stack.pop();
+        ComplexNumber c2 = stack.pop();
+        ComplexNumber result = ComplexNumber.pow(c2, c1);
+        insert(result);
+        return result;
+    }
 
 }

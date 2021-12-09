@@ -10,7 +10,7 @@ import com.mycompany.project.exception.StackEmptyException;
 import com.mycompany.project.model.Stack;
 
 /**
- * CommandProcessor rappresenta l'invoker
+ * CommandProcessor represents the invoker
  *
  * @author user
  */
@@ -23,7 +23,7 @@ public class CommandProcessor {
     }
 
     /**
-     * Esegue un comando e lo salva
+     * This method is use to execute a command and to save it
      *
      * @param command comando che si deve eseguire
      */
@@ -35,7 +35,7 @@ public class CommandProcessor {
     }
 
     /**
-     * Effettua un'operazione di undo
+     * This method executes the undo operation
      */
 
     public void undo() {
@@ -50,7 +50,7 @@ public class CommandProcessor {
 
     }
 /**
- * Rimuove l'ultimo comando memorizzato
+ * This method removes the last inserted command
  */
     public void popCommand() {
         {

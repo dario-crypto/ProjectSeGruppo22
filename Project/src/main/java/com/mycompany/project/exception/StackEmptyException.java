@@ -1,7 +1,7 @@
 
 package com.mycompany.project.exception;
 /**
- * Classe che rappresenta l'eccezione stack vuoto
+ * Class that represents the exception when the stack is empty
  */
 
 public class StackEmptyException extends Exception {

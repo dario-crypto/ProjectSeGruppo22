@@ -10,7 +10,7 @@ import com.mycompany.project.model.ComplexNumber;
 import com.mycompany.project.model.Stack;
 
 /**
- * Comando che si occupa di fare un backup dello stack e di farne un ripristino
+ * Command that does the backup and the restoration of the stack
  *
  * @author user
  */
@@ -24,7 +24,7 @@ public class CopyStackCommand implements Command {
     }
 
     /**
-     * Salva una copia dello stack
+     * This method saves a copy of the stack
      */
     @Override
     public void exec() {
@@ -36,7 +36,7 @@ public class CopyStackCommand implements Command {
     }
 
     /**
-     * Ripristina il contenuto dello stack salvato
+     * This method restores the value of the saved stack
      */
     @Override
     public void undo() {

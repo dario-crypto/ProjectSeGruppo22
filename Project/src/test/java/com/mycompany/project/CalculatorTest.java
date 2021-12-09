@@ -658,5 +658,160 @@ public class CalculatorTest {
         
     }
     
+    /**
+     * This method tests the method asen() of Calculator's class.
+     * It returns a numeric value between -π e π radians for x between -1 and 1. 
+     * If the value of x is outside this range, it returns NaN.
+     * 
+     * @throws StackEmptyException 
+     */
+    @Test
+    public void testAsen() throws StackEmptyException{
+        ComplexNumber c1 = new ComplexNumber(0, 0);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(0, 0), calculator.asen());
+        
+        ComplexNumber c2 = new ComplexNumber(0.5, 0);
+        calculator.insert(c2);
+        assertEquals(new ComplexNumber(0.5235987755982989, 0), calculator.asen());
+        assertEquals(new ComplexNumber(0.5235987755982989, 0), calculator.getStack().top());
+        
+        ComplexNumber c3 = new ComplexNumber(1, 0);
+        calculator.insert(c3);
+        assertEquals(new ComplexNumber(1.5707963267948966, 0), calculator.asen());
+        assertEquals(new ComplexNumber(1.5707963267948966, 0), calculator.getStack().top());
+        
+        ComplexNumber c4 = new ComplexNumber(-1, 0);
+        calculator.insert(c4);
+        assertEquals(new ComplexNumber(-1.5707963267948966,0), calculator.asen());
+        assertEquals(new ComplexNumber(-1.5707963267948966, 0), calculator.getStack().top());
+        
+        /*ComplexNumber c5 = new ComplexNumber(2, 0);
+        calculator.insert(c5);
+        assertEquals(new ComplexNumber(NaN, 0), calculator.asen());
+        assertEquals(new ComplexNumber(NaN, 0), calculator.getStack().top());*/
+    }
+    
+    /**
+     * This method tests the method acos() of Calculator's class.
+     * It returns a numeric value between 0 and π radians for x between -1 and 1. 
+     * If the value of x is outside this range, it returns NaN.
+     * 
+     * @throws StackEmptyException 
+     */
+    @Test
+    public void testAcosen() throws StackEmptyException{
+        ComplexNumber c1 = new ComplexNumber(0, 0);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(1.5707963267948966, 0), calculator.acosen());
+        
+        ComplexNumber c2 = new ComplexNumber(0.5, 0);
+        calculator.insert(c2);
+        assertEquals(new ComplexNumber(1.0471975511965979, 0), calculator.acosen());
+        assertEquals(new ComplexNumber(1.0471975511965979, 0), calculator.getStack().top());
+        
+        ComplexNumber c3 = new ComplexNumber(-1, 0);
+        calculator.insert(c3);
+        assertEquals(new ComplexNumber(3.141592653589793, 0), calculator.acosen());
+        assertEquals(new ComplexNumber(3.141592653589793, 0), calculator.getStack().top());
+        
+        ComplexNumber c4 = new ComplexNumber(1, 0);
+        calculator.insert(c4);
+        assertEquals(new ComplexNumber(0,0), calculator.acosen());
+        assertEquals(new ComplexNumber(0,0), calculator.getStack().top());
+        
+        /*ComplexNumber c5 = new ComplexNumber(2, 0);
+        calculator.insert(c5);
+        assertEquals(new ComplexNumber("NaN"), calculator.acosen());
+        assertEquals(new ComplexNumber("NaN"), calculator.getStack().top());*/
+    }
+    
+    /**
+     * This method tests the method atangent() of Calculator's class.
+     * It returns a numeric value between 0 and π radians for x between -1 and 1. 
+     * 
+     * 
+     * @throws StackEmptyException 
+     */
+    @Test
+    public void testAtang() throws StackEmptyException{
+        ComplexNumber c1 = new ComplexNumber(0, 0);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(0, 0), calculator.atang());
+        
+        ComplexNumber c2 = new ComplexNumber(1, 0);
+        calculator.insert(c2);
+        assertEquals(new ComplexNumber(0.7853981633974483, 0), calculator.atang());
+        assertEquals(new ComplexNumber(0.7853981633974483, 0), calculator.getStack().top());
+        
+    }
+    
+     /**
+     * This method tests the method pow of the Calculator's class
+     * The first three cases deal with real numbers elevated to real number, complex numbers with real part equal to zero and complex numbers with both part
+     * different from zero
+     * The next three cases deal with complex numbers with real part equal to zero
+     * elevated to real number, complex numbers with real part equal to zero and
+     * complex numbers with both part different from zero
+     * The last three cases deal with complex numbers with both part different from zero elevated to real
+     * number, complex numbers with real part equal to zero and complex numbers
+     * with both part different from zero
+     * @throws StackEmptyException 
+     */
+    
+    @Test
+    public void testPow() throws StackEmptyException{
+        ComplexNumber c1=new ComplexNumber(2.0,0);
+        ComplexNumber c2=new ComplexNumber(3.0,0);
+        calculator.insert(c2);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(9,0),calculator.pow());
+        c1 = new ComplexNumber(4.0, 0);
+        c2 = new ComplexNumber(0, 7);
+        calculator.insert(c1);
+        calculator.insert(c2);
+        assertEquals(new ComplexNumber(-0.96125346, - 0.27566608), calculator.pow());
+        c1 = new ComplexNumber(2.0,0.0);
+        c2 = new ComplexNumber(6.0, 7.0);
+        calculator.insert(c1);
+        calculator.insert(c2);
+        assertEquals(new ComplexNumber(8.9080256,-63.37702336), calculator.pow());
+        c1 = new ComplexNumber(3.0, 0);
+        c2 = new ComplexNumber(0, 4);
+        calculator.insert(c2);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(0,-64),calculator.pow());
+        c1 = new ComplexNumber(0, 1);
+        c2 = new ComplexNumber(0, 4);
+        calculator.insert(c2);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(0.03813696, 0.20435139), calculator.pow());
+        c1 = new ComplexNumber(1, 1);
+        c2 = new ComplexNumber(0, 4);
+        calculator.insert(c2);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(-0.81740557,0.15254783), calculator.pow());
+        c1 = new ComplexNumber(3, 0);
+        c2 = new ComplexNumber(1, 1);
+        calculator.insert(c2);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(-2,2), calculator.pow());
+        c1 = new ComplexNumber(0, 3);
+        c2 = new ComplexNumber(1, 1);
+        calculator.insert(c2);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(0.04800249,0.08172546), calculator.pow());
+        c1 = new ComplexNumber(3, 3);
+        c2 = new ComplexNumber(1, 1);
+        calculator.insert(c2);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(-0.2594559,-0.06744594), calculator.pow());
+        
+        
+        
+        
+
+        
+    }
  
 }

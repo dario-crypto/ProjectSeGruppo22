@@ -910,6 +910,21 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonPowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPowActionPerformed
         // TODO add your handling code here:
+        CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+        try {
+
+            copy.exec();
+            controller.execOperation("pow");
+
+        } catch (StackEmptyException ex) {
+            popUp("You need at least 2 items in the stack!", "warning");
+            copy.undo();
+
+        } catch (OperationDoesNotExist ex) {
+            Logger.getLogger(CalculatorInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonPowActionPerformed
 
     private void jButtonExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExpActionPerformed
@@ -979,14 +994,52 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonASinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonASinActionPerformed
         // TODO add your handling code here:
+         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+        try {
+
+            copy.exec();
+            controller.execOperation("asen");
+
+        } catch (StackEmptyException ex) {
+            copy.undo();
+            popUp(ex.getMessage(), "warning");
+        } catch (OperationDoesNotExist ex) {
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonASinActionPerformed
 
     private void jButtonACosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonACosActionPerformed
+ CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+        try {
 
+            copy.exec();
+            controller.execOperation("acosen");
+
+        } catch (StackEmptyException ex) {
+            copy.undo();
+            popUp(ex.getMessage(), "warning");
+        } catch (OperationDoesNotExist ex) {
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonACosActionPerformed
 
     private void jButtonATanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonATanActionPerformed
         // TODO add your handling code here:
+         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+        try {
+
+            copy.exec();
+            controller.execOperation("atang");
+
+        } catch (StackEmptyException ex) {
+            copy.undo();
+            popUp(ex.getMessage(), "warning");
+        } catch (OperationDoesNotExist ex) {
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonATanActionPerformed
 
     private void jButtonDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDropActionPerformed

@@ -10,8 +10,7 @@ import com.mycompany.project.model.VariablesSpace;
 import java.util.HashMap;
 
 /**
- * Comando che si occupa di fare un backup delle variabili e di farne un
- * ripristino
+ * This command does the backup and restoration of the variables 
  *
  * @author user
  */
@@ -25,7 +24,7 @@ public class CopySpaceVariablesCommand implements Command {
     }
 
     /**
-     * Salva una copia delle variabili
+     * This method saves a copy of the variables
      */
     @Override
     public void exec() {
@@ -36,7 +35,7 @@ public class CopySpaceVariablesCommand implements Command {
     }
 
     /**
-     * Ripristina il valori delle variabili salvato
+     * This method restores the saved values of the variables
      */
     @Override
     public void undo() {
