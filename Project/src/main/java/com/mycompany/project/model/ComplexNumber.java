@@ -21,9 +21,6 @@
  */
 package com.mycompany.project.model;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class ComplexNumber {
 
     /**
@@ -48,6 +45,7 @@ public class ComplexNumber {
      * Constructs a new <code>ComplexNumber</code> object with both real and
      * imaginary parts 0 (z = 0 + 0i).
      */
+
     public ComplexNumber() {
         real = 0.0;
         imaginary = 0.0;
@@ -194,7 +192,7 @@ public class ComplexNumber {
      * @return the magnitude or modulus of current complex number
      */
     public double mod() {
-        return (double) Math.round(Math.sqrt((Math.pow(this.real, 2) + Math.pow(this.imaginary, 2)))*100000000)/100000000;
+        return (double) Math.round(Math.sqrt((Math.pow(this.real, 2) + Math.pow(this.imaginary, 2))) * 100000000) / 100000000;
     }
 
     /**
@@ -228,8 +226,8 @@ public class ComplexNumber {
         } else {
             im = "+" + this.imaginary + "i";
         }
-        
-        if(this.imaginary == 0.0){
+
+        if (this.imaginary == 0.0) {
             im = "";
         }
         return re + im;
@@ -245,8 +243,8 @@ public class ComplexNumber {
         double a = z.real;
         double b = z.imaginary;
         double r = Math.exp(a);
-        a = (double) Math.round(r * Math.cos(b)*100000000)/100000000;
-        b =(double) Math.round(r * Math.sin(b)*100000000)/100000000 ;
+        a = (double) Math.round(r * Math.cos(b) * 100000000) / 100000000;
+        b = (double) Math.round(r * Math.sin(b) * 100000000) / 100000000;
         return new ComplexNumber(a, b);
     }
 
@@ -358,8 +356,8 @@ public class ComplexNumber {
      *
      * @return arg(z) - the argument of current complex number
      */
-     public double getArg() {
-        return (double)Math.round(Math.atan2(imaginary, real) * 1000000000) / 1000000000;
+    public double getArg() {
+        return (double) Math.round(Math.atan2(imaginary, real) * 1000000000) / 1000000000;
     }
 
     /**
@@ -482,26 +480,39 @@ public class ComplexNumber {
     public Object clone() {
         return new ComplexNumber(real, imaginary);
     }
-    
-    public ComplexNumber sen(ComplexNumber z){
-       double x = Math.exp(z.imaginary);
-       double x_inv = 1 / x;
-       double r = (double) Math.round((Math.sin(z.real) * (x + x_inv) / 2) * 100000000) / 100000000;
-       double i = (double) Math.round((Math.cos(z.real) * (x - x_inv) / 2) * 100000000) / 100000000;
-       return new ComplexNumber(r,i);    
-   }
-    
-   
+
+    public ComplexNumber sen(ComplexNumber z) {
+        double x = Math.exp(z.imaginary);
+        double x_inv = 1 / x;
+        double r = (double) Math.round((Math.sin(z.real) * (x + x_inv) / 2) * 100000000) / 100000000;
+        double i = (double) Math.round((Math.cos(z.real) * (x - x_inv) / 2) * 100000000) / 100000000;
+        return new ComplexNumber(r, i);
+    }
+
     public ComplexNumber cosen(ComplexNumber z) {
         double x = Math.exp(z.imaginary);
         double x_inv = 1 / x;
-        double r =  (double) Math.round((Math.cos(z.real) * (x + x_inv) / 2) * 100000000) / 100000000;
+        double r = (double) Math.round((Math.cos(z.real) * (x + x_inv) / 2) * 100000000) / 100000000;
         double i = (double) Math.round(-(Math.sin(z.real) * (x - x_inv) / 2) * 100000000) / 100000000;
         return new ComplexNumber(r, i);
     }
-    
-      public ComplexNumber tang(ComplexNumber z) {
+
+    public ComplexNumber tang(ComplexNumber z) {
         return divide(sen(z), cosen(z));
+    }
+
+    public static boolean checkComplex(String s) {
+        try {
+            ComplexNumber c = ComplexNumber.parseComplex(s);
+            if (c == null) {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+
     }
 
 }

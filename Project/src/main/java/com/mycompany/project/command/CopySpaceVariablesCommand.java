@@ -5,11 +5,13 @@
  */
 package com.mycompany.project.command;
 
-import com.mycompany.project.model.VariablesSpace;
 import com.mycompany.project.model.ComplexNumber;
+import com.mycompany.project.model.VariablesSpace;
 import java.util.HashMap;
 
 /**
+ * Comando che si occupa di fare un backup delle variabili e di farne un
+ * ripristino
  *
  * @author user
  */
@@ -22,6 +24,9 @@ public class CopySpaceVariablesCommand implements Command {
         this.vs = vs;
     }
 
+    /**
+     * Salva una copia delle variabili
+     */
     @Override
     public void exec() {
 
@@ -30,10 +35,17 @@ public class CopySpaceVariablesCommand implements Command {
 
     }
 
+    /**
+     * Ripristina il valori delle variabili salvato
+     */
     @Override
     public void undo() {
         vs.setVariablesMap(variablesMap);
 
+    }
+
+    public HashMap<String, ComplexNumber> getBackupMap() {
+        return variablesMap;
     }
 
 }

@@ -6,19 +6,19 @@
 package com.mycompany.project.model;
 
 import com.mycompany.project.exception.StackEmptyException;
-import com.mycompany.project.model.VariablesSpace;
-import com.mycompany.project.model.Calculator;
 
 /**
  *
  * @author user
  */
 public interface GlobalOperation {
-    
-    default void apply(Calculator c)throws StackEmptyException{
-        
+
+    default void apply(Calculator c, String name, VariablesSpace vs) throws StackEmptyException {
+
     }
-    default void apply(Calculator c, String name,VariablesSpace vs)throws StackEmptyException{
-        
+
+    default void apply(Calculator c, CommandProcessor commandProcessor, VariablesSpace vs) throws StackEmptyException{
+
     }
+
 }

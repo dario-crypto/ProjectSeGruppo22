@@ -4,7 +4,6 @@
  */
 package com.mycompany.project.model;
 
-import com.mycompany.project.exception.FormulaAlreadyExsist;
 import com.mycompany.project.exception.NameFormulaAlreadyExsist;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,8 +11,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -23,7 +20,7 @@ import java.util.TreeMap;
 public class Formulas {
 
     private TreeMap<String, String> formulaMap;
-    String path="formulas.dat";
+    private final String path = "formulas.dat";
 
     public Formulas() {
         formulaMap = new TreeMap<>();
@@ -71,14 +68,17 @@ public class Formulas {
      * @param newName string representing the new name of the formula
      * @return false if the operation is unsuccessful, otherwise it returns true
      */
-    public boolean rename(String oldName, String newName) {
-        if (formulaMap.containsKey(oldName) && !formulaMap.containsKey(newName)) {
+    public void rename(String oldName, String newName) throws NameFormulaAlreadyExsist {
+        if (!formulaMap.containsKey(newName)) {
             String formule = formulaMap.get(oldName);
-            formulaMap.remove(oldName);
-            return formulaMap.put(newName, formule) == null;
+            if (formule != null) {
+                formulaMap.remove(oldName);
+                formulaMap.put(newName, formule);
+            }
+        } else {
+            throw new NameFormulaAlreadyExsist("Name already exist!", newName, null);
         }
 
-        return false;
     }
 
     /**
@@ -89,15 +89,11 @@ public class Formulas {
      * @return false if the operation is unsuccessful, otherwise it returns true
      * @throws FormulaAlreadyExsist if newFormule is already present
      */
-    public boolean update(String name, String newFormula)  {
+    public boolean update(String name, String newFormula) {
 
         boolean status = false;
         if (formulaMap.containsKey(name)) {
-            /*
-            if (!checkFormule(newFormula)) {
-                throw new FormulaAlreadyExsist("Formule: " + newFormula + " already exsist!");
-            }
-            */
+
             status = formulaMap.put(name, newFormula) != null;
         }
         return status;
@@ -123,25 +119,6 @@ public class Formulas {
     }
 
     /**
-     * Check if a formula is already present
-     *
-     * @param formula string representing the formula to check
-     * @return true if the formula does not exist, otherwise it returns false
-     */
-    private boolean checkFormule(String formula) {
-        ArrayList<String> array = new ArrayList<>(formulaMap.values());
-
-        for (int i = 0; i < array.size(); i++) {
-            if (formula.equals(array.get(i))) {
-                return false;
-            }
-        }
-
-        return true;
-
-    }
-
-    /**
      * Add a new formula
      *
      * @param name string representing the name of formula
@@ -149,23 +126,17 @@ public class Formulas {
      * @return false if the operation is unsuccessful, otherwise it returns true
      * @throws FormulaAlreadyExsist if formula is already present
      */
-    public void add(String name, String formule) throws FormulaAlreadyExsist, NameFormulaAlreadyExsist {
-      
-        if (!checkFormule(formule)) {
-            String oldName = getNameByFormula(formule);
-            throw new FormulaAlreadyExsist("Formula: " + formule + " already exsist!",oldName,name);
+    public void add(String name, String formule) throws NameFormulaAlreadyExsist {
+
+        if (formulaMap.containsKey(name)) {
+            throw new NameFormulaAlreadyExsist("Name: " + name + " already exsist!", name, formule);
         } else {
 
-            //modifica formula
-            if (formulaMap.containsKey(name)) {
-                throw new NameFormulaAlreadyExsist("Name: " + name + " already exist!",name,formule);
-            } else {
-
-                formulaMap.put(name, formule);
-            }
-
+            formulaMap.put(name, formule);
         }
+
     }
+
     /**
      * Delete a formule by name
      *
@@ -209,20 +180,15 @@ public class Formulas {
         return sb.toString();
     }
 
-    public boolean contains(String f) {
-        return formulaMap.get(f) != null;
-    }
-
-    private String getNameByFormula(String formule) {
-        String name = null;
-        for (Map.Entry<String, String> set :formulaMap.entrySet()){
-         
-            if(set.getValue().equals(formule)){
-                return set.getKey();
-            }
-            
-        }
-        return null;
+    /**
+     * Restituisce true se un nome della formula è già presente
+     *
+     * @param name stringa che rappresenta il nome della formula
+     * @return true se il nome della formula è presente, altrimenti restituisce
+     * false
+     */
+    public boolean contains(String name) {
+        return formulaMap.get(name) != null;
     }
 
 }

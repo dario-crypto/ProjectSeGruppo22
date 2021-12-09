@@ -4,9 +4,8 @@
  */
 package com.mycompany.project;
 
-import com.mycompany.project.exception.FormulaAlreadyExsist;
+import com.mycompany.project.exception.*;
 import com.mycompany.project.model.Formulas;
-import com.mycompany.project.exception.NameFormulaAlreadyExsist;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -58,8 +57,7 @@ public class FormulasTest {
         String formule2 = "sqrt(a*a+b*b)";
         formulas.add(name1, formule1);
 
-        boolean status = formulas.rename(name1, "Delta2");
-        assertEquals(true, status);
+        formulas.rename(name1, "Delta2");
         assertEquals(null, formulas.get(name1));
         assertEquals(formulas.get("Delta2"), formule1);
 
@@ -77,11 +75,6 @@ public class FormulasTest {
         formulas.add(name1, formule1);
         formulas.add(name2, formule2);
 
-        //caso formula già presente
-        FormulaAlreadyExsist assertThrows = assertThrows(FormulaAlreadyExsist.class, () -> formulas.update(name1, formule2));
-        assertEquals("Formule: " + formule2 + " already exsist!", assertThrows.getMessage());
-
-        //caso formula non presente
         String newFormule = "a*b*c";
         boolean status = formulas.update(name1, newFormule);
         assertEquals(true, status);
@@ -127,25 +120,21 @@ public class FormulasTest {
         String formula2 = "sqrt(a*a+b*b)";
         boolean status;
 
-        
-         
-        
-   
+        //formula non presente (nome e formula)
         formulas.add(name2, formula2);
-        
- 
-        //caso formula presente
-        FormulaAlreadyExsist assertThrows = assertThrows(FormulaAlreadyExsist.class, () -> formulas.add("newName", formula2));
-        assertEquals("Formule: " + formula2 + " already exsist!", assertThrows.getMessage());
-
-        //caso nome già presente e formula non presente (modifica formula)
+        assertEquals(formula2, formulas.get(name2));
         formulas.add(name1, formula1);
         assertEquals(formula1, formulas.get(name1));
-        
-  
-        
 
-       
+        //caso formula già presente
+        //FormulaAlreadyExsist assertThrows = assertThrows(FormulaAlreadyExsist.class, () -> formulas.add("newName", formula2));
+        //assertEquals("Formula: " + formula2 + " already exsist!", assertThrows.getMessage());
+      
+
+        //caso nome già presente
+        NameFormulaAlreadyExsist assertThrowsName = assertThrows(NameFormulaAlreadyExsist.class, () -> formulas.add(name1, "a+b"));
+        assertEquals("Name: " + name1 + " already exsist!", assertThrowsName.getMessage());
+
     }
 
     /**
