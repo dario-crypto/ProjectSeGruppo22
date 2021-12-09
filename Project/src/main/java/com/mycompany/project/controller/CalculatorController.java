@@ -269,10 +269,20 @@ public class CalculatorController {
         commandProcessor.undo();
     }
     
+ /**
+  * This method does the reload operation
+  * @throws IOException
+  * @throws FileNotFoundException
+  * @throws ClassNotFoundException 
+  */
      public void loadFile() throws IOException, FileNotFoundException, ClassNotFoundException {
         formulas.reaload();
     }
 
+     /**
+      * This method does the save operation
+      * @throws IOException 
+      */
     public void saveFile() throws IOException{
         formulas.save();
     }

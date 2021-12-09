@@ -6,8 +6,8 @@
 package com.mycompany.project.exception;
 
 /**
- *
- * @author asiav
+ * This class represents the exception that is thrown when you want to execute an undefined operation
+ * @author immacolata
  */
 public class OperationDoesNotExist extends Exception {
 
