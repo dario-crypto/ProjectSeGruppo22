@@ -514,5 +514,23 @@ public class ComplexNumber {
         return true;
 
     }
+    
+    public double asen(ComplexNumber z){
+        double r = z.real;
+        double i = z.imaginary;
+        return Math.asin(r+i);
+    }
+    
+     public double acosen(ComplexNumber z){
+        double r = z.real;
+        double i = z.imaginary;
+        return Math.acos(r+i);
+    }
+        
+    public double atang(ComplexNumber z){
+        double r = z.real;
+        double i = z.imaginary;
+        return Math.atan(r+i);
+    }  
 
 }
