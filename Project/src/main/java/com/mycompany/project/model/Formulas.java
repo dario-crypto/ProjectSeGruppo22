@@ -66,7 +66,6 @@ public class Formulas {
      *
      * @param oldName string representing the old name of the formula
      * @param newName string representing the new name of the formula
-     * @return false if the operation is unsuccessful, otherwise it returns true
      */
     public void rename(String oldName, String newName) throws NameFormulaAlreadyExsist {
         if (!formulaMap.containsKey(newName)) {
