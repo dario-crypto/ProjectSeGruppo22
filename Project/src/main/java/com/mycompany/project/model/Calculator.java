@@ -353,5 +353,19 @@ public class Calculator {
         insert(atangent);
         return atangent;
     }
+    
+    /**
+     * This method calculates the pow of a complex number
+     * @return
+     * @throws StackEmptyException 
+     */
+    
+    public ComplexNumber pow() throws StackEmptyException {
+        ComplexNumber c1 = stack.pop();
+        ComplexNumber c2 = stack.pop();
+        ComplexNumber result = ComplexNumber.pow(c2, c1);
+        insert(result);
+        return result;
+    }
 
 }

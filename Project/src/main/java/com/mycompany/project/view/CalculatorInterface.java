@@ -897,6 +897,21 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonPowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPowActionPerformed
         // TODO add your handling code here:
+        CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+        try {
+
+            copy.exec();
+            controller.execOperation("*");
+
+        } catch (StackEmptyException ex) {
+            popUp("You need at least 2 items in the stack!", "warning");
+            copy.undo();
+
+        } catch (OperationDoesNotExist ex) {
+            Logger.getLogger(CalculatorInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        viewStack();
+        clearTextArea();
     }//GEN-LAST:event_jButtonPowActionPerformed
 
     private void jButtonExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExpActionPerformed

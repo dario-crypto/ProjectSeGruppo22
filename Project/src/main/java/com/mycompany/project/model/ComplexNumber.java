@@ -21,6 +21,9 @@
  */
 package com.mycompany.project.model;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+
 public class ComplexNumber {
 
     /**
@@ -45,7 +48,6 @@ public class ComplexNumber {
      * Constructs a new <code>ComplexNumber</code> object with both real and
      * imaginary parts 0 (z = 0 + 0i).
      */
-
     public ComplexNumber() {
         real = 0.0;
         imaginary = 0.0;
@@ -249,20 +251,148 @@ public class ComplexNumber {
     }
 
     /**
-     * Calculates the <code>ComplexNumber</code> to the passed integer power.
+     * Calculates the <code>ComplexNumber</code> to the passed power.
      *
      * @param z The input complex number
      * @param power The power.
      * @return a <code>ComplexNumber</code> which is (z)^power
      */
-    public static ComplexNumber pow(ComplexNumber z, int power) {
+    public static ComplexNumber pow(ComplexNumber z, ComplexNumber power) {
         ComplexNumber output = new ComplexNumber(z.getRe(), z.getIm());
-        for (int i = 1; i < power; i++) {
-            double _real = output.real * z.real - output.imaginary * z.imaginary;
-            double _imaginary = output.real * z.imaginary + output.imaginary * z.real;
-            output = new ComplexNumber(_real, _imaginary);
+        if (power.getIm() == 0.0) {
+            if (!checkDecimal(power.getRe())) {
+                for (int i = 1; i < power.getRe(); i++) {
+                    double _real = output.real * z.real - output.imaginary * z.imaginary;
+                    double _imaginary = output.real * z.imaginary + output.imaginary * z.real;
+                    output = new ComplexNumber(_real, _imaginary);
+                }
+            } else {
+                String a = convertDecimalToFraction(power.getRe());
+                String[] a1 = a.split("/");
+                Double p = Double.parseDouble(a1[0]);
+                Double r = Double.parseDouble(a1[1]);
+                ComplexNumber b = ComplexNumber.pow(z, new ComplexNumber(p, 0.0));
+                output = ComplexNumber.rootComplex(b, r);
+            }
+        } else if (z.getIm() == 0) {
+            Double arg = power.getIm() * Math.log(z.getRe());
+            Double re1 = (double) Math.round(Math.cos(arg) * 100000000) / 100000000;
+            Double im1 = (double) Math.round(Math.sin(arg) * 100000000) / 100000000;
+            Double value = Math.pow(z.getRe(), power.getRe());
+            Double re = value * re1;
+            Double im = value * im1;
+            output = new ComplexNumber(re, im);
+
+        } else {
+            Double mod = z.mod();
+            Double arg = z.getArg();
+            ComplexNumber carg = new ComplexNumber(0.0, arg);
+
+            ComplexNumber e = ComplexNumber.multiply(carg, power);
+
+            ComplexNumber output1 = ComplexNumber.exp(new ComplexNumber(e.getRe(), 0));
+            Double output2 = Math.pow(mod, power.getRe());
+            Double r = output1.getRe() * output2 * Math.cos(e.getIm());
+            Double i = output1.getRe() * output2 * Math.sin(e.getIm());
+            ComplexNumber output3 = new ComplexNumber(r, i);
+            ComplexNumber output4 = ComplexNumber.pow(new ComplexNumber(mod, 0), new ComplexNumber(0, power.getIm()));
+            output = ComplexNumber.multiply(output3, output4);
+            output.setReal((double) Math.round(output.getRe() * 100000000) / 100000000);
+            output.setImaginary((double) Math.round(output.getIm() * 100000000) / 100000000);
         }
+
         return output;
+    }
+
+    /**
+     * This method is used to convert a decimal number into a fraction
+     *
+     * @param x
+     * @return String
+     */
+    static private String convertDecimalToFraction(double x) {
+        if (x < 0) {
+            return "-" + convertDecimalToFraction(-x);
+        }
+        double tolerance = 1.0E-6;
+        double h1 = 1;
+        double h2 = 0;
+        double k1 = 0;
+        double k2 = 1;
+        double b = x;
+        do {
+            double a = Math.floor(b);
+            double aux = h1;
+            h1 = a * h1 + h2;
+            h2 = aux;
+            aux = k1;
+            k1 = a * k1 + k2;
+            k2 = aux;
+            b = 1 / (b - a);
+        } while (Math.abs(x - h1 / k1) > x * tolerance);
+
+        return h1 + "/" + k1;
+    }
+
+    /**
+     * This method checks if a number is decimal or not. It it is decimal
+     * returns true, otherwise it returns false
+     *
+     * @param n
+     * @return
+     */
+    private static boolean checkDecimal(Double n) {
+        ArrayList<Double> a;
+        String f = convertDecimalToFraction(n);
+        String[] fr = f.split("/");
+        if (fr[1].equals("1.0")) {
+            return false;
+        }
+        return true;
+
+    }
+    
+    /**
+     * This method calculates the root of a real number
+     * @param c
+     * @param index
+     * @return 
+     */
+
+    public static ComplexNumber rootReal(ComplexNumber c, Double index) {
+        Double newIndex = 1 / index;
+        Double d = Math.pow(c.getRe(), newIndex);
+        BigDecimal b1 = new BigDecimal(d).setScale(8, BigDecimal.ROUND_HALF_UP);
+        Double root = Double.parseDouble(b1.toString());
+        return new ComplexNumber(root, 0.0);
+        //return new ComplexNumber((b1.setScale(8, BigDecimal.ROUND_HALF_UP),0);
+
+    }
+    
+    /**
+     * This root calculates the root of a complex number
+     * @param c
+     * @param index
+     * @return 
+     */
+
+    public static ComplexNumber rootComplex(ComplexNumber c, Double index) {
+        Double mod = c.mod();
+        Double arg = c.getArg();
+        ComplexNumber modC = rootReal(new ComplexNumber(mod, 0), index);
+        ComplexNumber c1 = new ComplexNumber(0, 0);
+        double period = 0.0;
+        for (int i = 0; i < index; i++) {
+            period += 2 * i * Math.PI;
+
+        }
+
+        Double re = modC.getRe() * (Math.cos((c.getArg() + period) / index));
+        Double im = modC.getRe() * (Math.sin((c.getArg() + period) / index));
+        c1.setReal(re);
+        c1.setImaginary(im);
+        return c1;
+
     }
 
     /**
@@ -514,23 +644,23 @@ public class ComplexNumber {
         return true;
 
     }
-    
-    public double asen(ComplexNumber z){
+
+    public double asen(ComplexNumber z) {
         double r = z.real;
         double i = z.imaginary;
-        return Math.asin(r+i);
+        return Math.asin(r + i);
     }
-    
-     public double acosen(ComplexNumber z){
+
+    public double acosen(ComplexNumber z) {
         double r = z.real;
         double i = z.imaginary;
-        return Math.acos(r+i);
+        return Math.acos(r + i);
     }
-        
-    public double atang(ComplexNumber z){
+
+    public double atang(ComplexNumber z) {
         double r = z.real;
         double i = z.imaginary;
-        return Math.atan(r+i);
-    }  
+        return Math.atan(r + i);
+    }
 
 }
