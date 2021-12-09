@@ -36,7 +36,7 @@ public class CalculatorController {
     }
 
     /**
-     * Inserisce un numero complesso nella calcolatrice
+     * This method inserts a ComplexNumber in the calculator
      *
      * @param complex stringa che rappresenta un numero complesso
      * @throws NumberFormatException se il formato del numero non è corretto
@@ -222,11 +222,10 @@ public class CalculatorController {
     }
 
     /**
-     * Rimuove una formula
+     * This method removes a formula
      *
-     * @param formula stringa che rappresenta la formula da rimuovere
-     * @return restituisce true se la formula è stata rimossa con successo
-     * altrimenti restituisce false
+     * @param formula string that represents the formula to remove
+     * @return restituisce true if the formula has been removed with success, false otherwise
      */
     public boolean removeFormula(String formula) {
         String name = formula.split("=")[0].trim();
@@ -234,39 +233,37 @@ public class CalculatorController {
     }
 
     /**
-     * Aggiorna una formula
+     * This method updates a formula
      *
-     * @param name stringa che rappresenta il nome della formula da aggiornare
-     * @param formula stringa che rappresenta la nuova formula
+     * @param name string that represents the name of the formula to update
+     * @param formula string that represents the new formula
      */
     public void updateFormula(String name, String formula) {
         formulas.update(name, formula);
     }
 
     /**
-     * Rinomina una formula
+     * This method renames a formula
      *
-     * @param oldName stringa che rappresenta il nome della formula che si vuole
-     * rinominare
-     * @param name stringa che rappresenta il nuovo nome della formula
-     * @throws NameFormulaAlreadyExsist nel caso in cui nuovo nome è già
-     * presente
+     * @param oldName string that represents the name of the formula we want to change
+     * @param name string that represents the neww name
+     * @throws NameFormulaAlreadyExsist in case the new name already exists
      */
     public void renameFormula(String oldName, String name) throws NameFormulaAlreadyExsist {
         formulas.rename(oldName, name);
     }
 
     /**
-     * Esegue un comando
+     * This method executes a command
      *
-     * @param command comando che deve essere eseguito
+     * @param command that has to be executed
      */
     public void executeCommand(Command command) {
         commandProcessor.executeCommand(command);
     }
 
     /**
-     * Effettua l'operazione di undo
+     * This method does the operation of undo
      */
     public void undo() {
         commandProcessor.undo();
