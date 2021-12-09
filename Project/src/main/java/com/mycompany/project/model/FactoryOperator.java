@@ -77,7 +77,7 @@ public class FactoryOperator {
         opMap.put("asen", asen);
         opMap.put("acosen", acosen);
         opMap.put("atang", atang);
-        opMap.put("atang", pow);
+        opMap.put("pow", pow);
 
         //operations on the variables space
         opMap.put("<var", saveToStack);

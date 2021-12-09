@@ -901,7 +901,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
         try {
 
             copy.exec();
-            controller.execOperation("*");
+            controller.execOperation("pow");
 
         } catch (StackEmptyException ex) {
             popUp("You need at least 2 items in the stack!", "warning");
