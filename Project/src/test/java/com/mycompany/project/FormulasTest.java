@@ -81,6 +81,7 @@ public class FormulasTest {
         assertEquals(newFormule, formulas.get(name1));
 
     }
+    
 
     /**
      * Test of save and reaload methods, of class Formules.
@@ -93,15 +94,20 @@ public class FormulasTest {
         String name2 = "Pitagora";
         String formule2 = "sqrt(a*a+b*b)";
 
-        String path = "formules.dat";
+        String path = "formulas.dat";
 
         formulas.add(name1, formule1);
         formulas.add(name2, formule2);
         formulas.save();
+        File file = new File(path);
+        
+        
 
         //verifico che il file è stato creato
-        File file = new File(path);
-        // assertEquals(true, file.exists());
+        
+        //assertEquals(true, file.exists());
+        formulas.clear();
+        
         formulas.reaload();
         assertEquals(formule1, formulas.get(name1));
         assertEquals(formule2, formulas.get(name2));
