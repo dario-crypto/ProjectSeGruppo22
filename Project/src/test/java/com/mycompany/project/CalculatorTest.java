@@ -242,7 +242,7 @@ public class CalculatorTest {
     @Test
     public void testDivide() throws StackEmptyException {
 
-        //caso numeri reali
+        
         ComplexNumber c1 = new ComplexNumber(10, 0);
         ComplexNumber c2 = new ComplexNumber(2, 0);
         calculator.insert(c1);
@@ -251,7 +251,7 @@ public class CalculatorTest {
         assertEquals(new ComplexNumber(5, 0), result);
         assertEquals(new ComplexNumber(5, 0), calculator.getStack().top());
 
-        //caso numeri complessi
+        
         c1 = new ComplexNumber(2, 1);
         c2 = new ComplexNumber(1, 1);
         calculator.insert(c1);
@@ -260,7 +260,7 @@ public class CalculatorTest {
         assertEquals(new ComplexNumber((double) 3 / 2, (double) -1 / 2), result);
         assertEquals(new ComplexNumber((double) 3 / 2, (double) -1 / 2), calculator.getStack().top());
 
-        //divisione per zero
+        
         calculator.insert(new ComplexNumber(0, 0));
         ArithmeticException assertThrows = assertThrows(ArithmeticException.class, () -> calculator.divide());
         assertEquals("Division by zero", assertThrows.getMessage());
@@ -686,10 +686,12 @@ public class CalculatorTest {
         assertEquals(new ComplexNumber(-1.5707963267948966,0), calculator.asen());
         assertEquals(new ComplexNumber(-1.5707963267948966, 0), calculator.getStack().top());
         
-        /*ComplexNumber c5 = new ComplexNumber(2, 0);
+        /*
+        ComplexNumber c5 = new ComplexNumber(2, 0);
         calculator.insert(c5);
-        assertEquals(new ComplexNumber(NaN, 0), calculator.asen());
-        assertEquals(new ComplexNumber(NaN, 0), calculator.getStack().top());*/
+        assertEquals(new ComplexNumber(NaN,0), calculator.asen());
+        assertEquals(new ComplexNumber(NaN,0), calculator.getStack().top());
+        */
     }
     
     /**
@@ -720,10 +722,12 @@ public class CalculatorTest {
         assertEquals(new ComplexNumber(0,0), calculator.acosen());
         assertEquals(new ComplexNumber(0,0), calculator.getStack().top());
         
-        /*ComplexNumber c5 = new ComplexNumber(2, 0);
+        /*
+        ComplexNumber c5 = new ComplexNumber(2, 0);
         calculator.insert(c5);
-        assertEquals(new ComplexNumber("NaN"), calculator.acosen());
-        assertEquals(new ComplexNumber("NaN"), calculator.getStack().top());*/
+        assertEquals(0, calculator.acosen());
+        assertEquals(new ComplexNumber(NaN,0), calculator.getStack().top());
+        */
     }
     
     /**
