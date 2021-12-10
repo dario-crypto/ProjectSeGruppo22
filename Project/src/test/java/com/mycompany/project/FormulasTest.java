@@ -1,8 +1,10 @@
+package com.mycompany.project;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
-package com.mycompany.project;
+
 
 import com.mycompany.project.exception.*;
 import com.mycompany.project.model.Formulas;
@@ -56,18 +58,30 @@ public class FormulasTest {
         String name2 = "Pitagora";
         String formule2 = "sqrt(a*a+b*b)";
         formulas.add(name1, formule1);
+        formulas.add(name2, formule2);
 
+        //vecchio nome presente e nuovo nome non presente
         formulas.rename(name1, "Delta2");
         assertEquals(null, formulas.get(name1));
         assertEquals(formulas.get("Delta2"), formule1);
 
+        //casi in cui l'operazione non viene eseguita
+        //vecchio nome non presente nuovo nome presente
+        NameFormulaAlreadyExsist assertThrows = assertThrows(NameFormulaAlreadyExsist.class, () -> formulas.rename("name1", "Delta2"));
+        assertEquals("New name Delta2 already exist!", assertThrows.getMessage());
+        //vecchio nome presente e nuovo nome presente
+        NameFormulaAlreadyExsist assertThrows2 = assertThrows(NameFormulaAlreadyExsist.class, () -> formulas.rename(name2, "Delta2"));
+        assertEquals("New name Delta2 already exist!", assertThrows2.getMessage());
+        //vecchio nome non presente e nuovo nome non presente
+        formulas.rename("name1", "name2");
+        assertEquals(null, formulas.get("name2"));
     }
 
     /**
      * Test of update method, of class Formules.
      */
     @Test
-    public void testUpdate() throws  NameFormulaAlreadyExsist {
+    public void testUpdate() throws NameFormulaAlreadyExsist {
         String name1 = "Delta";
         String formule1 = "sqrt(b*b -4*a*c)";
         String name2 = "Pitagora";
@@ -75,33 +89,18 @@ public class FormulasTest {
         formulas.add(name1, formule1);
         formulas.add(name2, formule2);
 
-        String newFormule = "a*b*c";
-        boolean status = formulas.update(name1, newFormule);
+        String newFormula = "a*b*c";
+        //caso nome formula presente
+        boolean status = formulas.update(name1, newFormula);
         assertEquals(true, status);
-        assertEquals(newFormule, formulas.get(name1));
+        assertEquals(newFormula, formulas.get(name1));
 
+        //caso nome formula non presente
+        status = formulas.update("hyp", newFormula);
+        assertEquals(false, status);
+        assertEquals(null, formulas.get("hyp"));
     }
     
-    /**
-     * Test of clear method, of class Formules.
-     */
-    @Test
-    public void testClear() throws IOException, NameFormulaAlreadyExsist {
-        String name1 = "Delta";
-        String formule1 = "sqrt(b*b -4*a*c)";
-        String name2 = "Pitagora";
-        String formule2 = "sqrt(a*a+b*b)";
-
-        formulas.add(name1, formule1);
-        formulas.add(name2, formule2);
-        formulas.clear();
-        assertEquals(0, formulas.size());
-        assertEquals(null, formulas.get(name1));
-        assertEquals(null, formulas.get(name2));
-
-    }
-    
-
     /**
      * Test of save and reaload methods, of class Formules.
      */
@@ -137,7 +136,7 @@ public class FormulasTest {
      * Test of add method, of class Formules.
      */
     @Test
-    public void testAdd() throws  NameFormulaAlreadyExsist {
+    public void testAdd() throws NameFormulaAlreadyExsist {
 
         String name1 = "Delta";
         String formula1 = "sqrt(b*b -4*a*c)";
@@ -145,16 +144,11 @@ public class FormulasTest {
         String formula2 = "sqrt(a*a+b*b)";
         boolean status;
 
-        //formula non presente (nome e formula)
+        //caso nome non presente
         formulas.add(name2, formula2);
         assertEquals(formula2, formulas.get(name2));
         formulas.add(name1, formula1);
         assertEquals(formula1, formulas.get(name1));
-
-        //caso formula già presente
-        //FormulaAlreadyExsist assertThrows = assertThrows(FormulaAlreadyExsist.class, () -> formulas.add("newName", formula2));
-        //assertEquals("Formula: " + formula2 + " already exsist!", assertThrows.getMessage());
-      
 
         //caso nome già presente
         NameFormulaAlreadyExsist assertThrowsName = assertThrows(NameFormulaAlreadyExsist.class, () -> formulas.add(name1, "a+b"));
@@ -178,6 +172,25 @@ public class FormulasTest {
         formulas.delete("Delta");
         assertEquals(null, formulas.get("Delta"));
         assertEquals(1, formulas.size());
+
+    }
+    
+    /**
+     * Test of clear method, of class Formules.
+     */
+    @Test
+    public void testClear() throws IOException, NameFormulaAlreadyExsist {
+        String name1 = "Delta";
+        String formule1 = "sqrt(b*b -4*a*c)";
+        String name2 = "Pitagora";
+        String formule2 = "sqrt(a*a+b*b)";
+
+        formulas.add(name1, formule1);
+        formulas.add(name2, formule2);
+        formulas.clear();
+        assertEquals(0, formulas.size());
+        assertEquals(null, formulas.get(name1));
+        assertEquals(null, formulas.get(name2));
 
     }
 

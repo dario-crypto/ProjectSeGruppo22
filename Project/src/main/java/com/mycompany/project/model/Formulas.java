@@ -75,7 +75,7 @@ public class Formulas {
                 formulaMap.put(newName, formule);
             }
         } else {
-            throw new NameFormulaAlreadyExsist("Name already exist!", newName, null);
+            throw new NameFormulaAlreadyExsist("New name "+newName+ " already exist!", newName, null);
         }
 
     }

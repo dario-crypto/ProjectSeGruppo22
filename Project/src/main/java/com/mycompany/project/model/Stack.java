@@ -1,6 +1,7 @@
 package com.mycompany.project.model;
 
 import com.mycompany.project.exception.StackEmptyException;
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class Stack<E> implements Iterable<E>, StackLogic<E> {
@@ -184,7 +185,29 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
             pop();
     }
     
-    
+      @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Stack<?> other = (Stack<?>) obj;
+        if (!Arrays.deepEquals(this.stack, other.stack)) {
+            return false;
+        }
+        return true;
+    }
     
     
 

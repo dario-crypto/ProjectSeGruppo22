@@ -1298,11 +1298,13 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
         JList list = (JList) evt.getSource();
         if (evt.getButton() == MouseEvent.BUTTON3) {
-            String oldFormulaName = list.getSelectedValue().toString().split("=")[0].trim();
-            String newFormulaName = JOptionPane.showInputDialog(this, "Enter new formula name:");
-            if (oldFormulaName != null || newFormulaName != null) {
+            Object oldFormulaName = list.getSelectedValue();
+
+            if (oldFormulaName != null) {
                 try {
-                    controller.renameFormula(oldFormulaName, newFormulaName);
+                    String oldName = oldFormulaName.toString().split("=")[0].trim();
+                    String newFormulaName = JOptionPane.showInputDialog(this, "Enter new formula name:");
+                    controller.renameFormula(oldName, newFormulaName);
                 } catch (NameFormulaAlreadyExsist ex) {
                     popUp(ex.getMessage(), "warning");
                 }
@@ -1316,7 +1318,6 @@ public class CalculatorInterface extends javax.swing.JFrame {
         }
 
         viewFormulas();
-
 
     }//GEN-LAST:event_jListFormulasMouseClicked
 
