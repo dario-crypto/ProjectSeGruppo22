@@ -45,4 +45,8 @@ public class CopyStackCommand implements Command {
 
     }
 
+    public Stack<ComplexNumber> getBackupStack() {
+       return backup;
+    }
+
 }

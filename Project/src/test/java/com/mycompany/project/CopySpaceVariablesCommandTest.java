@@ -1,9 +1,12 @@
+package com.mycompany.project;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.project;
+
+
 
 import com.mycompany.project.command.CopySpaceVariablesCommand;
 import com.mycompany.project.model.*;
@@ -35,7 +38,7 @@ public class CopySpaceVariablesCommandTest {
     }
 
     /**
-     * Test of undo methods, of class CopySpaceVariablesCommand.
+     * Test of exec method, of class CopySpaceVariablesCommand.
      */
     @Test
     public void testExec() {
@@ -51,7 +54,7 @@ public class CopySpaceVariablesCommandTest {
     }
 
     /**
-     * Test of undo methods, of class CopySpaceVariablesCommand.
+     * Test of undo method, of class CopySpaceVariablesCommand.
      */
     @Test
     public void testUndo() {

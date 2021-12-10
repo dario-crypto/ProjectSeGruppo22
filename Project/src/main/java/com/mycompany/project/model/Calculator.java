@@ -6,6 +6,7 @@ package com.mycompany.project.model;
 
 import com.mycompany.project.exception.StackEmptyException;
 import com.mycompany.project.model.StackLogic;
+import java.util.Objects;
 
 /**
  *
@@ -379,6 +380,29 @@ public class Calculator {
         ComplexNumber result = ComplexNumber.pow(c2, c1);
         insert(result);
         return result;
+    }
+     @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Calculator other = (Calculator) obj;
+        if (!Objects.equals(this.stack, other.stack)) {
+            return false;
+        }
+        return true;
     }
 
 }
