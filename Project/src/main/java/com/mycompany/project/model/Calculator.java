@@ -37,7 +37,7 @@ public class Calculator {
     /**
      * This method is used to insert a ComplexNumber in the Calculator's stack
      *
-     * @param c
+     * @param c is the number that needs to be inserted
      */
     public void insert(ComplexNumber c) {
         stack.push(c);
@@ -48,8 +48,8 @@ public class Calculator {
      * This method calculates the sum of the last two elements of the
      * Calculator's stack
      *
-     * @return ComplexNumber
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the sum of the two last elements of the stack
+     * @throws StackEmptyException if the stack is empty or when there are not enough elemets to execute the operation
      */
     public ComplexNumber sum() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -63,8 +63,8 @@ public class Calculator {
      * This method calculates the substraction of the last two elements of the
      * Calculator's stack
      *
-     * @return ComplexNumber
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the result of the substraction between the second-last and last elements
+     * @throws StackEmptyException if the stack is empty or when there are not enough elemets to execute the operation
      */
     public ComplexNumber sub() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -79,8 +79,8 @@ public class Calculator {
      * This method calculates the division of the last two elements of the
      * Calculator's stack
      *
-     * @return ComplexNumber
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the result of the division between the second-last and last elements
+     * @throws StackEmptyException if the stack is empty or there are not enough elemets to execute the operation
      */
     public ComplexNumber divide() throws StackEmptyException {
         ComplexNumber divider = stack.pop();
@@ -94,8 +94,8 @@ public class Calculator {
      * This method calculates the product of the last two elements of the
      * Calculator's stack
      *
-     * @return ComplexNumber
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the product between the second-last and last elements
+     * @throws StackEmptyException if the stack is empty or there are not enough elemets to execute the operation
      */
     public ComplexNumber prod() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -110,8 +110,8 @@ public class Calculator {
      * This method calculates the square root of the last element of the
      * Calculator's stack
      *
-     * @return ComplexNumber
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the result of the square root between the second-last and last elements
+     * @throws StackEmptyException if the stack is empty or there are not enough elemets to execute the operation
      */
     public ComplexNumber squareRoot() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -130,12 +130,18 @@ public class Calculator {
     /**
      * This method removes all of the items of the Calculator's stack
      *
-     * @throws StackEmptyException
+     * @throws StackEmptyException if the stack is empty
      */
     public void clear() throws StackEmptyException {
         stack.clear();
 
     }
+    
+    /**
+     * This method deletes the last element of the stack
+     *
+     * @throws StackEmptyException if the stack is empty
+     */
 
     public void drop() throws StackEmptyException {
         ComplexNumber c = stack.pop();
@@ -145,7 +151,7 @@ public class Calculator {
     /**
      * This method pushes a copy of the last element
      *
-     * @throws StackEmptyException
+     * @throws StackEmptyException if the stack is empty
      */
     public void dup() throws StackEmptyException {
         ComplexNumber c = stack.pop();
@@ -156,7 +162,7 @@ public class Calculator {
     /**
      * This method exchanges the last two items of the Calculator's stack
      *
-     * @throws StackEmptyException
+     * @throws StackEmptyException if the stack is empty or there are not enough elemets to execute the operation
      */
     public void swap() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -169,7 +175,8 @@ public class Calculator {
     /**
      * This method pushes a copy of the second last element
      *
-     * @throws StackEmptyException
+     * @throws StackEmptyException if the stack is empty or there are not enough
+     * elemets to execute the operation
      */
     public void over() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
