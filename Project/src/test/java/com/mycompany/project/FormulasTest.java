@@ -82,7 +82,6 @@ public class FormulasTest {
 
     }
     
-
     /**
      * Test of save and reaload methods, of class Formules.
      */
@@ -94,7 +93,7 @@ public class FormulasTest {
         String name2 = "Pitagora";
         String formule2 = "sqrt(a*a+b*b)";
 
-        String path = "formulas.dat";
+        String path = "formules.dat";
 
         formulas.add(name1, formule1);
         formulas.add(name2, formule2);
