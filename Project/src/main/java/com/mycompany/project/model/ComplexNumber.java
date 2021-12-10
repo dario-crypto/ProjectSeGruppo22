@@ -656,16 +656,22 @@ public class ComplexNumber {
         return new ComplexNumber(real, image);
     }
 
-    public double asen(ComplexNumber z) {
+public double asen(ComplexNumber z){
         double r = z.real;
         double i = z.imaginary;
-        return Math.asin(r + i);
+        if (z.real > 1 || z.real < -1 ) {
+            throw new ArithmeticException("Number not included in [-1,1]");
+        }
+        return Math.asin(r+i);
     }
 
-    public double acosen(ComplexNumber z) {
+public double acosen(ComplexNumber z){
         double r = z.real;
         double i = z.imaginary;
-        return Math.acos(r + i);
+        if (z.real > 1 || z.real < -1 ) {
+            throw new ArithmeticException("Number not included in [-1,1]");
+        }
+        return Math.acos(r+i);
     }
 
     public double atang(ComplexNumber z) {

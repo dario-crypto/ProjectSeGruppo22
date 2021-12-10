@@ -686,10 +686,9 @@ public class CalculatorTest {
         assertEquals(new ComplexNumber(-1.5707963267948966,0), calculator.asen());
         assertEquals(new ComplexNumber(-1.5707963267948966, 0), calculator.getStack().top());
         
-        /*ComplexNumber c5 = new ComplexNumber(2, 0);
-        calculator.insert(c5);
-        assertEquals(new ComplexNumber(NaN, 0), calculator.asen());
-        assertEquals(new ComplexNumber(NaN, 0), calculator.getStack().top());*/
+        calculator.insert(new ComplexNumber(2, 0));
+        ArithmeticException assertThrows = assertThrows(ArithmeticException.class, () -> calculator.asen());
+        assertEquals("Number not included in [-1,1]", assertThrows.getMessage());
     }
     
     /**
@@ -720,10 +719,10 @@ public class CalculatorTest {
         assertEquals(new ComplexNumber(0,0), calculator.acosen());
         assertEquals(new ComplexNumber(0,0), calculator.getStack().top());
         
-        /*ComplexNumber c5 = new ComplexNumber(2, 0);
-        calculator.insert(c5);
-        assertEquals(new ComplexNumber("NaN"), calculator.acosen());
-        assertEquals(new ComplexNumber("NaN"), calculator.getStack().top());*/
+        calculator.insert(new ComplexNumber(2, 0));
+        ArithmeticException assertThrows = assertThrows(ArithmeticException.class, () -> calculator.acosen());
+        assertEquals("Number not included in [-1,1]", assertThrows.getMessage());
+
     }
     
     /**
