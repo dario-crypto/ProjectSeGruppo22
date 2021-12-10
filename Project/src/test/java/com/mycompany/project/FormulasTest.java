@@ -83,6 +83,26 @@ public class FormulasTest {
     }
     
     /**
+     * Test of clear method, of class Formules.
+     */
+    @Test
+    public void testClear() throws FormulaAlreadyExsist, IOException, NameFormulaAlreadyExsist {
+        String name1 = "Delta";
+        String formule1 = "sqrt(b*b -4*a*c)";
+        String name2 = "Pitagora";
+        String formule2 = "sqrt(a*a+b*b)";
+
+        formulas.add(name1, formule1);
+        formulas.add(name2, formule2);
+        formulas.clear();
+        assertEquals(0, formulas.size());
+        assertEquals(null, formulas.get(name1));
+        assertEquals(null, formulas.get(name2));
+
+    }
+    
+
+    /**
      * Test of save and reaload methods, of class Formules.
      */
     @Test
@@ -161,23 +181,6 @@ public class FormulasTest {
 
     }
 
-    /**
-     * Test of clear method, of class Formules.
-     */
-    @Test
-    public void testClear() throws FormulaAlreadyExsist, IOException, NameFormulaAlreadyExsist {
-        String name1 = "Delta";
-        String formule1 = "sqrt(b*b -4*a*c)";
-        String name2 = "Pitagora";
-        String formule2 = "sqrt(a*a+b*b)";
 
-        formulas.add(name1, formule1);
-        formulas.add(name2, formule2);
-        formulas.clear();
-        assertEquals(0, formulas.size());
-        assertEquals(null, formulas.get(name1));
-        assertEquals(null, formulas.get(name2));
-
-    }
 
 }
