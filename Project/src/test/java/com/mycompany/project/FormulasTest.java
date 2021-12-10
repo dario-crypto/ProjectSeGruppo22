@@ -30,7 +30,7 @@ public class FormulasTest {
      * Test of get method, of class Formules.
      */
     @Test
-    public void testGet() throws FormulaAlreadyExsist, NameFormulaAlreadyExsist {
+    public void testGet() throws NameFormulaAlreadyExsist {
 
         String name1 = "Delta";
         String formule1 = "sqrt(b*b -4*a*c)";
@@ -50,7 +50,7 @@ public class FormulasTest {
      * Test of rename method, of class Formules.
      */
     @Test
-    public void testRename() throws FormulaAlreadyExsist, NameFormulaAlreadyExsist {
+    public void testRename() throws NameFormulaAlreadyExsist {
         String name1 = "Delta";
         String formule1 = "sqrt(b*b -4*a*c)";
         String name2 = "Pitagora";
@@ -67,7 +67,7 @@ public class FormulasTest {
      * Test of update method, of class Formules.
      */
     @Test
-    public void testUpdate() throws FormulaAlreadyExsist, NameFormulaAlreadyExsist {
+    public void testUpdate() throws  NameFormulaAlreadyExsist {
         String name1 = "Delta";
         String formule1 = "sqrt(b*b -4*a*c)";
         String name2 = "Pitagora";
@@ -86,7 +86,7 @@ public class FormulasTest {
      * Test of clear method, of class Formules.
      */
     @Test
-    public void testClear() throws FormulaAlreadyExsist, IOException, NameFormulaAlreadyExsist {
+    public void testClear() throws IOException, NameFormulaAlreadyExsist {
         String name1 = "Delta";
         String formule1 = "sqrt(b*b -4*a*c)";
         String name2 = "Pitagora";
@@ -106,7 +106,7 @@ public class FormulasTest {
      * Test of save and reaload methods, of class Formules.
      */
     @Test
-    public void testSaveReload() throws IOException, FileNotFoundException, ClassNotFoundException, FormulaAlreadyExsist, NameFormulaAlreadyExsist {
+    public void testSaveReload() throws IOException, FileNotFoundException, ClassNotFoundException, NameFormulaAlreadyExsist {
 
         String name1 = "Delta";
         String formule1 = "sqrt(b*b -4*a*c)";
@@ -137,7 +137,7 @@ public class FormulasTest {
      * Test of add method, of class Formules.
      */
     @Test
-    public void testAdd() throws FormulaAlreadyExsist, NameFormulaAlreadyExsist {
+    public void testAdd() throws  NameFormulaAlreadyExsist {
 
         String name1 = "Delta";
         String formula1 = "sqrt(b*b -4*a*c)";

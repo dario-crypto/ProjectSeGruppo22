@@ -36,13 +36,13 @@ public class CalculatorInterface extends javax.swing.JFrame {
     /**
      * Creates new form calculatorInterface
      */
-    public CalculatorInterface()  {
+    public CalculatorInterface() {
         initComponents();
         controller = new CalculatorController(new Stack<>());
         try {
             controller.loadFile();
         } catch (FileNotFoundException ex) {
-      
+
         } catch (ClassNotFoundException ex) {
             popUp("Saved Failed!", "error");
         } catch (IOException ex) {
@@ -781,7 +781,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonLnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLnActionPerformed
         // TODO add your handling code here:
-         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+        CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
         try {
 
             copy.exec();
@@ -994,7 +994,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonASinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonASinActionPerformed
         // TODO add your handling code here:
-         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+        CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
         try {
 
             copy.exec();
@@ -1003,6 +1003,9 @@ public class CalculatorInterface extends javax.swing.JFrame {
         } catch (StackEmptyException ex) {
             copy.undo();
             popUp(ex.getMessage(), "warning");
+        } catch (ArithmeticException ex) {
+            popUp(ex.getMessage(), "error");
+            copy.undo();
         } catch (OperationDoesNotExist ex) {
         }
         viewStack();
@@ -1010,7 +1013,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonASinActionPerformed
 
     private void jButtonACosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonACosActionPerformed
- CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+        CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
         try {
 
             copy.exec();
@@ -1019,6 +1022,9 @@ public class CalculatorInterface extends javax.swing.JFrame {
         } catch (StackEmptyException ex) {
             copy.undo();
             popUp(ex.getMessage(), "warning");
+        } catch (ArithmeticException ex) {
+            popUp(ex.getMessage(), "error");
+            copy.undo();
         } catch (OperationDoesNotExist ex) {
         }
         viewStack();
@@ -1027,7 +1033,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     private void jButtonATanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonATanActionPerformed
         // TODO add your handling code here:
-         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
+        CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
         try {
 
             copy.exec();
@@ -1244,9 +1250,9 @@ public class CalculatorInterface extends javax.swing.JFrame {
         try {
             String formula = jTextArea1.getText();
             copy.exec();
-        
+
             controller.executeFormula(formula);
-          
+
         } catch (StackEmptyException ex) {
 
             popUp("Insufficient number of elements!", "warning");

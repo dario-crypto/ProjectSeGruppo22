@@ -6,8 +6,8 @@
 package com.mycompany.project.exception;
 
 /**
- *
- * @author user
+ * This class represents the exception that is thrown when you want to insert a formula with a name already used
+ * @author immacolata
  */
 public class NameFormulaAlreadyExsist extends Exception {
     String name;

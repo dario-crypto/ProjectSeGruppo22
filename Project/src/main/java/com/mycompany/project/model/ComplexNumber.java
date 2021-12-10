@@ -272,6 +272,11 @@ public class ComplexNumber {
     public static ComplexNumber pow(ComplexNumber z, ComplexNumber power) {
         ComplexNumber output = new ComplexNumber(z.getRe(), z.getIm());
         if (power.getIm() == 0.0) {
+            if(power.getRe()<0){
+                Double pow=power.mod();
+                ComplexNumber div=ComplexNumber.pow(z, new ComplexNumber(pow,0));
+                output=ComplexNumber.divide(new ComplexNumber(1,0), div);
+            }
             if (!checkDecimal(power.getRe())) {
                 for (int i = 1; i < power.getRe(); i++) {
                     double _real = output.real * z.real - output.imaginary * z.imaginary;
@@ -707,10 +712,13 @@ public class ComplexNumber {
       * @return the arsine of z
       */
 
-    public double asen(ComplexNumber z) {
+public double asen(ComplexNumber z){
         double r = z.real;
         double i = z.imaginary;
-        return Math.asin(r + i);
+        if (z.real > 1 || z.real < -1 ) {
+            throw new ArithmeticException("Number not included in [-1,1]");
+        }
+        return Math.asin(r+i);
     }
     
     /**
@@ -719,10 +727,13 @@ public class ComplexNumber {
      * @return the arcosine of z
      */
 
-    public double acosen(ComplexNumber z) {
+public double acosen(ComplexNumber z){
         double r = z.real;
         double i = z.imaginary;
-        return Math.acos(r + i);
+        if (z.real > 1 || z.real < -1 ) {
+            throw new ArithmeticException("Number not included in [-1,1]");
+        }
+        return Math.acos(r+i);
     }
     
     /**

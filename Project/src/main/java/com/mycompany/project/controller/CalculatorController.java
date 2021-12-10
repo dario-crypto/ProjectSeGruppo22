@@ -264,6 +264,7 @@ public class CalculatorController {
         commandProcessor.undo();
     }
     
+
     /**
      * This method load the formulas from a file
      * @throws IOException when any kind of IOException
@@ -272,6 +273,8 @@ public class CalculatorController {
      * @throws ClassNotFoundException if the class does not exist
      */
     
+
+
      public void loadFile() throws IOException, FileNotFoundException, ClassNotFoundException {
         formulas.reaload();
     }
