@@ -63,7 +63,7 @@ public class FactoryOperator {
         opMap.put("*", prod);
         opMap.put(":", div);
         opMap.put("sqrt", sqrt);
-        opMap.put("invSign", invSign);
+        opMap.put("+-", invSign);
         opMap.put("dup", dup);
         opMap.put("swap", swap);
         opMap.put("over", over);
