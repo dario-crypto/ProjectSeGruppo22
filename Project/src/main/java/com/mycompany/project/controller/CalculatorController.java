@@ -38,8 +38,8 @@ public class CalculatorController {
     /**
      * This method inserts a ComplexNumber in the calculator
      *
-     * @param complex stringa che rappresenta un numero complesso
-     * @throws NumberFormatException se il formato del numero non è corretto
+     * @param complex string that represents a complex number
+     * @throws NumberFormatException if the format of the number is not correct
      * @throws NullPointerException
      * @throws StringIndexOutOfBoundsException
      */
@@ -55,12 +55,12 @@ public class CalculatorController {
     }
 
     /**
-     * Esegue una delle operazioni disponibili nella calcolatrice
+     * This method executes one of the available operation in the calculator
+     * 
      *
-     * @param op stringa che rappresenta l'operazione
-     * @throws StackEmptyException nel caso in cui non ci sono elementi
-     * necessari nello stack per esegure l'operazione
-     * @throws OperationDoesNotExist se l'operazione non esiste
+     * @param op string that represents the operation
+     * @throws StackEmptyException when there are not enough elements to do the operation
+     * @throws OperationDoesNotExist if the operation does not exists
      */
     public void execOperation(String op) throws StackEmptyException, OperationDoesNotExist {
 
@@ -77,25 +77,24 @@ public class CalculatorController {
     }
 
     /**
-     * Esegue una formula
+     * This method executes a formula
      *
-     * @param formula stringa che rappresenta la formula
-     * @throws StackEmptyException se non ci sono elementi necessari nello stack
-     * per esegure la formula
-     * @throws OperationDoesNotExist se cui l'operazione non esiste
+     * @param formula string that represents the formula
+     * @throws StackEmptyException if there are not enough elements in the stack to execute the formula
+     * @throws OperationDoesNotExist if the operation does not exists
      */
     public void executeFormula(String formula) throws StackEmptyException, OperationDoesNotExist {
         String[] formulaSplit = formula.split("\\s+");
 
         for (String f : formulaSplit) {
 
-            //caso in cui è presente una nome di una formula nella formula 
+            //case in which there is a formula in another formula
             if (formulas.contains(f)) {
                 String form = formulas.get(f);
                 executeFormula(form);
 
             } else if (ComplexNumber.checkComplex(f)) {
-                //inserimento numero complesso nello stack
+                //insertion of a ComplexNukmber in the stack
                 insert(f);
             } else {
                 execOperation(f);
@@ -105,11 +104,10 @@ public class CalculatorController {
     }
 
     /**
-     * Controlla un'operazione se è un'operazione sulle variabili
+     * This method checks if it is an operation on variables
      *
-     * @param op stringa che rappresenta l'operazione
-     * @return true se è un'operazione sulle variabili altrimenti restituisce
-     * false
+     * @param op string that represents an operation
+     * @return true if it is an operation on variables, otherwise false
      */
     private boolean isOperationVariable(String op) {
         Pattern pattern = Pattern.compile("^[< \\+ \\- >]{1}[a-z]{1}$", Pattern.CASE_INSENSITIVE);
@@ -118,10 +116,10 @@ public class CalculatorController {
     }
 
     /**
-     * Controlla se una stringa è una formula
+     * This method checks if the input is a formula
      *
-     * @param formula stringa che rappresenta la formula
-     * @return true se l'input è una formula altrimenti restituise false
+     * @param formula strin that represents a formula
+     * @return true if the input is a formula, false otherwise
      */
     private boolean isFormula(String formula) {
         String[] formulaSplit = formula.split("\\s+");
@@ -137,11 +135,10 @@ public class CalculatorController {
     }
 
     /**
-     * Controlla se il parametro name è un possibile nome di formula
+     * This method checks if the input is a possible name for a formula
      *
-     * @param name stringa che rappesenta il nome della formula
-     * @return true se il nome della formula è possibile altrimenti restituisce
-     * false
+     * @param name string that represents the name
+     * @return true if it is a possible name, false otherwise
      */
     private boolean isName(String name) {
 
@@ -149,10 +146,10 @@ public class CalculatorController {
     }
 
     /**
-     * Formatta correttamente una formula
+     * This method builds a formula properly
      *
-     * @param formula stringa che rappresenta la formula
-     * @return formula formattata
+     * @param formula string that represents the formula
+     * @return the build formula
      */
     public static String formulaBuilder(String formula) {
         String[] formulaSplit = formula.split("\\s+");
@@ -170,12 +167,11 @@ public class CalculatorController {
     }
 
     /**
-     * Aggiunge una formula
+     * This method adds a formula
      *
-     * @param formula stringa che rappresenta la formula
-     * @throws FormatFormulaException nel caso in cui il formato della formula
-     * non è corretta
-     * @throws NameFormulaAlreadyExsist se il nome della formula già esiste
+     * @param formula string that represents a formula
+     * @throws FormatFormulaException when the format of the formula is not correct
+     * @throws NameFormulaAlreadyExsist if the name already exists
      */
     public void addFormula(String formula) throws FormatFormulaException, NameFormulaAlreadyExsist {
         String[] formulaSplit = formula.split("=");
@@ -195,21 +191,20 @@ public class CalculatorController {
     }
 
     /**
-     * Restituisce una mappa che rappresenta le formule
+     * This method returns a Map, which represents the formulas
      *
-     * @return restituisce una mappa che rappresenta le formule
+     * @return 
      */
     public TreeMap<String, String> getMapFormulas() {
         return formulas.getMap();
     }
 
     /**
-     * Esegue una delle operazioni disponibili su una variabile
+     * This method executes one of the possible operation on the variables
      *
-     * @param op stringa che rappresenta l'operazione concatenata con una
-     * variabile [a-z] (Esempio: "<x",">x","+x","-x")
-     * @throws StackEmptyException se non ci sono elementi necessari nello stack
-     * per eseguire l'operazione sulla variabile
+     * @param op string that represents an operation linked to a variable
+     *  [a-z] (Examples: "<x",">x","+x","-x")
+     * @throws StackEmptyException if there are not enough elements in the stack to execute the operation
      */
     private void processVariableOp(String op) throws StackEmptyException {
 
@@ -269,9 +264,22 @@ public class CalculatorController {
         commandProcessor.undo();
     }
     
+    /**
+     * This method load the formulas from a file
+     * @throws IOException when any kind of IOException
+     * occurs
+     * @throws FileNotFoundException if the file does not exists
+     * @throws ClassNotFoundException if the class does not exist
+     */
+    
      public void loadFile() throws IOException, FileNotFoundException, ClassNotFoundException {
         formulas.reaload();
     }
+    
+    /**
+     * This method saves the formulas on a file
+     * @throws IOException when any kind of IOException occurs
+     */
 
     public void saveFile() throws IOException{
         formulas.save();
