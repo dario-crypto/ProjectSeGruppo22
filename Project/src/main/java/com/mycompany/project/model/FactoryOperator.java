@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 /**
- * Classe che detiene tutte le operazioni disponibili della calcolatrice
+ * This class shows all the methods that the Calculator is able to do
  *
  * @author user
  */
@@ -111,7 +111,7 @@ public class FactoryOperator {
      
      * This method returns the set of all the operations available on the calculator
      *
-     * @return 
+     * @return the set of all the keys of the map
      */
     public static Set<String> getOperators() {
 

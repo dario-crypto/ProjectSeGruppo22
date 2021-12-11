@@ -10,6 +10,10 @@ package com.mycompany.project.exception;
  * @author immacolata
  */
 public class OperationDoesNotExist extends Exception {
+    
+    /**
+     * This method is the constructor of the OperationDoesNotExist class
+     */
 
     public OperationDoesNotExist(String message) {
         super(message);

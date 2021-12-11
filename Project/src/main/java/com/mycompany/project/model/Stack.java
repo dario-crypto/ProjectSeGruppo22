@@ -4,11 +4,21 @@ import com.mycompany.project.exception.StackEmptyException;
 import java.util.Arrays;
 import java.util.Iterator;
 
+/**
+ * This class represents the stack in which the numbers are pushed
+ * @author Dario
+ * @param <E> that is a generic object
+ */
+
 public class Stack<E> implements Iterable<E>, StackLogic<E> {
 
     private E[] stack;
     private int size = 0;
     private int currentCapacity;
+    
+    /**
+     * This method is the first constructor of the Stack class
+     */
 
 
     public Stack(int initialCapacity) {
@@ -17,7 +27,9 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
 
     }
 
-    
+    /**
+     * This method is the second constructor of the Stack class
+     */
     public Stack() {
         int defaultCapacity = 30;
         this.stack = (E[]) new Object[defaultCapacity];
@@ -27,7 +39,7 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     /**
      * This method returns the number of elements of the stack
      *
-     * @return size
+     * @return size of the stack
      */
     public int getSize() {
         return size;
@@ -36,7 +48,7 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     /**
      * It returns the element on top of the stack
      *
-     * @return last element
+     * @return last element of the stack
      */
     @Override
     public E top() {
@@ -46,7 +58,7 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     /**
      * This method inserts an item into the stack
      *
-     * @param item
+     * @param item that needs to be pushed in the stack
      */
     @Override
     public void push(E item) {
@@ -63,7 +75,7 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     /**
      * This method inserts the stack into a new stack with specified capacity
      *
-     * @param newCapacity
+     * @param newCapacity that is the capacity of the new stack
      */
     private void realloc(int newCapacity) {
         E[] newStack = (E[]) new Object[newCapacity];
@@ -76,8 +88,8 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     /**
      * It removes the element on top of the stack
      *
-     * @return last element
-     * @throws StackEmptyException
+     * @return last element of the stack
+     * @throws StackEmptyException when the stack is empty
      */
     @Override
     public E pop() throws StackEmptyException {
@@ -159,7 +171,7 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     /**
      * This method return the element of the stack in the given index
      *
-     * @param index
+     * @param index in which the desired element is 
      */
     public E getItem(int index) {
         return stack[index];
@@ -176,7 +188,7 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     
     /**
      * This metod removes all of stack's items
-     * @throws StackEmptyException
+     * @throws StackEmptyException when the stack is empty
      */
     
     @Override
@@ -184,12 +196,23 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
         while(!isEmpty())
             pop();
     }
+     
+     /**
+      * This is the hash code method of the Stack class
+      * @return the hash value
+      */
     
       @Override
     public int hashCode() {
         int hash = 5;
         return hash;
     }
+    
+    /**
+     * This is the equals method of the Stack class
+     * @param obj that represents the object that we want to compare to another Stack's object
+     * @return true if they are equals,otherwise false
+     */
 
     @Override
     public boolean equals(Object obj) {

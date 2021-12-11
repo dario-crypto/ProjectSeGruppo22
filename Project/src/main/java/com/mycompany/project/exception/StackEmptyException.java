@@ -5,6 +5,10 @@ package com.mycompany.project.exception;
  */
 
 public class StackEmptyException extends Exception {
+    
+    /**
+     * This method is the constructor of the StackEmptyException class
+     */
 
 
     public StackEmptyException(String message) {

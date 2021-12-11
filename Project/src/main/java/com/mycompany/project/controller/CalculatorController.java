@@ -17,7 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
+ * This class liks all the part of the calculator
  * @author Dario
  */
 public class CalculatorController {
@@ -26,6 +26,10 @@ public class CalculatorController {
     private VariablesSpace vs;
     private Formulas formulas;
     private CommandProcessor commandProcessor;
+    
+    /**
+     * This method is the constructor of the CalculatorController class
+     */
 
     public CalculatorController(StackLogic<ComplexNumber> stack) {
         calculator = new Calculator(stack);
@@ -40,8 +44,8 @@ public class CalculatorController {
      *
      * @param complex string that represents a complex number
      * @throws NumberFormatException if the format of the number is not correct
-     * @throws NullPointerException
-     * @throws StringIndexOutOfBoundsException
+     * @throws NullPointerException when the input is null
+     * @throws StringIndexOutOfBoundsException if the index of the string is out of bounds
      */
 
     public void insert(String complex) throws NumberFormatException, NullPointerException, StringIndexOutOfBoundsException {
@@ -49,6 +53,11 @@ public class CalculatorController {
         ComplexNumber cn = ComplexNumber.parseComplex(complex);
         calculator.insert(cn);
     }
+    
+    /**
+     * This method returns the calculator object
+     * @return the calculator object
+     */
 
     public Calculator getCalculator() {
         return this.calculator;
@@ -193,7 +202,7 @@ public class CalculatorController {
     /**
      * This method returns a Map, which represents the formulas
      *
-     * @return 
+     * @return the map 
      */
     public TreeMap<String, String> getMapFormulas() {
         return formulas.getMap();

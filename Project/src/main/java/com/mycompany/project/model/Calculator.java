@@ -9,18 +9,28 @@ import com.mycompany.project.model.StackLogic;
 import java.util.Objects;
 
 /**
- *
+ * This class represents the Calculator and all its funcionalities
  * @author dilet
  */
 public class Calculator {
+   
 
     private StackLogic<ComplexNumber> stack;
     private VariablesSpace variablesSpace;
+    
+    /**
+     * This method is the constructor of the Calculator class
+     */
 
     public Calculator(StackLogic stack) {
         this.stack = stack;
-        //this.variablesSpace=variablesSpace;
+        
     }
+    
+    /**
+     * This method sets the stack of the Calculator with the input stack
+     * @param stack the new stack of the calculator
+     */
 
     public void setStack(StackLogic<ComplexNumber> stack) {
         this.stack = stack;
@@ -111,8 +121,8 @@ public class Calculator {
      * This method calculates the square root of the last element of the
      * Calculator's stack
      *
-     * @return ComplexNumber that is the result of the square root between the second-last and last elements
-     * @throws StackEmptyException if the stack is empty or there are not enough elemets to execute the operation
+     * @return ComplexNumber that is the result of the square root of the last element of the stack
+     * @throws StackEmptyException if the stack is empty
      */
     public ComplexNumber squareRoot() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -120,6 +130,15 @@ public class Calculator {
         insert(result);
         return result;
     }
+    
+    /**
+     * This method calculates the invert sign of the last element of the
+     * Calculator's stack
+     *
+     * @return ComplexNumber that is the result of the operation invert sign of the last
+     * element of the stack
+     * @throws StackEmptyException if the stack is empty
+     */
 
     public ComplexNumber invertSign() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -190,9 +209,10 @@ public class Calculator {
      * This method takes the top element from the stack and saves it into the
      * variable
      *
-     * @param name
-     * @param vs
-     * @throws StackEmptyException
+     * @param name that represents tha name of the variable in which the method saves the value of the last element of the 
+     * stack
+     * @param vs that represents the variables space
+     * @throws StackEmptyException if the stack is empty
      */
     public void saveToVariable(String name, VariablesSpace vs) throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -203,7 +223,8 @@ public class Calculator {
      * This method takes the value of a variable and inserts it into the
      * Calculator's stack
      *
-     * @param name
+    * @param name that represents tha name of the variable of which value the method saves on the top of the stack
+     * @param vs that represents the variables space
      */
     public void saveToStack(String name, VariablesSpace vs) {
         ComplexNumber c = vs.get(name);
@@ -215,9 +236,10 @@ public class Calculator {
      * This method takes the top element from the stack and adds it to the value
      * of the variable
      *
-     * @param name
-     * @param vs
-     * @throws StackEmptyException
+     * @param name that represents tha name of the variable which value has to be added the value of the last element of the 
+     * stack 
+     * @param vs that represents the variables space
+     * @throws StackEmptyException if the stack is empty
      */
     public void addToVariable(String name, VariablesSpace vs) throws StackEmptyException {
         ComplexNumber c1 = vs.get(name);
@@ -231,9 +253,10 @@ public class Calculator {
      * This method takes the top element from the stack and subtracts it from
      * the value of the variable "x"
      *
-     * @param name
-     * @param vs
-     * @throws StackEmptyException
+     * @param name that represents tha name of the variable which value has to be substructed the value of the last element of the 
+     * stack 
+     * @param vs that represents the variables space
+     * @throws StackEmptyException if the stack is empty
      */
     public void subToVariable(String name, VariablesSpace vs) throws StackEmptyException {
         ComplexNumber c1 = vs.get(name);
@@ -246,8 +269,8 @@ public class Calculator {
     /**
      * This method calculates the modulus of a complex number
      *
-     * @return Double
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the modulus of the last element of the stack
+     * @throws StackEmptyException if the stack is empty
      */
     public ComplexNumber mod() throws StackEmptyException {
         ComplexNumber c = stack.pop();
@@ -260,8 +283,8 @@ public class Calculator {
     /**
      * This method calculates the exponential of a complex number
      *
-     * @return
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the exponential of the last element of the stack
+     * @throws StackEmptyException if the stack is empty
      */
     public ComplexNumber exp() throws StackEmptyException {
         ComplexNumber c = stack.pop();
@@ -274,8 +297,8 @@ public class Calculator {
     /**
      * This method calculates the logarithm of the last  item of the Calculator's stack
      *
-     * @return
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the natural logaritm of the last element of the stack
+     * @throws StackEmptyException if the stack is empty
      */
     public ComplexNumber logarithm() throws StackEmptyException {
         ComplexNumber c = stack.pop();
@@ -287,8 +310,8 @@ public class Calculator {
     /**
      * This method calculates the argument of a complex number
      *
-     * @return
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the argument of the last element of the stack
+     * @throws StackEmptyException if the stack is empty
      */
     public ComplexNumber arg() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -300,8 +323,8 @@ public class Calculator {
     /**
      * This method calculates the sine of a complex number
      *
-     * @return
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the sine of the last element of the stack
+     * @throws StackEmptyException if the stack is empty
      */
     public ComplexNumber sen() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -313,8 +336,8 @@ public class Calculator {
     /**
      * This method calculates the cosine of a complex number
      *
-     * @return
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the cosine of the last element of the stack
+     * @throws StackEmptyException if the stack is empty
      */
     public ComplexNumber cosen() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -326,8 +349,8 @@ public class Calculator {
     /**
      * This method calculates the tangent of a complex number
      *
-     * @return
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the tangent of the last element of the stack
+     * @throws StackEmptyException if the stack is empty
      */
     public ComplexNumber tan() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -337,10 +360,10 @@ public class Calculator {
     }
     
      /**
-     * This method calculates the arcosine of a complex number
+     * This method calculates the asine of a complex number
      *
-     * @return asen
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the asine of the last element of the stack
+     * @throws StackEmptyException if the stack is empty
      */
     public ComplexNumber asen() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -352,8 +375,8 @@ public class Calculator {
     /**
      * This method calculates the arcocosine of a complex number
      *
-     * @return acosen
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the arcocosine of the last element of the stack
+     * @throws StackEmptyException if the stack is empty
      */
     public ComplexNumber acosen() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -365,8 +388,8 @@ public class Calculator {
     /**
      * This method calculates the arcotangent of a complex number
      *
-     * @return atangent
-     * @throws StackEmptyException
+     * @return ComplexNumber that is the arcotangent of the last element of the stack
+     * @throws StackEmptyException if the stack is empty
      */
     public ComplexNumber atang() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
@@ -377,8 +400,8 @@ public class Calculator {
     
     /**
      * This method calculates the pow of a complex number
-     * @return
-     * @throws StackEmptyException 
+     * @return ComplexNumber that is the result of the substraction between the second-last and last elements
+     * @throws StackEmptyException if the stack is empty or when there are not enough elemets to execute the operation
      */
     
     public ComplexNumber pow() throws StackEmptyException {
@@ -388,11 +411,22 @@ public class Calculator {
         insert(result);
         return result;
     }
+    
+    /**
+     * This is the hashCode method for the Calculator's class
+     * @return the hash value
+     */
      @Override
     public int hashCode() {
         int hash = 7;
         return hash;
     }
+    
+    /**
+     * This is the method equals of the class Calculator
+     * @param obj that represents the object that we want to compare to another Calculator's object
+     * @return true if they are equals,otherwise false
+     */
 
     @Override
     public boolean equals(Object obj) {

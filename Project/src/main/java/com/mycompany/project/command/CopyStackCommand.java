@@ -18,6 +18,10 @@ public class CopyStackCommand implements Command {
 
     private Calculator calculator;
     private Stack<ComplexNumber> backup;
+    
+    /**
+     * This method is the constructor of the CopyStackCommand class
+     */
 
     public CopyStackCommand(Calculator calculator) {
         this.calculator = calculator;

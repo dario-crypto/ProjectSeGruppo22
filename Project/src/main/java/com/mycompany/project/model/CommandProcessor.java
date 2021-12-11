@@ -17,6 +17,10 @@ import com.mycompany.project.model.Stack;
 public class CommandProcessor {
 
     private Stack<Command> commands;
+    
+    /**
+     * This method is the constructor of the CommeandProcessor class
+     */
 
     public CommandProcessor() {
         commands = new Stack();

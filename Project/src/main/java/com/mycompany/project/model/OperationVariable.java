@@ -13,7 +13,7 @@ import com.mycompany.project.model.VariablesSpace;
 import com.mycompany.project.model.Calculator;
 
 /**
- *
+ * This is a functional interface used by the Calculator's operation on the variables
  * @author user
  */
 public interface OperationVariable extends GlobalOperation {

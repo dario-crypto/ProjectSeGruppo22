@@ -9,6 +9,10 @@ package com.mycompany.project.exception;
  * @author Dario
  */
 public class FormatFormulaException extends Exception {
+    
+    /**
+     * This method is the constructor of the FormatFormulaException class
+     */
 
     public FormatFormulaException(String message) {
         super(message);

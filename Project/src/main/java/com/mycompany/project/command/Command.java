@@ -6,7 +6,7 @@
 package com.mycompany.project.command;
 
 /**
- *
+ * This is the functional interface for the command design pattern
  * @author user
  */
 public interface Command {

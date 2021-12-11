@@ -2,6 +2,12 @@ package com.mycompany.project.model;
 
 import com.mycompany.project.exception.StackEmptyException;
 
+/**
+ * 
+ * @author dilet
+ * @param <E> 
+ */
+
 
 
 public interface StackLogic<E> extends Iterable<E> {

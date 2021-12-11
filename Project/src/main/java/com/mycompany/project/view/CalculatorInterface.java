@@ -747,7 +747,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+     * This method links the button clear to the operation clear
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
         try {
             // TODO add your handling code here:
@@ -760,7 +764,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonClearActionPerformed
-
+    /**
+     * This method links the button sqrt to the operation squareRoot
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonSqrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSqrtActionPerformed
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
         try {
@@ -778,7 +786,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonSqrtActionPerformed
-
+    /**
+     * This method links the button ln to the operation natural logarithm
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonLnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLnActionPerformed
         // TODO add your handling code here:
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
@@ -795,7 +807,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonLnActionPerformed
-
+    /**
+     * This method links the button mod to the operation modulus
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModActionPerformed
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
         try {
@@ -811,7 +827,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonModActionPerformed
-
+    /**
+     * This method links the button +- to the operation invertion of sign
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonInvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInvertActionPerformed
         // TODO add your handling code here:
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
@@ -830,12 +850,18 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonInvertActionPerformed
-
+    /*
+    This method links the button i to the insertion on the textArea of the char i
+     */
     private void jButtonComplexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComplexActionPerformed
         // TODO add your handling code here:
         jTextArea1.append("i");
     }//GEN-LAST:event_jButtonComplexActionPerformed
-
+    /**
+     * This method links the button - to the operation substraction
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubActionPerformed
         // TODO add your handling code here:
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
@@ -853,7 +879,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonSubActionPerformed
-
+    /**
+     * This method links the button + to the operation sum
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
         try {
@@ -870,7 +900,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonAddActionPerformed
-
+    /**
+     * This method links the button : to the operation division
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDivisionActionPerformed
         // TODO add your handling code here:
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
@@ -890,7 +924,12 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonDivisionActionPerformed
-
+    /**
+     * This method links the button arg to the operation argument of a complex
+     * number
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonArgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArgActionPerformed
         // TODO add your handling code here:
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
@@ -907,7 +946,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonArgActionPerformed
-
+    /**
+     * This method links the button pow to the operation power
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonPowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPowActionPerformed
         // TODO add your handling code here:
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
@@ -926,7 +969,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonPowActionPerformed
-
+    /**
+     * This method links the button exp to the operation exponential
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExpActionPerformed
         // TODO add your handling code here:
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
@@ -943,7 +990,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonExpActionPerformed
-
+    /**
+     * This method links the button sin to the operation sine
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonSinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSinActionPerformed
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
         try {
@@ -959,7 +1010,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonSinActionPerformed
-
+    /**
+     * This method links the button cos to the operation cosine
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonCosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCosActionPerformed
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
         try {
@@ -975,7 +1030,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonCosActionPerformed
-
+    /**
+     * This method links the button tan to the operation clear tangent
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonTanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTanActionPerformed
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
         try {
@@ -991,7 +1050,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonTanActionPerformed
-
+    /**
+     * This method links the button asin to the operation asine
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonASinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonASinActionPerformed
         // TODO add your handling code here:
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
@@ -1011,7 +1074,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonASinActionPerformed
-
+    /**
+     * This method links the button arcos to the operation arcosine
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonACosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonACosActionPerformed
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
         try {
@@ -1030,7 +1097,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonACosActionPerformed
-
+    /**
+     * This method links the button atang to the operation atangent
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonATanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonATanActionPerformed
         // TODO add your handling code here:
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
@@ -1047,7 +1118,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonATanActionPerformed
-
+    /**
+     * This method links the button drop to the operation drop
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDropActionPerformed
         // TODO add your handling code here:
         try {
@@ -1059,7 +1134,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonDropActionPerformed
-
+    /**
+     * This method links the button dup to the operation dup
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonDupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDupActionPerformed
         try {
             controller.execOperation("dup");
@@ -1071,7 +1150,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonDupActionPerformed
-
+    /**
+     * This method links the button swap to the operation swap
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonSwapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSwapActionPerformed
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
         try {
@@ -1087,7 +1170,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonSwapActionPerformed
-
+    /**
+     * This method links the button over to the operation over
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonOverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverActionPerformed
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
         try {
@@ -1103,13 +1190,22 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonOverActionPerformed
-
+    /**
+     * This method links the button in to the operation of insertion in the
+     * stack
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsActionPerformed
         insert();
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonInsActionPerformed
-
+    /**
+     * This method links the button >x to the operation save to variable
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonSaveToVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveToVariableActionPerformed
         String var = (String) jComboBox1.getSelectedItem();
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
@@ -1126,12 +1222,21 @@ public class CalculatorInterface extends javax.swing.JFrame {
         }
         viewStack();
     }//GEN-LAST:event_jButtonSaveToVariableActionPerformed
-
+    /**
+     * This method is used to read the variable you want to use
+     *
+     * @param evt
+     */
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
         String var = (String) jComboBox1.getSelectedItem();
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
+    /**
+     * This method links the button <x to the operation of taking the value of
+     * the variable and pushing it into the stack
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonSaveToStackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveToStackActionPerformed
         // TODO add your handling code here:
         try {
@@ -1145,7 +1250,12 @@ public class CalculatorInterface extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonSaveToStackActionPerformed
-
+    /**
+     * This method links the button +x to the operation add last element of the
+     * stack to variable's value
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonAddToVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddToVariableActionPerformed
         String var = (String) jComboBox1.getSelectedItem();
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
@@ -1162,7 +1272,12 @@ public class CalculatorInterface extends javax.swing.JFrame {
         }
         viewStack();
     }//GEN-LAST:event_jButtonAddToVariableActionPerformed
-
+    /**
+     * This method links the button -x to the operation substract the last value
+     * of the stack from the value of the variable
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonSubToVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubToVariableActionPerformed
         String var = (String) jComboBox1.getSelectedItem();
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
@@ -1178,7 +1293,12 @@ public class CalculatorInterface extends javax.swing.JFrame {
         }
         viewStack();
     }//GEN-LAST:event_jButtonSubToVariableActionPerformed
-
+    /**
+     * This method allows the user to insert a number with the click on the
+     * enter key
+     *
+     * @param evt the click on the enter key
+     */
     private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -1188,7 +1308,12 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
 
     }//GEN-LAST:event_jTextArea1KeyPressed
-
+    /**
+     * This method links the button SAVE FORMULA to the operation of saving the
+     * formula on the file
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonSaveFormulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveFormulaActionPerformed
         // TODO add your handling code here:
 
@@ -1202,7 +1327,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonSaveFormulaActionPerformed
-
+    /**
+     * This method allows us to see the all the formulas
+     *
+     *
+     */
     public static void viewFormulas() {
         dlmFormulas.clear();
 
@@ -1214,7 +1343,12 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     }
 
-
+    /**
+     * This method links the button ADD FORMULA to the operation of adding a
+     * formula to the set of formulas
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonAddFormula1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddFormula1ActionPerformed
         String formula = jTextArea1.getText();
 
@@ -1243,7 +1377,12 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jButtonAddFormula1ActionPerformed
-
+    /**
+     * This method links the button EXEC FORMULA to the operation of executing
+     * the formula
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonExeFormulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExeFormulaActionPerformed
         // TODO add your handling code here:
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
@@ -1265,7 +1404,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonExeFormulaActionPerformed
-
+    /**
+     * This method links the button * to the operation multiply
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonMultiplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiplicationActionPerformed
         CopyStackCommand copy = new CopyStackCommand(controller.getCalculator());
         try {
@@ -1283,7 +1426,12 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewStack();
         clearTextArea();
     }//GEN-LAST:event_jButtonMultiplicationActionPerformed
-
+    /**
+     * This method links the button REMOVE FORMULA to the operation of removing
+     * the formula
+     *
+     * @param evt which is the click on the button
+     */
     private void removeFormulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeFormulaActionPerformed
         String formula = jListFormulas.getSelectedValue();
         if (formula != null) {
@@ -1293,7 +1441,11 @@ public class CalculatorInterface extends javax.swing.JFrame {
         }
         viewFormulas();
     }//GEN-LAST:event_removeFormulaActionPerformed
-
+    /**
+     * This method allows us to select an item from the jlist of formulas
+     *
+     * @param evt which is the click on the JList
+     */
     private void jListFormulasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListFormulasMouseClicked
 
         JList list = (JList) evt.getSource();
@@ -1320,7 +1472,12 @@ public class CalculatorInterface extends javax.swing.JFrame {
         viewFormulas();
 
     }//GEN-LAST:event_jListFormulasMouseClicked
-
+    /**
+     * This method links the button SAVE VAR to the operation of saving the
+     * current value of the variable
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonSaveVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveVariableActionPerformed
         try {
             // TODO add your handling code here:
@@ -1331,12 +1488,19 @@ public class CalculatorInterface extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonSaveVariableActionPerformed
-
+    /**
+     * This method links the button RESTORE VAR to the operation of restoring
+     * the saved value of the variable
+     *
+     * @param evt which is the click on the button
+     */
     private void jButtonRestoreVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRestoreVariableActionPerformed
         // TODO add your handling code here:
         controller.undo();
     }//GEN-LAST:event_jButtonRestoreVariableActionPerformed
-
+    /**
+     * This method let us see the current stack
+     */
     public void viewStack() {
 
         dlm.clear();
@@ -1347,6 +1511,9 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
     }
 
+    /**
+     * This method is used to clear the text area
+     */
     public void clearTextArea() {
         jTextArea1.setText("");
     }

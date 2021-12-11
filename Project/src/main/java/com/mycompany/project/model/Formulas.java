@@ -14,24 +14,28 @@ import java.io.ObjectOutputStream;
 import java.util.TreeMap;
 
 /**
- *
+ * This class represents the set of all the formulas and the operation we can do on them
  * @author Dario
  */
 public class Formulas {
 
     private TreeMap<String, String> formulaMap;
     private final String path = "formulas.dat";
+    
+    /**
+     * This method is the constructor of the Formulas class
+     */
 
     public Formulas() {
         formulaMap = new TreeMap<>();
     }
 
     /**
-     * Saves all formulas in a file
+     * This method saves all formulas in a file
      *
      * @param path string representing path file
-     * @throws FileNotFoundException
-     * @throws IOException
+     * @throws FileNotFoundException if it is not able to find the file
+     * @throws IOException when any kind of IOException occurs
      */
     public void save() throws FileNotFoundException, IOException {
         try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(path))) {
@@ -42,7 +46,7 @@ public class Formulas {
     }
 
     /**
-     * Returns a map representing formulas
+     * This method returns a map representing formulas
      *
      * @return map representing formulas
      */
@@ -51,7 +55,7 @@ public class Formulas {
     }
 
     /**
-     * Returns the formula by name
+     * This method returns the formula by name
      *
      * @param name a string representing the name of the formula
      * @return a string representing the formula
@@ -62,7 +66,7 @@ public class Formulas {
     }
 
     /**
-     * Change the name of a formula
+     * This method changes the name of a formula
      *
      * @param oldName string representing the old name of the formula
      * @param newName string representing the new name of the formula
@@ -81,10 +85,10 @@ public class Formulas {
     }
 
     /**
-     * Change an existing formula
+     * This method changes an existing formula
      *
      * @param name string representing the name of the formula change
-     * @param newFormula string representing new formula
+     * @param newFormula string representing a new formula
      * @return false if the operation is unsuccessful, otherwise it returns true
      * @throws FormulaAlreadyExsist if newFormule is already present
      */
@@ -100,13 +104,13 @@ public class Formulas {
     }
 
     /**
-     * Load formulas from a file specified by path
+     * This method loads formulas from a file with a specified by path
      *
      * @param path string representing the path of file
      * @return map that represents the formulas loaded from the file
-     * @throws FileNotFoundException
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * @throws FileNotFoundException if it is not able to find the file
+     * @throws IOException when any kind of IOException occurs
+     * @throws ClassNotFoundException when it the class does not exist
      */
     public TreeMap<String, String> reaload() throws FileNotFoundException, IOException, ClassNotFoundException {
 
@@ -118,7 +122,7 @@ public class Formulas {
     }
 
     /**
-     * Add a new formula
+     * This method adds a new formula
      *
      * @param name string representing the name of formula
      * @param formule string representing the formule
@@ -137,7 +141,7 @@ public class Formulas {
     }
 
     /**
-     * Delete a formule by name
+     * This method deletes a formule by name
      *
      * @param name string representing the formule
      * @return false if the operation is unsuccessful, otherwise it returns true
@@ -149,7 +153,7 @@ public class Formulas {
     }
 
     /**
-     * Returns the number of formulas
+     * This method returns the number of formulas
      *
      * @return
      */
@@ -158,9 +162,9 @@ public class Formulas {
     }
 
     /**
-     * Delete all formulas
+     * This method deletes all formulas
      *
-     * @throws IOException
+     * @throws IOException when any kind of IOException occurs
      */
     public void clear() throws IOException {
         formulaMap.clear();
@@ -168,7 +172,7 @@ public class Formulas {
     }
 
     /**
-     * Returns string representing the formulas
+     * This method returns a string representing the formulas
      *
      * @return string representing the formulas
      */
@@ -180,7 +184,7 @@ public class Formulas {
     }
 
     /**
-     * Returns true if the name of the formula already exists
+     * This method returns true if the name of the formula already exists
      *
      * @param name represents the name of the formula
      * @return true if the name already exists,otherwise false

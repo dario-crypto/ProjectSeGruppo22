@@ -18,6 +18,10 @@ public class CopySpaceVariablesCommand implements Command {
 
     private VariablesSpace vs;
     private HashMap<String, ComplexNumber> variablesMap;
+    
+    /**
+     * This method is the constructor of the CopySpaceVariablesCommand class
+     */
 
     public CopySpaceVariablesCommand(VariablesSpace vs) {
         this.vs = vs;

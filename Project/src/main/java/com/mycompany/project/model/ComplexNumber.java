@@ -293,8 +293,8 @@ public class ComplexNumber {
             }
         } else if (z.getIm() == 0) {
             Double arg = power.getIm() * Math.log(z.getRe());
-            Double re1 = (double) Math.round(Math.cos(arg) * 100000000) / 100000000;
-            Double im1 = (double) Math.round(Math.sin(arg) * 100000000) / 100000000;
+            Double re1 = (double) Math.round(Math.cos(arg) * 1000000000) / 1000000000;
+            Double im1 = (double) Math.round(Math.sin(arg) * 1000000000) / 1000000000;
             Double value = Math.pow(z.getRe(), power.getRe());
             Double re = value * re1;
             Double im = value * im1;
@@ -314,8 +314,8 @@ public class ComplexNumber {
             ComplexNumber output3 = new ComplexNumber(r, i);
             ComplexNumber output4 = ComplexNumber.pow(new ComplexNumber(mod, 0), new ComplexNumber(0, power.getIm()));
             output = ComplexNumber.multiply(output3, output4);
-            output.setReal((double) Math.round(output.getRe() * 100000000) / 100000000);
-            output.setImaginary((double) Math.round(output.getIm() * 100000000) / 100000000);
+            output.setReal((double) Math.round(output.getRe() * 1000000000) / 1000000000);
+            output.setImaginary((double) Math.round(output.getIm() * 1000000000) / 1000000000);
         }
 
         return output;
