@@ -17,7 +17,11 @@ import static org.junit.Assert.*;
 public class StackTest {
 
     private Stack<Object> st;
-
+    
+    /**
+     * This method is used to set the conditionts in common for multiple case of
+     * testing
+     */
     @Before
     public void setUp() {
         st = new Stack<>(5);

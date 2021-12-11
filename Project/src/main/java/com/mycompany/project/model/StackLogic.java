@@ -3,7 +3,7 @@ package com.mycompany.project.model;
 import com.mycompany.project.exception.StackEmptyException;
 
 /**
- * 
+ * This class is functional interface to implement the stack logic
  * @author dilet
  * @param <E> 
  */
@@ -22,15 +22,15 @@ public interface StackLogic<E> extends Iterable<E> {
     /**
      * It removes the element on top of the stack
      *
-     * @return last element
-     * @throws StackEmptyException
+     * @return last element of the stack
+     * @throws StackEmptyException when the stack is empty
      */
     E pop() throws StackEmptyException;
 
     /**
      * It returns the element on top of the stack
      *
-     * @return last element
+     * @return last element of the stack
      */
     E top();
     
@@ -44,7 +44,7 @@ public interface StackLogic<E> extends Iterable<E> {
         /**
      * This method returns the number of elements of the stack
      *
-     * @return size
+     * @return size of the stack
      */
 
     int getSize();
@@ -52,14 +52,14 @@ public interface StackLogic<E> extends Iterable<E> {
     /**
      * This method return the element of the stack in the given index
      *
-     * @param index
+     * @param index which is the given index
      */
     
     E getItem(int index);
     
     /**
      * This metod removes all of stack's items
-     * @throws StackEmptyException
+     * @throws StackEmptyException when the stack is empty
      */
     void clear() throws StackEmptyException;
 

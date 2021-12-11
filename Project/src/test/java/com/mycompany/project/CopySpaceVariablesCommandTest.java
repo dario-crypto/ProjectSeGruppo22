@@ -25,14 +25,19 @@ public class CopySpaceVariablesCommandTest {
     CopySpaceVariablesCommand command;
     VariablesSpace vs;
 
-   
+    /**
+     * This method is used to set the conditionts in common for multiple case of
+     * testing
+     */
     @Before
     public void setUp() {
         vs = new VariablesSpace();
         command = new CopySpaceVariablesCommand(vs);
 
     }
-
+    /**
+     * This method is used to reset the postconditions
+     */
     @After
     public void tearDown() {
     }

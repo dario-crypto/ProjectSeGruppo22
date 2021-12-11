@@ -119,11 +119,6 @@ public class FormulasTest {
         formulas.save();
         File file = new File(path);
         
-        
-
-        //verifico che il file è stato creato
-        
-        //assertEquals(true, file.exists());
         formulas.clear();
         
         formulas.reaload();

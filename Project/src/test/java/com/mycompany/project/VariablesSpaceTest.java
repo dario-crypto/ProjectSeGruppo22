@@ -20,11 +20,16 @@ import static org.junit.Assert.*;
 public class VariablesSpaceTest {
 
     VariablesSpace vs;
-
+    /**
+     * This is the constructor of class the VariablesSpaceTest
+     */
     public VariablesSpaceTest() {
         vs = new VariablesSpace();
     }
-
+    /**
+     * This method is used to set the conditionts in common for multiple case of
+     * testing
+     */
     @Before
     public void setUp() {
         vs = new VariablesSpace();

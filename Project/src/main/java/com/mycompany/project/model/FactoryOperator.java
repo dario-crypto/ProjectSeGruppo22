@@ -41,7 +41,7 @@ public class FactoryOperator {
         Operation mod = (calculator, commandProcessor, vs) -> calculator.mod();
         Operation asen = (calculator, commandProcessor, vs) -> calculator.asen();
         Operation acosen = (calculator, commandProcessor, vs) -> calculator.acosen();
-        Operation atang = (calculator, commandProcessor, vs) -> calculator.atang();
+        Operation atan = (calculator, commandProcessor, vs) -> calculator.atan();
         Operation pow = (calculator, commandProcessor, vs) -> calculator.pow();
 
         Operation save = (calculator, commandProcessor, vs) -> {
@@ -78,7 +78,7 @@ public class FactoryOperator {
         opMap.put("mod", mod);
         opMap.put("asen", asen);
         opMap.put("acosen", acosen);
-        opMap.put("atang", atang);
+        opMap.put("atang", atan);
         opMap.put("pow", pow);
 
         //operations on the variables space

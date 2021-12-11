@@ -22,7 +22,11 @@ public class CopyStackCommandTest {
 
     private CopyStackCommand copy;
     private Calculator calculator;
-
+    
+    /**
+     * This method is used to set the conditionts in common for multiple case of
+     * testing
+     */
     @Before
     public void setUp() {
         calculator = new Calculator(new Stack());

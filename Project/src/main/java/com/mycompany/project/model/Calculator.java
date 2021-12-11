@@ -367,7 +367,7 @@ public class Calculator {
      */
     public ComplexNumber asen() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
-        ComplexNumber asen = new ComplexNumber(c1.asen(c1), 0);
+        ComplexNumber asen = c1.asen(c1);
         insert(asen);
         return asen;
     }
@@ -380,7 +380,7 @@ public class Calculator {
      */
     public ComplexNumber acosen() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
-        ComplexNumber acosen = new ComplexNumber(c1.acosen(c1), 0);
+        ComplexNumber acosen = ComplexNumber.acosen(c1);
         insert(acosen);
         return acosen;
     }
@@ -391,9 +391,9 @@ public class Calculator {
      * @return ComplexNumber that is the arcotangent of the last element of the stack
      * @throws StackEmptyException if the stack is empty
      */
-    public ComplexNumber atang() throws StackEmptyException {
+    public ComplexNumber atan() throws StackEmptyException {
         ComplexNumber c1 = stack.pop();
-        ComplexNumber atangent = new ComplexNumber(c1.atang(c1), 0);
+        ComplexNumber atangent = ComplexNumber.atan(c1);
         insert(atangent);
         return atangent;
     }

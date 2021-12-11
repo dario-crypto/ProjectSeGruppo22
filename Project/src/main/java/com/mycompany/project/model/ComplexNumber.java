@@ -272,18 +272,21 @@ public class ComplexNumber {
     public static ComplexNumber pow(ComplexNumber z, ComplexNumber power) {
         ComplexNumber output = new ComplexNumber(z.getRe(), z.getIm());
         if (power.getIm() == 0.0) {
+            // case power real and negative
             if(power.getRe()<0){
                 Double pow=power.mod();
                 ComplexNumber div=ComplexNumber.pow(z, new ComplexNumber(pow,0));
                 output=ComplexNumber.divide(new ComplexNumber(1,0), div);
             }
             if (!checkDecimal(power.getRe())) {
+                // case power real,positive and not decimal
                 for (int i = 1; i < power.getRe(); i++) {
                     double _real = output.real * z.real - output.imaginary * z.imaginary;
                     double _imaginary = output.real * z.imaginary + output.imaginary * z.real;
                     output = new ComplexNumber(_real, _imaginary);
                 }
             } else {
+                // case power real,positive and decimal
                 String a = convertDecimalToFraction(power.getRe());
                 String[] a1 = a.split("/");
                 Double p = Double.parseDouble(a1[0]);
@@ -292,6 +295,7 @@ public class ComplexNumber {
                 output = ComplexNumber.rootComplex(b, r);
             }
         } else if (z.getIm() == 0) {
+            //case power complex and z real
             Double arg = power.getIm() * Math.log(z.getRe());
             Double re1 = (double) Math.round(Math.cos(arg) * 1000000000) / 1000000000;
             Double im1 = (double) Math.round(Math.sin(arg) * 1000000000) / 1000000000;
@@ -301,6 +305,7 @@ public class ComplexNumber {
             output = new ComplexNumber(re, im);
 
         } else {
+            //case power complex and z complex
             Double mod = z.mod();
             Double arg = z.getArg();
             ComplexNumber carg = new ComplexNumber(0.0, arg);
@@ -712,13 +717,25 @@ public class ComplexNumber {
       * @return the arsine of z
       */
 
-public double asen(ComplexNumber z){
-        double r = z.real;
-        double i = z.imaginary;
+    public static ComplexNumber asen(ComplexNumber z) {
+        if(z.getIm()==0.0){
         if (z.real > 1 || z.real < -1 ) {
             throw new ArithmeticException("Number not included in [-1,1]");
         }
-        return Math.asin(r+i);
+    
+        return new ComplexNumber(Math.asin(z.getRe()),0);
+        }
+        ComplexNumber p1=ComplexNumber.pow(new ComplexNumber(0,1), new ComplexNumber(-1,0));
+        ComplexNumber s1=ComplexNumber.multiply(new ComplexNumber(0,1), z);
+        ComplexNumber ss2=ComplexNumber.pow(z,new ComplexNumber(2,0));
+        ComplexNumber sub=ComplexNumber.subtract(new ComplexNumber(1,0), ss2);
+        ComplexNumber square= sub.sqrt();
+        ComplexNumber sum=ComplexNumber.add(s1, square);
+        ComplexNumber log=sum.logarithm();
+        ComplexNumber asin=ComplexNumber.multiply(p1,log);
+ 
+        return asin;
+
     }
     
     /**
@@ -727,14 +744,25 @@ public double asen(ComplexNumber z){
      * @return the arcosine of z
      */
 
-public double acosen(ComplexNumber z){
-        double r = z.real;
-        double i = z.imaginary;
-        if (z.real > 1 || z.real < -1 ) {
-            throw new ArithmeticException("Number not included in [-1,1]");
+public static ComplexNumber acosen(ComplexNumber z){
+        if(z.getIm()==0.0){
+            if (z.real > 1 || z.real < -1) {
+                throw new ArithmeticException("Number not included in [-1,1]");
+            }
+            return new ComplexNumber(Math.acos(z.getRe()),0);
         }
-        return Math.acos(r+i);
+
+        ComplexNumber pow = ComplexNumber.pow(z, new ComplexNumber(2, 0));
+        ComplexNumber sub = ComplexNumber.subtract(new ComplexNumber(1, 0), pow);
+        ComplexNumber sqrt = sub.sqrt();
+        ComplexNumber prod = ComplexNumber.multiply(new ComplexNumber(0, 1), sqrt);
+        ComplexNumber sub2 = ComplexNumber.subtract(z, prod);
+        ComplexNumber log = sub2.logarithm();
+        ComplexNumber acosen = ComplexNumber.multiply(new ComplexNumber(0, 1), log);
+
+        return acosen;
     }
+ 
     
     /**
      * This method calculates the arc tangent of a complex number
@@ -742,10 +770,19 @@ public double acosen(ComplexNumber z){
      * @return the arc tangent of z
      */
 
-    public double atang(ComplexNumber z) {
-        double r = z.real;
-        double i = z.imaginary;
-        return Math.atan(r + i);
+    public static ComplexNumber atan(ComplexNumber z) {
+        if (z.getIm() == 0.0) {
+            return new ComplexNumber(Math.atan(z.getRe()), 0);
+        }
+        
+        ComplexNumber prod=ComplexNumber.multiply(new ComplexNumber(0.5,0), new ComplexNumber(0,1));
+        ComplexNumber iz=ComplexNumber.multiply(z, new ComplexNumber(0,1));
+        ComplexNumber sub=ComplexNumber.subtract(new ComplexNumber(1,0),iz);
+        ComplexNumber sum=ComplexNumber.add(new ComplexNumber(1,0), iz);
+        ComplexNumber div=ComplexNumber.divide(sub, sum);
+        ComplexNumber log=div.logarithm();
+        ComplexNumber atang=ComplexNumber.multiply(prod, log);
+        return atang;
     }
 
 }

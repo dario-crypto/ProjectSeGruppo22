@@ -21,10 +21,17 @@ public class CalculatorTest {
 
     Calculator calculator;
     VariablesSpace vs;
+    
+    /**
+     * This is the constructor of the class CalculatorTest
+     */
 
     public CalculatorTest() {
     }
-
+    
+    /**
+     * This method is used to set the conditionts in common for multiple case of testing
+     */
     @Before
     public void setUp() {
         calculator = new Calculator(new Stack<ComplexNumber>());
@@ -70,26 +77,31 @@ public class CalculatorTest {
         calculator.insert(c1);
         calculator.insert(c2);
         assertEquals(new ComplexNumber(0.0, 0.0), calculator.sum());
+        assertEquals(new ComplexNumber(0.0,0.0), calculator.getStack().top());
         ComplexNumber c3 = new ComplexNumber(0, 4);
         ComplexNumber c4 = new ComplexNumber(0, 3);
         calculator.insert(c3);
         calculator.insert(c4);
         assertEquals(new ComplexNumber(0.0, 7.0), calculator.sum());
+        assertEquals(new ComplexNumber(0.0,7.0), calculator.getStack().top());
         ComplexNumber c5 = new ComplexNumber(1, 1);
         ComplexNumber c6 = new ComplexNumber(1, 0);
         calculator.insert(c5);
         calculator.insert(c6);
         assertEquals(new ComplexNumber(2.0, 1.0), calculator.sum());
+        assertEquals(new ComplexNumber(2.0, 1.0), calculator.getStack().top());
         ComplexNumber c7 = new ComplexNumber(1, 5);
         ComplexNumber c8 = new ComplexNumber(0, 8);
         calculator.insert(c7);
         calculator.insert(c8);
         assertEquals(new ComplexNumber(1.0, 13.0), calculator.sum());
+        assertEquals(new ComplexNumber(1.0, 13.0), calculator.getStack().top());
         ComplexNumber c9 = new ComplexNumber(1, 5);
         ComplexNumber c10 = new ComplexNumber(1, 8);
         calculator.insert(c9);
         calculator.insert(c10);
         assertEquals(new ComplexNumber(2.0, 13.0), calculator.sum());
+        assertEquals(new ComplexNumber(2.0, 13.0), calculator.getStack().top());
 
     }
 
@@ -282,28 +294,28 @@ public class CalculatorTest {
         ComplexNumber c1 = new ComplexNumber(0, 0);
         calculator.insert(c1);
 
-        //caso valore nullo
+        
         assertEquals(new ComplexNumber(0, 0), calculator.invertSign());
 
-        //caso parte reale e parte immaginaria positivi     
+            
         ComplexNumber c2 = new ComplexNumber(2.3, 1);
         calculator.insert(c2);
         assertEquals(new ComplexNumber(-2.3, -1), calculator.invertSign());
         assertEquals(new ComplexNumber(-2.3, -1), calculator.getStack().top());
 
-        //caso parte reale positiva e parte immaginaria negativa
+        
         ComplexNumber c3 = new ComplexNumber(2, -1);
         calculator.insert(c3);
         assertEquals(new ComplexNumber(-2, 1), calculator.invertSign());
         assertEquals(new ComplexNumber(-2, 1), calculator.getStack().top());
 
-        //caso parte reale negativa e parte immaginaria positiva
+        
         ComplexNumber c4 = new ComplexNumber(-2, 1);
         calculator.insert(c4);
         assertEquals(new ComplexNumber(2, -1), calculator.invertSign());
         assertEquals(new ComplexNumber(2, -1), calculator.getStack().top());
 
-        //caso parte reale e parte immaginaria negative
+        
         ComplexNumber c5 = new ComplexNumber(-2, -1);
         calculator.insert(c5);
         assertEquals(new ComplexNumber(2, 1), calculator.invertSign());
@@ -452,24 +464,31 @@ public class CalculatorTest {
         ComplexNumber c=new ComplexNumber(2,0);
         calculator.insert(c);
         assertEquals(calculator.mod(),new ComplexNumber(2,0));
+        assertEquals(new ComplexNumber(2,0), calculator.getStack().top());
         c=new ComplexNumber(-2,0);
         calculator.insert(c);
         assertEquals(calculator.mod(),new ComplexNumber(2,0));
+        assertEquals(new ComplexNumber(2,0), calculator.getStack().top());
         c=new ComplexNumber(3,4);
         calculator.insert(c);
         assertEquals(calculator.mod(),new ComplexNumber(5,0));
+        assertEquals(new ComplexNumber(5,0), calculator.getStack().top());
         c=new ComplexNumber(-3,-4);
         calculator.insert(c);
         assertEquals(calculator.mod(),new ComplexNumber(5,0));
+        assertEquals(new ComplexNumber(5,0), calculator.getStack().top());
         c=new ComplexNumber(-3,4);
         calculator.insert(c);
         assertEquals(calculator.mod(),new ComplexNumber(5,0));
+        assertEquals(new ComplexNumber(5,0), calculator.getStack().top());
         c=new ComplexNumber(0,2);
         calculator.insert(c);
         assertEquals(calculator.mod(),new ComplexNumber(2,0));
+        assertEquals(new ComplexNumber(2,0), calculator.getStack().top());
         c=new ComplexNumber(0,-2);
         calculator.insert(c);
         assertEquals(calculator.mod(),new ComplexNumber(2,0));
+        assertEquals(new ComplexNumber(2,0), calculator.getStack().top());
         
     }
     
@@ -504,6 +523,7 @@ public class CalculatorTest {
         ComplexNumber c1 = new ComplexNumber(0, 0);
         calculator.insert(c1);
         assertEquals(new ComplexNumber(0, 0), calculator.arg());
+         assertEquals(new ComplexNumber(0, 0), calculator.getStack().top());
     
         ComplexNumber c2 = new ComplexNumber(1, 1);
         calculator.insert(c2);
@@ -540,6 +560,7 @@ public class CalculatorTest {
         ComplexNumber c1 = new ComplexNumber(0, 0);
         calculator.insert(c1);
         assertEquals(new ComplexNumber(0, 0), calculator.sen());
+        assertEquals(new ComplexNumber(0, 0), calculator.getStack().top());
         
         ComplexNumber c2 = new ComplexNumber(8, 0);
         calculator.insert(c2);
@@ -576,6 +597,7 @@ public class CalculatorTest {
         ComplexNumber c1 = new ComplexNumber(0, 0);
         calculator.insert(c1);
         assertEquals(new ComplexNumber(1, 0), calculator.cosen());
+        assertEquals(new ComplexNumber(1, 0), calculator.getStack().top());
         
         ComplexNumber c2 = new ComplexNumber(2, 3);
         calculator.insert(c2);
@@ -612,6 +634,7 @@ public class CalculatorTest {
         ComplexNumber c1 = new ComplexNumber(0, 0);
         calculator.insert(c1);
         assertEquals(new ComplexNumber(0, 0), calculator.tan());
+        assertEquals(new ComplexNumber(0, 0), calculator.getStack().top());
         
         ComplexNumber c2 = new ComplexNumber(2, 3);
         calculator.insert(c2);
@@ -670,6 +693,7 @@ public class CalculatorTest {
         ComplexNumber c1 = new ComplexNumber(0, 0);
         calculator.insert(c1);
         assertEquals(new ComplexNumber(0, 0), calculator.asen());
+        assertEquals(new ComplexNumber(0, 0), calculator.getStack().top());
         
         ComplexNumber c2 = new ComplexNumber(0.5, 0);
         calculator.insert(c2);
@@ -686,12 +710,17 @@ public class CalculatorTest {
         assertEquals(new ComplexNumber(-1.5707963267948966,0), calculator.asen());
         assertEquals(new ComplexNumber(-1.5707963267948966, 0), calculator.getStack().top());
         
-        /*
-        ComplexNumber c5 = new ComplexNumber(2, 0);
-        calculator.insert(c5);
-        assertEquals(new ComplexNumber(NaN,0), calculator.asen());
-        assertEquals(new ComplexNumber(NaN,0), calculator.getStack().top());
-        */
+        c4 = new ComplexNumber(0, 12);
+        calculator.insert(c4);
+        assertEquals(new ComplexNumber(0.0, 3.17978541), calculator.asen());
+        assertEquals(new ComplexNumber(0.0, 3.17978541), calculator.getStack().top());
+
+        c4 = new ComplexNumber(1, 5);
+        calculator.insert(c4);
+        assertEquals(new ComplexNumber(0.19379315, 2.33097449), calculator.asen());
+        assertEquals(new ComplexNumber(0.19379315, 2.33097449), calculator.getStack().top());
+        
+
 
         calculator.insert(new ComplexNumber(2, 0));
         ArithmeticException assertThrows = assertThrows(ArithmeticException.class, () -> calculator.asen());
@@ -711,6 +740,7 @@ public class CalculatorTest {
         ComplexNumber c1 = new ComplexNumber(0, 0);
         calculator.insert(c1);
         assertEquals(new ComplexNumber(1.5707963267948966, 0), calculator.acosen());
+        assertEquals(new ComplexNumber(1.5707963267948966, 0), calculator.getStack().top());
         
         ComplexNumber c2 = new ComplexNumber(0.5, 0);
         calculator.insert(c2);
@@ -727,13 +757,16 @@ public class CalculatorTest {
         assertEquals(new ComplexNumber(0,0), calculator.acosen());
         assertEquals(new ComplexNumber(0,0), calculator.getStack().top());
         
-
-        /*
-        ComplexNumber c5 = new ComplexNumber(2, 0);
-        calculator.insert(c5);
-        assertEquals(0, calculator.acosen());
-        assertEquals(new ComplexNumber(NaN,0), calculator.getStack().top());
-        */
+        c4 = new ComplexNumber(0, 12);
+        calculator.insert(c4);
+        assertEquals(new ComplexNumber(1.57079633, -3.17978541), calculator.acosen());
+        assertEquals(new ComplexNumber(1.57079633, -3.17978541), calculator.getStack().top());
+        
+        c4=new ComplexNumber(1,5);
+        calculator.insert(c4);
+        assertEquals(new ComplexNumber(1.37700318, -2.33097449), calculator.acosen());
+        assertEquals(new ComplexNumber(1.37700318, -2.33097449), calculator.getStack().top());
+ 
 
         calculator.insert(new ComplexNumber(2, 0));
         ArithmeticException assertThrows = assertThrows(ArithmeticException.class, () -> calculator.acosen());
@@ -750,15 +783,26 @@ public class CalculatorTest {
      * @throws StackEmptyException 
      */
     @Test
-    public void testAtang() throws StackEmptyException{
+    public void testAtan() throws StackEmptyException{
         ComplexNumber c1 = new ComplexNumber(0, 0);
         calculator.insert(c1);
-        assertEquals(new ComplexNumber(0, 0), calculator.atang());
+        assertEquals(new ComplexNumber(0, 0), calculator.atan());
+        assertEquals(new ComplexNumber(0, 0), calculator.getStack().top());
         
         ComplexNumber c2 = new ComplexNumber(1, 0);
         calculator.insert(c2);
-        assertEquals(new ComplexNumber(0.7853981633974483, 0), calculator.atang());
+        assertEquals(new ComplexNumber(0.7853981633974483, 0), calculator.atan());
         assertEquals(new ComplexNumber(0.7853981633974483, 0), calculator.getStack().top());
+        
+        ComplexNumber c4 = new ComplexNumber(0, 12);
+        calculator.insert(c4);
+        assertEquals(new ComplexNumber(1.570796325, 0.08352704), calculator.atan());
+        assertEquals(new ComplexNumber(1.570796325, 0.08352704), calculator.getStack().top());
+
+        c4 = new ComplexNumber(1, 5);
+        calculator.insert(c4);
+        assertEquals(new ComplexNumber(1.530881335, 0.19442614), calculator.atan());
+        assertEquals(new ComplexNumber(1.530881335, 0.19442614), calculator.getStack().top());
         
     }
     
@@ -782,46 +826,55 @@ public class CalculatorTest {
         calculator.insert(c2);
         calculator.insert(c1);
         assertEquals(new ComplexNumber(0.1111111111111111,0),calculator.pow());
+        assertEquals(new ComplexNumber(0.1111111111111111, 0), calculator.getStack().top());
         c1 = new ComplexNumber(4.0, 0);
         c2 = new ComplexNumber(0, 7);
         calculator.insert(c1);
         calculator.insert(c2);
         assertEquals(new ComplexNumber(-0.961253458, - 0.275666085), calculator.pow());
+        assertEquals(new ComplexNumber(-0.961253458, - 0.275666085), calculator.getStack().top());
         c1 = new ComplexNumber(2.0,0.0);
         c2 = new ComplexNumber(6.0, 7.0);
         calculator.insert(c1);
         calculator.insert(c2);
         assertEquals(new ComplexNumber(8.908025536,-63.377023296), calculator.pow());
+        assertEquals(new ComplexNumber(8.908025536,-63.377023296), calculator.getStack().top());
         c1 = new ComplexNumber(3.0, 0);
         c2 = new ComplexNumber(0, 4);
         calculator.insert(c2);
         calculator.insert(c1);
         assertEquals(new ComplexNumber(0,-64),calculator.pow());
+        assertEquals(new ComplexNumber(0,-64), calculator.getStack().top());
         c1 = new ComplexNumber(0, -1);
         c2 = new ComplexNumber(0, 4);
         calculator.insert(c2);
         calculator.insert(c1);
         assertEquals(new ComplexNumber(0.882515628,-4.728832707), calculator.pow());
+        assertEquals(new ComplexNumber(0.882515628,-4.728832707), calculator.getStack().top());
         c1 = new ComplexNumber(1, 1);
         c2 = new ComplexNumber(0, 4);
         calculator.insert(c2);
         calculator.insert(c1);
         assertEquals(new ComplexNumber(-0.817405575,0.152547835), calculator.pow());
+        assertEquals(new ComplexNumber(-0.817405575,0.152547835), calculator.getStack().top());
         c1 = new ComplexNumber(3, 0);
         c2 = new ComplexNumber(1, 1);
         calculator.insert(c2);
         calculator.insert(c1);
         assertEquals(new ComplexNumber(-2,2), calculator.pow());
+        assertEquals(new ComplexNumber(-2,2), calculator.getStack().top());
         c1 = new ComplexNumber(0, 3);
         c2 = new ComplexNumber(1, 1);
         calculator.insert(c2);
         calculator.insert(c1);
         assertEquals(new ComplexNumber(0.04800249,0.081725462), calculator.pow());
+        assertEquals(new ComplexNumber(0.04800249,0.081725462), calculator.getStack().top());
         c1 = new ComplexNumber(3, 3);
         c2 = new ComplexNumber(1, 1);
         calculator.insert(c2);
         calculator.insert(c1);
         assertEquals(new ComplexNumber(-0.259455902,-0.067445943), calculator.pow());
+        assertEquals(new ComplexNumber(-0.259455902,-0.067445943), calculator.getStack().top());
         
         
         
