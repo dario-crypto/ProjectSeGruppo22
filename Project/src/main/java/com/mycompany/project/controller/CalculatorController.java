@@ -118,8 +118,8 @@ public class CalculatorController {
      * @param op string that represents an operation
      * @return true if it is an operation on variables, otherwise false
      */
-    private boolean isOperationVariable(String op) {
-        Pattern pattern = Pattern.compile("^[< \\+ \\- >]{1}[a-z]{1}$", Pattern.CASE_INSENSITIVE);
+    public static boolean isOperationVariable(String op) {
+        Pattern pattern = Pattern.compile("^[< \\+ \\- >]{1}[a-z]{1}$");
         Matcher matcher = pattern.matcher(op);
         return matcher.find();
     }
@@ -296,6 +296,9 @@ public class CalculatorController {
     public void saveFile() throws IOException{
         formulas.save();
     }
+    
+    
+  
     
 
 }
