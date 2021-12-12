@@ -49,8 +49,8 @@ public class CopySpaceVariablesCommand implements Command {
     }
 
     /**
-     *
-     * @return
+     * This method returns the backup map
+     * @return backup
      */
     public HashMap<String, ComplexNumber> getBackupMap() {
         return variablesMap;

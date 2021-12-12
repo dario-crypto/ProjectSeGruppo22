@@ -152,7 +152,7 @@ public class Formulas {
     /**
      * This method returns the number of formulas
      *
-     * @return
+     * @return the size of the formulaMap
      */
     public int size() {
         return formulaMap.size();

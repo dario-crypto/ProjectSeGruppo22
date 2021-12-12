@@ -5,7 +5,7 @@ import com.mycompany.project.exception.StackEmptyException;
 /**
  * This class is functional interface to implement the stack logic
  * @author dilet
- * @param <E> 
+ * @param <E> generic object
  */
 
 
