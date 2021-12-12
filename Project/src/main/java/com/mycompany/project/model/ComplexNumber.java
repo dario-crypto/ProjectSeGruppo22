@@ -397,9 +397,15 @@ public class ComplexNumber {
             period += 2 * i * Math.PI;
 
         }
+        
+        
 
         Double re = modC.getRe() * (Math.cos((c.getArg() + period) / index));
         Double im = modC.getRe() * (Math.sin((c.getArg() + period) / index));
+        if ((index % 2) == 0) {
+            re = -re;
+            im = -im;
+        }
         c1.setReal(re);
         c1.setImaginary(im);
         return c1;

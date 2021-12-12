@@ -844,12 +844,13 @@ public class CalculatorTest {
      * The first three cases deal with real numbers elevated to real number, complex numbers with real part equal to zero and complex numbers with both part
      * different from zero
      * The fourth case concerns the case with exponent equal to a real negative nuimber
+     * The fifth case conserns the case with the exponent equal to a decimal number
      * The next three cases deal with complex numbers with real part equal to zero
      * elevated to real number, complex numbers with real part equal to zero and
      * complex numbers with both part different from zero
-     * The last three cases deal with complex numbers with both part different from zero elevated to real
+     * The last four cases deal with complex numbers with both part different from zero elevated to real
      * number, complex numbers with real part equal to zero and complex numbers
-     * with both part different from zero
+     * with both part different from zero and a decimal number
      * @throws StackEmptyException 
      */
     
@@ -879,6 +880,12 @@ public class CalculatorTest {
         calculator.insert(c2);
         assertEquals(new ComplexNumber(0.5, 0), calculator.pow());
         assertEquals(new ComplexNumber(0.5, 0), calculator.getStack().top());
+        c1 = new ComplexNumber(8.0, 0);
+        c2 = new ComplexNumber(0.66666666, 0);
+        calculator.insert(c1);
+        calculator.insert(c2);
+        assertEquals(new ComplexNumber(4, 0), calculator.pow());
+        assertEquals(new ComplexNumber(4, 0), calculator.getStack().top());
         c1 = new ComplexNumber(3.0, 0);
         c2 = new ComplexNumber(0, 4);
         calculator.insert(c2);
@@ -915,6 +922,13 @@ public class CalculatorTest {
         calculator.insert(c1);
         assertEquals(new ComplexNumber(-0.259455902,-0.067445943), calculator.pow());
         assertEquals(new ComplexNumber(-0.259455902,-0.067445943), calculator.getStack().top());
+        c1 = new ComplexNumber(0.66666666, 0);
+        c2 = new ComplexNumber(1, 1);
+        calculator.insert(c2);
+        calculator.insert(c1);
+        assertEquals(new ComplexNumber(1.091123636019695, 0.6299605250745975), calculator.pow());
+        assertEquals(new ComplexNumber(1.091123636019695, 0.6299605250745975), calculator.getStack().top());
+        
         
         
         
