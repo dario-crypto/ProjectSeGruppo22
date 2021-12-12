@@ -11,12 +11,11 @@ package com.mycompany.project.exception;
  */
 public class OperationDoesNotExist extends Exception {
     
-    /**
-     * This method is the constructor of the OperationDoesNotExist class
-     * @param message the message the user needs to see to understand the
-     * exception
-     */
 
+    /**
+     * This is the constructor for the OperationDoesNotExist class
+     * @param message that the user needs to see to understand the exception
+     */
     public OperationDoesNotExist(String message) {
         super(message);
     }

@@ -13,34 +13,34 @@ public class NameFormulaAlreadyExists extends Exception {
     String name;
     String formula;
     
-    /**
-     * This method is the constructor of the NameFormulaAlreadyExists class
-     * @param message the message the user needs to see to understand the
-     * exception
-     * @param name the name of the formula
-     * @param formula the formula
-     */
     
+    
+
+    /**
+     * This is the constructor pf the class NameFormulaAlreadyExists
+     * @param message the message the user needs to see to understand the exception
+     * @param name the name of the formula
+     * @param formula  the formula
+     */
     public NameFormulaAlreadyExists(String message,String name,String formula){
        super(message);
        this.name = name;
        this.formula = formula;
     }
     
+
     /**
-     * This method returns the name of the already present formula
-     * @return the name
+     * This method returns the formula
+     * @return name
      */
-    
     public String getName(){
         return name;
     }
     
     /**
-     * This method returns the formula already present
-     * @return the formula
+     * This method returns the formula
+     * @return formula
      */
-    
     public String getFormula(){
         return formula;
     }

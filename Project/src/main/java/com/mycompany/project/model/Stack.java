@@ -17,10 +17,9 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
     private int currentCapacity;
     
     /**
-     * This method is the first constructor of the Stack class
+     * This is the constructor for the Stack class
+     * @param initialCapacity the capacity of the stack
      */
-
-
     public Stack(int initialCapacity) {
         this.stack = (E[]) new Object[initialCapacity];
         this.currentCapacity = initialCapacity;

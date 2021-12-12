@@ -21,7 +21,7 @@ public class CopyStackCommand implements Command {
     
     /**
      * This method is the constructor of the CopyStackCommand class
-     * @param calculator Calculator we need to use
+     * @param calculator the calculator we use
      */
 
     public CopyStackCommand(Calculator calculator) {
@@ -50,6 +50,10 @@ public class CopyStackCommand implements Command {
 
     }
 
+    /**
+     * This method returns the backup stack
+     * @return backup
+     */
     public Stack<ComplexNumber> getBackupStack() {
        return backup;
     }

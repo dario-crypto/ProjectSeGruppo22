@@ -24,6 +24,11 @@ package com.mycompany.project.model;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+/**
+ * This is the given class for the complex numbers 
+ * @author dilet
+ */
+
 public class ComplexNumber {
 
     /**

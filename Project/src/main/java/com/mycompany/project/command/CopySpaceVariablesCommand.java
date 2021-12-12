@@ -21,6 +21,7 @@ public class CopySpaceVariablesCommand implements Command {
     
     /**
      * This method is the constructor of the CopySpaceVariablesCommand class
+     * @param vs that represents the variables space
      */
 
     public CopySpaceVariablesCommand(VariablesSpace vs) {
@@ -47,6 +48,10 @@ public class CopySpaceVariablesCommand implements Command {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public HashMap<String, ComplexNumber> getBackupMap() {
         return variablesMap;
     }

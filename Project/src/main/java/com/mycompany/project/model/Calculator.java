@@ -19,10 +19,9 @@ public class Calculator {
     private VariablesSpace variablesSpace;
     
     /**
-     * This method is the constructor of the Calculator class
-     * @param stack that is the stack in which the numbers are inserted
+     * This method is the constructor for the Calculator class
+     * @param stack that we use to insert the numbers
      */
-
     public Calculator(StackLogic stack) {
         this.stack = stack;
         

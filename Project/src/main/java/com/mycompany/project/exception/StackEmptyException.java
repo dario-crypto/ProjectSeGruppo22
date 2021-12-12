@@ -7,12 +7,9 @@ package com.mycompany.project.exception;
 public class StackEmptyException extends Exception {
     
     /**
-     * This method is the constructor of the StackEmptyException class
-     * @param message the message the user needs to see to understand the
-     * exception
+     * This is the constructor for the StackEmptyException class
+     * @param message the user needs ton see to understand the error
      */
-
-
     public StackEmptyException(String message) {
         super(message);
     }

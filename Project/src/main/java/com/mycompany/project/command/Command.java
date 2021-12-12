@@ -10,7 +10,15 @@ package com.mycompany.project.command;
  * @author user
  */
 public interface Command {
+
+    /**
+     * This method allows to execute operations
+     */
     void exec();
+
+    /**
+     * This method allows to revert operations
+     */
     void undo();
     
     

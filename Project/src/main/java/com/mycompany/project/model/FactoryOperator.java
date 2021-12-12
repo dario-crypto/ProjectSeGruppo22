@@ -17,6 +17,9 @@ import java.util.Set;
  */
 public class FactoryOperator {
 
+    /**
+     * This is the list of all the possible operations
+     */
     public static HashMap<String, GlobalOperation> opMap;
 
     static {

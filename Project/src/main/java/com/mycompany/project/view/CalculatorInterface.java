@@ -1566,6 +1566,9 @@ public class CalculatorInterface extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * This method allows to insert the numeber from the textarea to the stack
+     */
     public void insert() {
         String complex = jTextArea1.getText();
 
