@@ -6,7 +6,7 @@ package com.mycompany.project.controller;
 
 import com.mycompany.project.command.Command;
 import com.mycompany.project.exception.FormatFormulaException;
-import com.mycompany.project.exception.NameFormulaAlreadyExsist;
+import com.mycompany.project.exception.NameFormulaAlreadyExists;
 import com.mycompany.project.model.*;
 import com.mycompany.project.exception.OperationDoesNotExist;
 import com.mycompany.project.exception.StackEmptyException;
@@ -181,9 +181,9 @@ public class CalculatorController {
      *
      * @param formula string that represents a formula
      * @throws FormatFormulaException when the format of the formula is not correct
-     * @throws NameFormulaAlreadyExsist if the name already exists
+     * @throws NameFormulaAlreadyExists if the name already exists
      */
-    public void addFormula(String formula) throws FormatFormulaException, NameFormulaAlreadyExsist {
+    public void addFormula(String formula) throws FormatFormulaException, NameFormulaAlreadyExists {
         String[] formulaSplit = formula.split("=");
         if (formulaSplit.length == 2) {
 
@@ -252,9 +252,9 @@ public class CalculatorController {
      *
      * @param oldName string that represents the name of the formula we want to change
      * @param name string that represents the neww name
-     * @throws NameFormulaAlreadyExsist in case the new name already exists
+     * @throws NameFormulaAlreadyExists in case the new name already exists
      */
-    public void renameFormula(String oldName, String name) throws NameFormulaAlreadyExsist {
+    public void renameFormula(String oldName, String name) throws NameFormulaAlreadyExists {
         formulas.rename(oldName, name);
     }
 

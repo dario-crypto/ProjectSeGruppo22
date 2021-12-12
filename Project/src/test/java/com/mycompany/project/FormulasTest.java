@@ -32,7 +32,7 @@ public class FormulasTest {
      * Test of get method, of class Formules.
      */
     @Test
-    public void testGet() throws NameFormulaAlreadyExsist {
+    public void testGet() throws NameFormulaAlreadyExists {
 
         String name1 = "Delta";
         String formule1 = "sqrt(b*b -4*a*c)";
@@ -52,7 +52,7 @@ public class FormulasTest {
      * Test of rename method, of class Formules.
      */
     @Test
-    public void testRename() throws NameFormulaAlreadyExsist {
+    public void testRename() throws NameFormulaAlreadyExists {
         String name1 = "Delta";
         String formule1 = "sqrt(b*b -4*a*c)";
         String name2 = "Pitagora";
@@ -67,10 +67,10 @@ public class FormulasTest {
 
         //casi in cui l'operazione non viene eseguita
         //vecchio nome non presente nuovo nome presente
-        NameFormulaAlreadyExsist assertThrows = assertThrows(NameFormulaAlreadyExsist.class, () -> formulas.rename("name1", "Delta2"));
+        NameFormulaAlreadyExists assertThrows = assertThrows(NameFormulaAlreadyExists.class, () -> formulas.rename("name1", "Delta2"));
         assertEquals("New name Delta2 already exist!", assertThrows.getMessage());
         //vecchio nome presente e nuovo nome presente
-        NameFormulaAlreadyExsist assertThrows2 = assertThrows(NameFormulaAlreadyExsist.class, () -> formulas.rename(name2, "Delta2"));
+        NameFormulaAlreadyExists assertThrows2 = assertThrows(NameFormulaAlreadyExists.class, () -> formulas.rename(name2, "Delta2"));
         assertEquals("New name Delta2 already exist!", assertThrows2.getMessage());
         //vecchio nome non presente e nuovo nome non presente
         formulas.rename("name1", "name2");
@@ -81,7 +81,7 @@ public class FormulasTest {
      * Test of update method, of class Formules.
      */
     @Test
-    public void testUpdate() throws NameFormulaAlreadyExsist {
+    public void testUpdate() throws NameFormulaAlreadyExists {
         String name1 = "Delta";
         String formule1 = "sqrt(b*b -4*a*c)";
         String name2 = "Pitagora";
@@ -105,7 +105,7 @@ public class FormulasTest {
      * Test of save and reaload methods, of class Formules.
      */
     @Test
-    public void testSaveReload() throws IOException, FileNotFoundException, ClassNotFoundException, NameFormulaAlreadyExsist {
+    public void testSaveReload() throws IOException, FileNotFoundException, ClassNotFoundException, NameFormulaAlreadyExists {
 
         String name1 = "Delta";
         String formule1 = "sqrt(b*b -4*a*c)";
@@ -131,7 +131,7 @@ public class FormulasTest {
      * Test of add method, of class Formules.
      */
     @Test
-    public void testAdd() throws NameFormulaAlreadyExsist {
+    public void testAdd() throws NameFormulaAlreadyExists {
 
         String name1 = "Delta";
         String formula1 = "sqrt(b*b -4*a*c)";
@@ -146,7 +146,7 @@ public class FormulasTest {
         assertEquals(formula1, formulas.get(name1));
 
         //caso nome già presente
-        NameFormulaAlreadyExsist assertThrowsName = assertThrows(NameFormulaAlreadyExsist.class, () -> formulas.add(name1, "a+b"));
+        NameFormulaAlreadyExists assertThrowsName = assertThrows(NameFormulaAlreadyExists.class, () -> formulas.add(name1, "a+b"));
         assertEquals("Name: " + name1 + " already exsist!", assertThrowsName.getMessage());
 
     }
@@ -174,7 +174,7 @@ public class FormulasTest {
      * Test of clear method, of class Formules.
      */
     @Test
-    public void testClear() throws IOException, NameFormulaAlreadyExsist {
+    public void testClear() throws IOException, NameFormulaAlreadyExists {
         String name1 = "Delta";
         String formule1 = "sqrt(b*b -4*a*c)";
         String name2 = "Pitagora";

@@ -8,7 +8,7 @@ import com.mycompany.project.controller.CalculatorController;
 
 import com.mycompany.project.command.CopyStackCommand;
 import com.mycompany.project.exception.FormatFormulaException;
-import com.mycompany.project.exception.NameFormulaAlreadyExsist;
+import com.mycompany.project.exception.NameFormulaAlreadyExists;
 import com.mycompany.project.exception.OperationDoesNotExist;
 import com.mycompany.project.model.Stack;
 import com.mycompany.project.exception.StackEmptyException;
@@ -1361,7 +1361,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
 
         } catch (FormatFormulaException ex) {
             popUp(ex.getMessage(), "error");
-        } catch (NameFormulaAlreadyExsist ex) {
+        } catch (NameFormulaAlreadyExists ex) {
 
             int n = JOptionPane.showConfirmDialog(
                     this,
@@ -1460,7 +1460,7 @@ public class CalculatorInterface extends javax.swing.JFrame {
                     String oldName = oldFormulaName.toString().split("=")[0].trim();
                     String newFormulaName = JOptionPane.showInputDialog(this, "Enter new formula name:");
                     controller.renameFormula(oldName, newFormulaName);
-                } catch (NameFormulaAlreadyExsist ex) {
+                } catch (NameFormulaAlreadyExists ex) {
                     popUp(ex.getMessage(), "warning");
                 }
             }

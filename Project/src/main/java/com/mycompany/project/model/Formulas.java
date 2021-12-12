@@ -4,7 +4,7 @@
  */
 package com.mycompany.project.model;
 
-import com.mycompany.project.exception.NameFormulaAlreadyExsist;
+import com.mycompany.project.exception.NameFormulaAlreadyExists;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -69,9 +69,9 @@ public class Formulas {
      *
      * @param oldName string representing the old name of the formula
      * @param newName string representing the new name of the formula
-     * @throws NameFormulaAlreadyExsist when the name already exists
+     * @throws NameFormulaAlreadyExists when the name already exists
      */
-    public void rename(String oldName, String newName) throws NameFormulaAlreadyExsist {
+    public void rename(String oldName, String newName) throws NameFormulaAlreadyExists {
         if (!formulaMap.containsKey(newName)) {
             String formule = formulaMap.get(oldName);
             if (formule != null) {
@@ -79,7 +79,7 @@ public class Formulas {
                 formulaMap.put(newName, formule);
             }
         } else {
-            throw new NameFormulaAlreadyExsist("New name "+newName+ " already exist!", newName, null);
+            throw new NameFormulaAlreadyExists("New name "+newName+ " already exist!", newName, null);
         }
 
     }
@@ -124,12 +124,12 @@ public class Formulas {
      *
      * @param name string representing the name of formula
      * @param formule string representing the formula
-     * @throws NameFormulaAlreadyExsist if the name is already present
+     * @throws NameFormulaAlreadyExists if the name is already present
      */
-    public void add(String name, String formule) throws NameFormulaAlreadyExsist {
+    public void add(String name, String formule) throws NameFormulaAlreadyExists {
 
         if (formulaMap.containsKey(name)) {
-            throw new NameFormulaAlreadyExsist("Name: " + name + " already exsist!", name, formule);
+            throw new NameFormulaAlreadyExists("Name: " + name + " already exsist!", name, formule);
         } else {
 
             formulaMap.put(name, formule);
