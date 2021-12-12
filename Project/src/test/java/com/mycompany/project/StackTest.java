@@ -64,6 +64,7 @@ public class StackTest {
 
     /**
      * Test of pop method, of class Stack.
+     * @throws StackEmptyException when the stack is empty
      */
     @Test
     public void testPop() throws StackEmptyException {
@@ -83,6 +84,12 @@ public class StackTest {
     }
 
     /*  Test of isEmpty method, of class Stack. */
+
+    /**
+     * Test of isEmpty method, of class Stack.
+     * @throws StackEmptyException when the stack is empty
+     */
+
     @Test
     public void testIsEmpty() throws StackEmptyException {
         assertEquals(true, st.isEmpty());
@@ -96,8 +103,10 @@ public class StackTest {
         assertEquals(true, st.isEmpty());
     }
     
-    /* Test of isEmpty method, of class Stack.*/  
-    
+    /**
+     * This method tests the Clear method of the stack
+     * @throws StackEmptyException when the stack is empty
+     */
     @Test
     public void testClear() throws StackEmptyException{
         st.push(4);

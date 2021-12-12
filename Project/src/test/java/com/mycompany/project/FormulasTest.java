@@ -23,6 +23,9 @@ public class FormulasTest {
 
     private Formulas formulas;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         formulas = new Formulas();
@@ -30,6 +33,7 @@ public class FormulasTest {
 
     /**
      * Test of get method, of class Formules.
+     * @throws NameFormulaAlreadyExists when the name of the formula already exists
      */
     @Test
     public void testGet() throws NameFormulaAlreadyExists {
@@ -50,6 +54,7 @@ public class FormulasTest {
 
     /**
      * Test of rename method, of class Formules.
+     * @throws NameFormulaAlreadyExists when the name of the formula already exists
      */
     @Test
     public void testRename() throws NameFormulaAlreadyExists {
@@ -79,6 +84,7 @@ public class FormulasTest {
 
     /**
      * Test of update method, of class Formules.
+     * @throws NameFormulaAlreadyExists when the name of the formula already exists
      */
     @Test
     public void testUpdate() throws NameFormulaAlreadyExists {
@@ -103,6 +109,10 @@ public class FormulasTest {
     
     /**
      * Test of save and reaload methods, of class Formules.
+     * @throws java.io.IOException when any kind of IOException occurs
+     * @throws java.io.FileNotFoundException when it does not find the file
+     * @throws java.lang.ClassNotFoundException when it does not find the class
+     * @throws NameFormulaAlreadyExists when the name of the formula already exists
      */
     @Test
     public void testSaveReload() throws IOException, FileNotFoundException, ClassNotFoundException, NameFormulaAlreadyExists {
@@ -129,6 +139,8 @@ public class FormulasTest {
 
     /**
      * Test of add method, of class Formules.
+     * @throws NameFormulaAlreadyExists when the name of the formula already
+     * exists
      */
     @Test
     public void testAdd() throws NameFormulaAlreadyExists {
@@ -153,6 +165,7 @@ public class FormulasTest {
 
     /**
      * Test of delete method, of class Formules.
+     * @throws Exception when any kind of Exception occurs
      */
     @Test
     public void testDelete() throws Exception {
@@ -172,6 +185,9 @@ public class FormulasTest {
     
     /**
      * Test of clear method, of class Formules.
+     * @throws IOException when any kind of IOException occurs
+     * @throws NameFormulaAlreadyExists when the name of the formula already
+     * exists
      */
     @Test
     public void testClear() throws IOException, NameFormulaAlreadyExists {
