@@ -24,7 +24,7 @@ public class FormulasTest {
     private Formulas formulas;
 
     /**
-     *
+     * This method sets up all the elements that are needed in more than one test
      */
     @Before
     public void setUp() {

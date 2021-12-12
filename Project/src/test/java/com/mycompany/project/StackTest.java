@@ -29,6 +29,7 @@ public class StackTest {
 
     /**
      * Test of top method, of class Stack.
+     * @throws StackEmptyException when the stack is empty
      */
     @Test
     public void testTop() throws StackEmptyException {
