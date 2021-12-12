@@ -12,6 +12,7 @@ public class FormatFormulaException extends Exception {
     
     /**
      * This method is the constructor of the FormatFormulaException class
+     * @param message the message the user needs to see to understand the exception
      */
 
     public FormatFormulaException(String message) {

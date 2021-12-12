@@ -20,6 +20,7 @@ public class Calculator {
     
     /**
      * This method is the constructor of the Calculator class
+     * @param stack that is the stack in which the numbers are inserted
      */
 
     public Calculator(StackLogic stack) {
@@ -39,7 +40,7 @@ public class Calculator {
     /**
      * This method is used to get the Calculator's attribute stack
      *
-     * @return StackLogic<ComplexNumber>
+     * @return the stack
      */
     public StackLogic<ComplexNumber> getStack() {
         return stack;

@@ -172,6 +172,7 @@ public class Stack<E> implements Iterable<E>, StackLogic<E> {
      * This method return the element of the stack in the given index
      *
      * @param index in which the desired element is 
+     * @return the item in the given index
      */
     public E getItem(int index) {
         return stack[index];

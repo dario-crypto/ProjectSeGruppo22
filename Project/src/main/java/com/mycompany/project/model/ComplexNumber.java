@@ -116,7 +116,7 @@ public class ComplexNumber {
      * This method gives to the real part of a complex number the value given in
      * input
      *
-     * @param real
+     * @param real the number we want to insert as the real part
      */
     public void setReal(Double real) {
         this.real = real;
@@ -126,7 +126,7 @@ public class ComplexNumber {
      * This method gives to the imaginary part of a complex number the value
      * given in input
      *
-     * @param real
+     * @param imaginary the number we want to insert as the imaginary part
      */
     public void setImaginary(Double imaginary) {
         this.imaginary = imaginary;

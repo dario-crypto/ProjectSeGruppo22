@@ -99,7 +99,7 @@ public class FactoryOperator {
      *
      * @param op string that represents the requested operation
      * @return a GlobalOperation object
-     * @throws StackEmptyException
+     * @throws StackEmptyException when the stack is empty
      */
     public static GlobalOperation getOperation(String op) throws StackEmptyException {
 

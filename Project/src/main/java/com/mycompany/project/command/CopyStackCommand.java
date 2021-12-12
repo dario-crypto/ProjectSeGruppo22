@@ -21,6 +21,7 @@ public class CopyStackCommand implements Command {
     
     /**
      * This method is the constructor of the CopyStackCommand class
+     * @param calculator Calculator we need to use
      */
 
     public CopyStackCommand(Calculator calculator) {

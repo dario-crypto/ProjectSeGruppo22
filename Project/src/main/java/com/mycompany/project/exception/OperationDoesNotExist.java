@@ -13,6 +13,8 @@ public class OperationDoesNotExist extends Exception {
     
     /**
      * This method is the constructor of the OperationDoesNotExist class
+     * @param message the message the user needs to see to understand the
+     * exception
      */
 
     public OperationDoesNotExist(String message) {

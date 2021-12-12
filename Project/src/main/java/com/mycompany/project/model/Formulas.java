@@ -33,7 +33,6 @@ public class Formulas {
     /**
      * This method saves all formulas in a file
      *
-     * @param path string representing path file
      * @throws FileNotFoundException if it is not able to find the file
      * @throws IOException when any kind of IOException occurs
      */
@@ -70,6 +69,7 @@ public class Formulas {
      *
      * @param oldName string representing the old name of the formula
      * @param newName string representing the new name of the formula
+     * @throws NameFormulaAlreadyExsist when the name already exists
      */
     public void rename(String oldName, String newName) throws NameFormulaAlreadyExsist {
         if (!formulaMap.containsKey(newName)) {
@@ -90,7 +90,6 @@ public class Formulas {
      * @param name string representing the name of the formula change
      * @param newFormula string representing a new formula
      * @return false if the operation is unsuccessful, otherwise it returns true
-     * @throws FormulaAlreadyExsist if newFormule is already present
      */
     public boolean update(String name, String newFormula) {
 
@@ -106,7 +105,6 @@ public class Formulas {
     /**
      * This method loads formulas from a file with a specified by path
      *
-     * @param path string representing the path of file
      * @return map that represents the formulas loaded from the file
      * @throws FileNotFoundException if it is not able to find the file
      * @throws IOException when any kind of IOException occurs
@@ -125,9 +123,8 @@ public class Formulas {
      * This method adds a new formula
      *
      * @param name string representing the name of formula
-     * @param formule string representing the formule
-     * @return false if the operation is unsuccessful, otherwise it returns true
-     * @throws FormulaAlreadyExsist if formula is already present
+     * @param formule string representing the formula
+     * @throws NameFormulaAlreadyExsist if the name is already present
      */
     public void add(String name, String formule) throws NameFormulaAlreadyExsist {
 

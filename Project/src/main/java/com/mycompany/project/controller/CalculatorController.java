@@ -29,6 +29,7 @@ public class CalculatorController {
     
     /**
      * This method is the constructor of the CalculatorController class
+     * @param stack the stack we use to execute the operations
      */
 
     public CalculatorController(StackLogic<ComplexNumber> stack) {

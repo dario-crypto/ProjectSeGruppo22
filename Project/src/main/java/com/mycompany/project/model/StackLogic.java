@@ -15,7 +15,7 @@ public interface StackLogic<E> extends Iterable<E> {
       /**
      * This method inserts an item into the stack
      *
-     * @param item
+     * @param item the item we want to insert
      */
     void push(E item);
 
@@ -53,6 +53,7 @@ public interface StackLogic<E> extends Iterable<E> {
      * This method return the element of the stack in the given index
      *
      * @param index which is the given index
+     * @return the item in the given index
      */
     
     E getItem(int index);

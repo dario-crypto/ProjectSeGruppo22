@@ -8,6 +8,8 @@ public class StackEmptyException extends Exception {
     
     /**
      * This method is the constructor of the StackEmptyException class
+     * @param message the message the user needs to see to understand the
+     * exception
      */
 
 

@@ -15,6 +15,10 @@ public class NameFormulaAlreadyExsist extends Exception {
     
     /**
      * This method is the constructor of the NameFormulaAlreadyExists class
+     * @param message the message the user needs to see to understand the
+     * exception
+     * @param name the name of the formula
+     * @param formula the formula
      */
     
     public NameFormulaAlreadyExsist(String message,String name,String formula){
