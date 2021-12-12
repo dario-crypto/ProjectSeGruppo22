@@ -684,7 +684,9 @@ public class CalculatorTest {
     /**
      * This method tests the method asen() of Calculator's class.
      * It returns a numeric value between -π e π radians for x between -1 and 1. 
-     * If the value of x is outside this range, it returns NaN.
+     * If the value of x is outside this range, it throws an exception
+     * The first 4 cases deal with real numbers, the next 2 cases with complex number, one with both parts different from
+     * zero, the other with real part equal to zero.
      * 
      * @throws StackEmptyException 
      */
@@ -731,7 +733,9 @@ public class CalculatorTest {
     /**
      * This method tests the method acos() of Calculator's class.
      * It returns a numeric value between 0 and π radians for x between -1 and 1. 
-     * If the value of x is outside this range, it returns NaN.
+     * If the value of x is outside this range, it throws an exception
+     * The first 4 cases deal with real numbers, the next 2 cases with complex number, one with both parts different from
+     * zero, the other with real part equal to zero.
      * 
      * @throws StackEmptyException 
      */
@@ -778,7 +782,8 @@ public class CalculatorTest {
     /**
      * This method tests the method atangent() of Calculator's class.
      * It returns a numeric value between 0 and π radians for x between -1 and 1. 
-     * 
+     * The first 4 cases deal with real numbers, the next 2 cases with complex number, one with both parts different from
+     * zero, the other with real part equal to zero.
      * 
      * @throws StackEmptyException 
      */
@@ -810,6 +815,7 @@ public class CalculatorTest {
      * This method tests the method pow of the Calculator's class
      * The first three cases deal with real numbers elevated to real number, complex numbers with real part equal to zero and complex numbers with both part
      * different from zero
+     * The fourth case concerns the case with exponent equal to a real negative nuimber
      * The next three cases deal with complex numbers with real part equal to zero
      * elevated to real number, complex numbers with real part equal to zero and
      * complex numbers with both part different from zero
@@ -839,6 +845,12 @@ public class CalculatorTest {
         calculator.insert(c2);
         assertEquals(new ComplexNumber(8.908025536,-63.377023296), calculator.pow());
         assertEquals(new ComplexNumber(8.908025536,-63.377023296), calculator.getStack().top());
+        c1 = new ComplexNumber(2.0, 0);
+        c2 = new ComplexNumber(-1, 0);
+        calculator.insert(c1);
+        calculator.insert(c2);
+        assertEquals(new ComplexNumber(0.5, 0), calculator.pow());
+        assertEquals(new ComplexNumber(0.5, 0), calculator.getStack().top());
         c1 = new ComplexNumber(3.0, 0);
         c2 = new ComplexNumber(0, 4);
         calculator.insert(c2);
