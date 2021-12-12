@@ -496,6 +496,9 @@ public class CalculatorTest {
      * This method tests the method exp of Calculator's class
      * The first case tests the exponential  of a real positive number 
      * The second case tests the exponential of a complex number 
+     * The third case tests the exponential of a complex number with real part positive and imaginary part negative
+     * The fourth case tests the exponential of a complex number with real and imaginary part negative
+     * The the fifth case tests the exponential of a complex number with only imaginary part negative
      * @throws StackEmptyException 
      */
     @Test
@@ -503,10 +506,27 @@ public class CalculatorTest {
         ComplexNumber c=new ComplexNumber(2,0);
         calculator.insert(c);
         assertEquals(calculator.exp(),new ComplexNumber(7.3890561,0));
+        assertEquals(new ComplexNumber(7.3890561,0), calculator.getStack().top());
+        
         c=new ComplexNumber(2,2);
         calculator.insert(c);
         assertEquals(calculator.exp(),new ComplexNumber(-3.07493232,6.7188497));
+        assertEquals(new ComplexNumber(-3.07493232,6.7188497), calculator.getStack().top());
         
+        c=new ComplexNumber(5,-2);
+        calculator.insert(c);
+        assertEquals(calculator.exp(),new ComplexNumber(-61.76166666,-134.95170368));
+        assertEquals(new ComplexNumber(-61.76166666,-134.95170368), calculator.getStack().top());
+        
+        c=new ComplexNumber(-2,-3);
+        calculator.insert(c);
+        assertEquals(calculator.exp(),new ComplexNumber(-0.13398091,-0.01909852));
+        assertEquals(new ComplexNumber(-0.13398091,-0.01909852), calculator.getStack().top());
+        
+        c=new ComplexNumber(0,-5);
+        calculator.insert(c);
+        assertEquals(calculator.exp(),new ComplexNumber(0.28366219,0.95892427));
+        assertEquals(new ComplexNumber(0.28366219,0.95892427), calculator.getStack().top());   
     }
     
      /**
@@ -659,6 +679,10 @@ public class CalculatorTest {
     
      /**
      * This method tests the method logarithm of Calculator's class
+     * The first case tests the logarithm of a real positive number 
+     * The second case tests the logarithm of a real negative number 
+     * The third case tests the logarithm of a complex number with only imaginary part;
+     * The first case tests the logarithm with null values (0,0) ;
      * @throws StackEmptyException 
      */
     @Test
@@ -678,7 +702,11 @@ public class CalculatorTest {
         assertEquals(new ComplexNumber(0.69314718,1.57079633),calculator.logarithm());
         assertEquals(new ComplexNumber(0.69314718,1.57079633), calculator.getStack().top());
         
-        
+        c=new ComplexNumber(0,0);
+        calculator.insert(c);
+        ArithmeticException assertThrows = assertThrows(ArithmeticException.class, () -> calculator.logarithm());
+        assertEquals("Error: LN(0)", assertThrows.getMessage());
+  
     }
     
     /**

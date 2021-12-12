@@ -642,6 +642,22 @@ public class ComplexNumber {
         return new ComplexNumber(real, imaginary);
     }
     
+       
+    /**
+     * This method calculates the logarithm of a complex number
+     * @return the logarithm of a complex number
+     */
+    
+     public ComplexNumber logarithm() {
+        if(getIm()==0.0 & getRe()==0){
+            throw new ArithmeticException("Error: LN(0)");
+        }
+        double z=mod();
+        double real = (double) Math.round( Math.log(z)*100000000)/100000000;
+        double image =(double) Math.round(getArg()*100000000)/100000000;
+        return new ComplexNumber(real, image);
+    }
+     
     /**
      * This method calculates the sine of a Complex Number
      * @param z is the input of the sine
@@ -699,18 +715,7 @@ public class ComplexNumber {
         return true;
 
     }
-    
-    /**
-     * This method calculates the logarithm of a complex number
-     * @return the logarithm of a complex number
-     */
-     public ComplexNumber logarithm() {
-        double z=mod();
-        double real = (double) Math.round( Math.log(z)*100000000)/100000000;
-        double image =(double) Math.round(getArg()*100000000)/100000000;
-        return new ComplexNumber(real, image);
-    }
-     
+ 
      /**
       * This method calculates the arsine of a ComplexNumber
       * @param z the input of the arsine

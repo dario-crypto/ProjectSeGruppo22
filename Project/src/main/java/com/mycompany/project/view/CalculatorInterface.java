@@ -803,6 +803,9 @@ public class CalculatorInterface extends javax.swing.JFrame {
             copy.undo();
             popUp(ex.getMessage(), "warning");
         } catch (OperationDoesNotExist ex) {
+        } catch (ArithmeticException ex) {
+            popUp(ex.getMessage(), "error");
+            copy.undo();
         }
         viewStack();
         clearTextArea();
