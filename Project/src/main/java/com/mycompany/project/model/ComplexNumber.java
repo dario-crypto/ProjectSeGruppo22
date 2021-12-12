@@ -31,8 +31,8 @@ public class ComplexNumber {
      */
     public static final int XY = 0;
     /**
-     * Used in format(int) to format the complex number as
-     * R.cis(theta), where theta is arg(z)
+     * Used in format(int) to format the complex number as R.cis(theta), where
+     * theta is arg(z)
      */
     public static final int RCIS = 1;
     /**
@@ -45,8 +45,8 @@ public class ComplexNumber {
     private double imaginary;
 
     /**
-     * Constructs a new Complex Number object with both real and
-     * imaginary parts 0 (z = 0 + 0i).
+     * Constructs a new Complex Number object with both real and imaginary parts
+     * 0 (z = 0 + 0i).
      */
     public ComplexNumber() {
         real = 0.0;
@@ -74,8 +74,7 @@ public class ComplexNumber {
     }
 
     /**
-     * Subtracts another ComplexNumber from the current complex
-     * number.
+     * Subtracts another ComplexNumber from the current complex number.
      *
      * @param z the complex number to be subtracted from the current complex
      * number
@@ -85,8 +84,7 @@ public class ComplexNumber {
     }
 
     /**
-     * Multiplies another ComplexNumber to the current complex
-     * number.
+     * Multiplies another ComplexNumber to the current complex number.
      *
      * @param z the complex number to be multiplied to the current complex
      * number
@@ -96,8 +94,7 @@ public class ComplexNumber {
     }
 
     /**
-     * Divides the current ComplexNumber by another
-     * ComplexNumber.
+     * Divides the current ComplexNumber by another ComplexNumber.
      *
      * @param z the divisor
      */
@@ -114,23 +111,23 @@ public class ComplexNumber {
         this.real = z.real;
         this.imaginary = z.imaginary;
     }
-    
-    /**
-     * This method gives to the real part of a complex number the value given in input
-     * @param real 
-     */
 
-    public void setReal(Double real) {
-        this.real = real;
-    }
-    
     /**
-     * This method gives to the imaginary part of a complex number the value given in
+     * This method gives to the real part of a complex number the value given in
      * input
      *
      * @param real
      */
+    public void setReal(Double real) {
+        this.real = real;
+    }
 
+    /**
+     * This method gives to the imaginary part of a complex number the value
+     * given in input
+     *
+     * @param real
+     */
     public void setImaginary(Double imaginary) {
         this.imaginary = imaginary;
     }
@@ -192,8 +189,8 @@ public class ComplexNumber {
     /**
      * The complex conjugate of the current complex number.
      *
-     * @return a ComplexNumber object which is the conjugate of the
-     * current complex number
+     * @return a ComplexNumber object which is the conjugate of the current
+     * complex number
      */
     public ComplexNumber conjugate() {
 
@@ -212,8 +209,8 @@ public class ComplexNumber {
     /**
      * The square of the current complex number.
      *
-     * @return a ComplexNumber which is the square of the current
-     * complex number.
+     * @return a ComplexNumber which is the square of the current complex
+     * number.
      */
     public ComplexNumber square() {
         double _real = this.real * this.real - this.imaginary * this.imaginary;
@@ -272,21 +269,24 @@ public class ComplexNumber {
     public static ComplexNumber pow(ComplexNumber z, ComplexNumber power) {
         ComplexNumber output = new ComplexNumber(z.getRe(), z.getIm());
         if (power.getIm() == 0.0) {
-            // case power real and negative
-            if(power.getRe()<0){
-                Double pow=power.mod();
-                ComplexNumber div=ComplexNumber.pow(z, new ComplexNumber(pow,0));
-                output=ComplexNumber.divide(new ComplexNumber(1,0), div);
+            if (power.getRe() < 0) {
+                // case power real and negative
+                Double pow = power.mod();
+                ComplexNumber div = ComplexNumber.pow(z, new ComplexNumber(pow, 0));
+                output = ComplexNumber.divide(new ComplexNumber(1, 0), div);
             }
-            if (!checkDecimal(power.getRe())) {
-                // case power real,positive and not decimal
+            String f = convertDecimalToFraction(power.getRe());
+            String[] fr = f.split("/");
+            if (fr[1].equals("1.0")) {
+                //case power real and positive
                 for (int i = 1; i < power.getRe(); i++) {
                     double _real = output.real * z.real - output.imaginary * z.imaginary;
                     double _imaginary = output.real * z.imaginary + output.imaginary * z.real;
                     output = new ComplexNumber(_real, _imaginary);
+
                 }
             } else {
-                // case power real,positive and decimal
+                //case power real positive and decimal
                 String a = convertDecimalToFraction(power.getRe());
                 String[] a1 = a.split("/");
                 Double p = Double.parseDouble(a1[0]);
@@ -357,47 +357,32 @@ public class ComplexNumber {
     }
 
     /**
-     * This method checks if a number is decimal or not.
-     *
-     * @param n is the number that needs to be checked
-     * @return true if is decimal, otherwise it returns false
-     */
-    private static boolean checkDecimal(Double n) {
-        ArrayList<Double> a;
-        String f = convertDecimalToFraction(n);
-        String[] fr = f.split("/");
-        if (fr[1].equals("1.0")) {
-            return false;
-        }
-        return true;
-
-    }
-    
-    /**
      * This method calculates the root of a real number
+     *
      * @param c is the rooting of the root
      * @param index is the index of the root
      * @return the root of c
      */
-
     public static ComplexNumber rootReal(ComplexNumber c, Double index) {
         Double newIndex = 1 / index;
         Double d = Math.pow(c.getRe(), newIndex);
         BigDecimal b1 = new BigDecimal(d).setScale(8, BigDecimal.ROUND_HALF_UP);
         Double root = Double.parseDouble(b1.toString());
         return new ComplexNumber(root, 0.0);
-        
 
     }
-    
+
     /**
      * This root calculates the root of a complex number
+     *
      * @param c is the rooting of the root
      * @param index is the index of the root
      * @return the root of c
      */
-
     public static ComplexNumber rootComplex(ComplexNumber c, Double index) {
+        if (c.getIm() == 0) {
+            return rootReal(c, index);
+        }
         Double mod = c.mod();
         Double arg = c.getArg();
         ComplexNumber modC = rootReal(new ComplexNumber(mod, 0), index);
@@ -512,8 +497,7 @@ public class ComplexNumber {
     }
 
     /**
-     * Parses the String as a ComplexNumber of type
-     * x+yi.
+     * Parses the String as a ComplexNumber of type x+yi.
      *
      * @param s the input complex number as string
      * @return a ComplexNumber which is represented by the string.
@@ -594,8 +578,7 @@ public class ComplexNumber {
     /**
      * Formats the Complex number as x+yi or r.cis(theta)
      *
-     * @param format_id the format ID ComplexNumber.XY or
-     * ComplexNumber.RCIS.
+     * @param format_id the format ID ComplexNumber.XY or ComplexNumber.RCIS.
      * @return a string representation of the complex number
      * @throws IllegalArgumentException if the format_id does not match.
      */
@@ -610,12 +593,12 @@ public class ComplexNumber {
         }
         return out;
     }
-    
+
     /**
      * This metod calculates the square root of the complex number
+     *
      * @return the result of the square root
      */
-
     public ComplexNumber sqrt() {
         double r = this.mod();
         double halfTheta = this.getArg() / 2;
@@ -631,39 +614,38 @@ public class ComplexNumber {
         real = -real;
         imaginary = -imaginary;
     }
-    
+
     /**
      * This method clones a Complex Number
-     * @return a Complex Number 
+     *
+     * @return a Complex Number
      */
-
     @Override
     public Object clone() {
         return new ComplexNumber(real, imaginary);
     }
-    
-       
+
     /**
      * This method calculates the logarithm of a complex number
+     *
      * @return the logarithm of a complex number
      */
-    
-     public ComplexNumber logarithm() {
-        if(getIm()==0.0 & getRe()==0){
+    public ComplexNumber logarithm() {
+        if (getIm() == 0.0 & getRe() == 0) {
             throw new ArithmeticException("Error: LN(0)");
         }
-        double z=mod();
-        double real = (double) Math.round( Math.log(z)*100000000)/100000000;
-        double image =(double) Math.round(getArg()*100000000)/100000000;
+        double z = mod();
+        double real = (double) Math.round(Math.log(z) * 100000000) / 100000000;
+        double image = (double) Math.round(getArg() * 100000000) / 100000000;
         return new ComplexNumber(real, image);
     }
-     
+
     /**
      * This method calculates the sine of a Complex Number
+     *
      * @param z is the input of the sine
      * @return the sine of z
      */
-
     public ComplexNumber sen(ComplexNumber z) {
         double x = Math.exp(z.imaginary);
         double x_inv = 1 / x;
@@ -671,13 +653,13 @@ public class ComplexNumber {
         double i = (double) Math.round((Math.cos(z.real) * (x - x_inv) / 2) * 100000000) / 100000000;
         return new ComplexNumber(r, i);
     }
-    
+
     /**
      * This method calculates the cosine of a Complex Number
+     *
      * @param z is the input of the cosine
      * @return the cosine of z
      */
-
     public ComplexNumber cosen(ComplexNumber z) {
         double x = Math.exp(z.imaginary);
         double x_inv = 1 / x;
@@ -685,23 +667,23 @@ public class ComplexNumber {
         double i = (double) Math.round(-(Math.sin(z.real) * (x - x_inv) / 2) * 100000000) / 100000000;
         return new ComplexNumber(r, i);
     }
-    
+
     /**
      * This method calculates the tangent of a complex number
+     *
      * @param z is the input of the tangent
      * @return the tangent of z
      */
-
     public ComplexNumber tang(ComplexNumber z) {
         return divide(sen(z), cosen(z));
     }
-    
+
     /**
      * This method checks if the string input is a complex number
+     *
      * @param s the string that needs to be checked
      * @return true if s is a complex number, otherwise false
      */
-
     public static boolean checkComplex(String s) {
         try {
             ComplexNumber c = ComplexNumber.parseComplex(s);
@@ -715,46 +697,46 @@ public class ComplexNumber {
         return true;
 
     }
- 
-     /**
-      * This method calculates the arsine of a ComplexNumber
-      * @param z the input of the arsine
-      * @return the arsine of z
-      */
 
-    public static ComplexNumber asen(ComplexNumber z) {
-        if(z.getIm()==0.0){
-        if (z.real > 1 || z.real < -1 ) {
-            throw new ArithmeticException("Number not included in [-1,1]");
-        }
-    
-        return new ComplexNumber(Math.asin(z.getRe()),0);
-        }
-        ComplexNumber p1=ComplexNumber.pow(new ComplexNumber(0,1), new ComplexNumber(-1,0));
-        ComplexNumber s1=ComplexNumber.multiply(new ComplexNumber(0,1), z);
-        ComplexNumber ss2=ComplexNumber.pow(z,new ComplexNumber(2,0));
-        ComplexNumber sub=ComplexNumber.subtract(new ComplexNumber(1,0), ss2);
-        ComplexNumber square= sub.sqrt();
-        ComplexNumber sum=ComplexNumber.add(s1, square);
-        ComplexNumber log=sum.logarithm();
-        ComplexNumber asin=ComplexNumber.multiply(p1,log);
- 
-        return asin;
-
-    }
-    
     /**
-     * This method calculates the arc cosine of a complex number
-     * @param z the input of the arcosine
-     * @return the arcosine of z
+     * This method calculates the arsine of a ComplexNumber
+     *
+     * @param z the input of the arsine
+     * @return the arsine of z
      */
-
-public static ComplexNumber acosen(ComplexNumber z){
-        if(z.getIm()==0.0){
+    public static ComplexNumber asen(ComplexNumber z) {
+        if (z.getIm() == 0.0) {
             if (z.real > 1 || z.real < -1) {
                 throw new ArithmeticException("Number not included in [-1,1]");
             }
-            return new ComplexNumber(Math.acos(z.getRe()),0);
+
+            return new ComplexNumber(Math.asin(z.getRe()), 0);
+        }
+        ComplexNumber p1 = ComplexNumber.pow(new ComplexNumber(0, 1), new ComplexNumber(-1, 0));
+        ComplexNumber s1 = ComplexNumber.multiply(new ComplexNumber(0, 1), z);
+        ComplexNumber ss2 = ComplexNumber.pow(z, new ComplexNumber(2, 0));
+        ComplexNumber sub = ComplexNumber.subtract(new ComplexNumber(1, 0), ss2);
+        ComplexNumber square = sub.sqrt();
+        ComplexNumber sum = ComplexNumber.add(s1, square);
+        ComplexNumber log = sum.logarithm();
+        ComplexNumber asin = ComplexNumber.multiply(p1, log);
+
+        return asin;
+
+    }
+
+    /**
+     * This method calculates the arc cosine of a complex number
+     *
+     * @param z the input of the arcosine
+     * @return the arcosine of z
+     */
+    public static ComplexNumber acosen(ComplexNumber z) {
+        if (z.getIm() == 0.0) {
+            if (z.real > 1 || z.real < -1) {
+                throw new ArithmeticException("Number not included in [-1,1]");
+            }
+            return new ComplexNumber(Math.acos(z.getRe()), 0);
         }
 
         ComplexNumber pow = ComplexNumber.pow(z, new ComplexNumber(2, 0));
@@ -767,26 +749,25 @@ public static ComplexNumber acosen(ComplexNumber z){
 
         return acosen;
     }
- 
-    
+
     /**
      * This method calculates the arc tangent of a complex number
+     *
      * @param z the input of the arc tangent
      * @return the arc tangent of z
      */
-
     public static ComplexNumber atan(ComplexNumber z) {
         if (z.getIm() == 0.0) {
             return new ComplexNumber(Math.atan(z.getRe()), 0);
         }
-        
-        ComplexNumber prod=ComplexNumber.multiply(new ComplexNumber(0.5,0), new ComplexNumber(0,1));
-        ComplexNumber iz=ComplexNumber.multiply(z, new ComplexNumber(0,1));
-        ComplexNumber sub=ComplexNumber.subtract(new ComplexNumber(1,0),iz);
-        ComplexNumber sum=ComplexNumber.add(new ComplexNumber(1,0), iz);
-        ComplexNumber div=ComplexNumber.divide(sub, sum);
-        ComplexNumber log=div.logarithm();
-        ComplexNumber atang=ComplexNumber.multiply(prod, log);
+
+        ComplexNumber prod = ComplexNumber.multiply(new ComplexNumber(0.5, 0), new ComplexNumber(0, 1));
+        ComplexNumber iz = ComplexNumber.multiply(z, new ComplexNumber(0, 1));
+        ComplexNumber sub = ComplexNumber.subtract(new ComplexNumber(1, 0), iz);
+        ComplexNumber sum = ComplexNumber.add(new ComplexNumber(1, 0), iz);
+        ComplexNumber div = ComplexNumber.divide(sub, sum);
+        ComplexNumber log = div.logarithm();
+        ComplexNumber atang = ComplexNumber.multiply(prod, log);
         return atang;
     }
 
