@@ -30,7 +30,7 @@ public class NameFormulaAlreadyExists extends Exception {
     
 
     /**
-     * This method returns the formula
+     * This method returns the name of formula
      * @return name
      */
     public String getName(){
